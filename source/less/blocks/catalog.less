@@ -1,14 +1,12 @@
 .catalog {
   font-size: 16px;
   line-height: 20px;
-  font-weight: normal;
-  text-transform: uppercase;
+  font-weight: @font-weight-base;
+  text-transform: @text-transform-base;
 }
 
 .catalog__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  .list-unstyled ()
 }
 
 .catalog__item {
@@ -17,21 +15,21 @@
 
 .catalog__item-price,
 span {
-  font-family: Arial;
+  font-family: @font-family;
   font-size: 12px;
   line-height: 16px;
-  font-weight: normal;
+  font-weight: @font-weight-base;
   text-transform: none;
   margin-bottom: 20px;
 }
 
 .catalog__item-button {
-  text-transform: uppercase;
-  background-color: #68b738;
-  color: #ffffff;
+  text-transform: @text-transform-base;
+  background-color: @color-base;
+  color: @color-text;
   padding: 12px 0;
 }
 
 .catalog__list-button {
-  background-color: #f2f2f2;
+  background-color: @color-gray;
 }

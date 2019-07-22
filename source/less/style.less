@@ -1,6 +1,9 @@
-@import "blocks/page-header.less";
+@import "base/vars.less";
+@import "base/fonts.less";
+@import "base/mixins.less";
+@import "blocks/typography.less";
 @import "blocks/advantages.less";
-@import "blocks/brend.less";
+@import "blocks/logo.less";
 @import "blocks/catalog.less";
 @import "blocks/categories.less";
 @import "blocks/contacts.less";
@@ -14,24 +17,3 @@
 @import "blocks/slider.less";
 @import "blocks/social.less";
 @import "blocks/table.less";
-
-@font-face {
- font-family: "Oswald";
- src: url("/fonts/oswaldmedium.woff") format("woff"),
-      url("/fonts/oswaldmedium.woff2") format("woff2"),
-      url("/fonts/oswaldregular.woff") format("woff"),
-      url("/fonts/oswaldregular.woff2") format("woff2");
-}
-
-body {
-  font-family: 'Oswald', Arial, sans-serif;
-  background-color: #ffffff;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: normal;
-}
-
-a {
-  color: #000000;
-  text-decoration: none;
-}

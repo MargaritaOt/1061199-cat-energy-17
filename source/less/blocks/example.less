@@ -1,15 +1,15 @@
 .example {
   padding: 20px;
-  font-family: 'Oswald';
-  font-weight: normal;
-  text-transform: uppercase;
-  background-color: #f2f2f2;
+  font-family: @font-family-base;
+  font-weight: @font-weight-base;
+  text-transform: @text-transform-base;
+  background-color: @color-gray;
 }
 
 .example__title {
   font-size: 36px;
   line-height: 60px;
-  font-weight: normal;
+  font-weight: @font-weight-base;
   text-transform: none;
 }
 
@@ -17,18 +17,18 @@
   font-family: Arial;
   font-size: 14px;
   line-height: 18px;
-  font-weight: normal;
+  font-weight: @font-weight-base;
   text-transform: none;
 }
 
 .example__total {
-  font-size: 14px;
+  font-size: @font-size-base;
   line-height: 20px;
-  font-weight: normal;
+  font-weight: @font-weight-base;
 }
 
 .example__list {
   font-size: 24px;
-  line-height: 24px;
-  font-weight: normal;
+  line-height: 1;
+  font-weight: @font-weight-base;
 }

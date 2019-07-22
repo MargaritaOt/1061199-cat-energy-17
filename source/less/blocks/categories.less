@@ -1,41 +1,39 @@
 .categories {
-  font-family: 'Oswald';
+  font-family: @font-family-base;
   font-size: 16px;
-  line-height: 16px;
-  font-weight: normal;
-  text-transform: uppercase;
+  line-height: 1;
+  font-weight: @font-weight-base;
+  text-transform: @text-transform-base;
 }
 
 .categories__title {
   font-size: 24px;
   line-height: 37.02px;
-  font-weight: normal;
+  font-weight: @font-weight-base;
   text-align: center;
 }
 
 .categories__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  .list-unstyled ()
 }
 
-.categories__list li {
-  margin: 10px 0;
-  padding-top: 27px;
-  background-color: #f2f2f2;
+.categories__list {
+  li { margin: 10px 0;
+       padding-top: 27px;
+       background-color: @color-gray;}
 }
 
 .categories__description {
   padding: 0 20px;
-  font-family: Arial;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: normal;
+  font-family: @font-family;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  font-weight: @font-weight-base;
   text-transform: none;
 }
 
 .categories__view {
   padding: 0 20px;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 1;
 }
