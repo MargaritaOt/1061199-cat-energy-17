@@ -1,4 +1,7 @@
 .example {
+  .flex-column ();
+  width: 280px;
+  margin: 0 auto;
   padding: 20px;
   font-family: @font-family-base;
   font-weight: @font-weight-base;
@@ -25,10 +28,46 @@
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
+  margin: 20px 0;
 }
 
 .example__list {
   font-size: 24px;
   line-height: 1;
   font-weight: @font-weight-base;
+}
+@media (min-width: @tablet-width) {
+  .example {
+    width: 708px;
+  }
+
+  .example__wrapper {
+    display: flex;
+  }
+
+  .example__total {
+    margin-left: auto;
+  }
+}
+@media (min-width: @desktop-width) {
+  .example__wrapper {
+    .flex-column ();
+  }
+
+  .example {
+    width: 1220px;
+    .flex-row ();
+  }
+
+  .example__wrap {
+    flex-basis: 49%;
+  }
+
+  .example__total {
+    margin-left: 20px;
+  }
+
+  .example__changes {
+    flex-basis: 49%;
+  }
 }

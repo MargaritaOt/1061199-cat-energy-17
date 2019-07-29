@@ -1,4 +1,35 @@
 .page-footer {
-  margin: 27px 20px;
+  margin: 27px auto;
   background-color: @color-gray;
+}
+
+.page-footer__wrapper {
+  .flex-column ();
+  margin: 0 auto;
+  width: 280px;
+}
+
+.page-footer__copyright {
+  display: flex;
+  justify-content: flex-start;
+}
+@media (min-width: @tablet-width) {
+  .page-footer {
+    width: 708px;
+  }
+
+  .page-footer__wrapper {
+    width: 708px;
+    .flex-row ();
+    justify-content: space-around;
+  }
+}
+@media (min-width: @desktop-width) {
+  .page-footer {
+    width: 1220px;
+  }
+
+  .page-footer__wrapper {
+    width: 1220px;
+  }
 }

@@ -1,15 +1,26 @@
+.main-nav {
+  width: 280px;
+  .flex-column ();
+}
+
 .main-nav__list {
   .list-unstyled ();
 }
-
 @media (min-width: @tablet-width) {
   .main-nav {
-    display: flex;
-    flex-direction: row;
+    width: 445px;
+    .flex-row ();
   }
 
   .main-nav__list {
-    display: flex;
-    flex-direction: row;
+    .flex-row ();
+  }
+
+  .main-nav__list li {
+    padding: 0 10px;
+  }
+
+  .main-nav__toggle {
+    display: none;
   }
 }

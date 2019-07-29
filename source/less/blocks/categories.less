@@ -1,4 +1,8 @@
 .categories {
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 1;
@@ -8,7 +12,7 @@
 
 .categories__title {
   font-size: 24px;
-  line-height: 37.02px;
+  line-height: 37px;
   font-weight: @font-weight-base;
   text-align: center;
 }
@@ -28,9 +32,22 @@
   font-weight: @font-weight-base;
   text-transform: none;
 }
-
 .categories__view {
   padding: 0 20px;
   font-size: 16px;
   line-height: 1;
+}
+@media (min-width: @tablet-width) {
+  .categories {
+    width: 708px;
+  }
+}
+@media (min-width: @desktop-width) {
+  .categories {
+    width: 1220px;
+  }
+
+  .categories__list {
+    display: flex;
+  }
 }

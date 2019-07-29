@@ -1,5 +1,7 @@
 .advantages {
-  margin: 10px 20px;
+  width: 280px;
+  display: flex;
+  margin: 10px auto;
   font-family: @font-family;
   font-size: @font-size-base;
   line-height: @line-height-base;
@@ -11,8 +13,43 @@
   font-size: 36px;
   line-height: 60px;
   font-weight: @font-weight-base;
+  margin: 30px 0;
+}
+
+.advantages__wrapper {
+  .flex-column ();
 }
 
 .advantages__list {
   .list-unstyled ();
+}
+@media (min-width: @tablet-width) {
+  .advantages {
+    width: 708px;
+  }
+
+  .advantages__list {
+    width: 640px;
+    .flex-wrap ();
+    flex-basis: 100%;
+  }
+
+  .advantages__list li {
+    flex-basis: 49%;
+    padding: 60px 0;
+    width: 324px;
+  }
+}
+@media (min-width: @desktop-width) {
+  .advantages {
+    width: 1220px;
+  }
+
+  .advantages__list {
+    width: 1220px;
+  }
+
+  .advantages__list li {
+    flex-basis: 25%;
+  }
 }
