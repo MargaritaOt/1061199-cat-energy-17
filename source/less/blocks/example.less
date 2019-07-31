@@ -1,9 +1,13 @@
 .example {
-  padding: 20px;
   font-family: @font-family-base;
   font-weight: @font-weight-base;
   text-transform: @text-transform-base;
   background-color: @color-gray;
+}
+
+.example__inner {
+  .wrapper;
+  .flex-column;
 }
 
 .example__title {
@@ -25,10 +29,43 @@
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
+  margin: 20px 0;
 }
 
-.example__list {
+.example__table {
   font-size: 24px;
   line-height: 1;
   font-weight: @font-weight-base;
+}
+
+@media (min-width: @tablet-width) {
+  .example__list {
+    display: flex;
+  }
+
+  .example__total {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .example__inner {
+    .flex-row;
+  }
+
+  .example__list {
+    .flex-column;
+  }
+
+  .example__wrapper {
+    flex-basis: 49%;
+  }
+
+  .example__total {
+    margin-left: 20px;
+  }
+
+  .example__changes {
+    flex-basis: 49%;
+  }
 }

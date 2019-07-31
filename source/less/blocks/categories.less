@@ -6,18 +6,23 @@
   text-transform: @text-transform-base;
 }
 
+.categories__inner {
+  .wrapper;
+}
+
 .categories__title {
   font-size: 24px;
-  line-height: 37.02px;
+  line-height: 37px;
   font-weight: @font-weight-base;
   text-align: center;
 }
 
 .categories__list {
+  .flex-column;
   margin: 10px 0;
   padding-top: 27px;
   background-color: @color-gray;
-  .list-unstyled ();
+  .list-unstyled;
 }
 
 .categories__description {
@@ -33,4 +38,10 @@
   padding: 0 20px;
   font-size: 16px;
   line-height: 1;
+}
+
+@media (min-width: @desktop-width) {
+  .categories__list {
+    .flex-row;
+  }
 }

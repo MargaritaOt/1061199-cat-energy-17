@@ -1,8 +1,15 @@
-.contacts {
-  margin: 27px 20px;
+.contacts__inner {
+  .wrapper;
+  .flex-column;
+  margin-top: 38px;
+}
+
+.contacts__wrapper {
+  .flex-row;
 }
 
 .contacts__title {
+  margin: 0;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 20px;
@@ -16,4 +23,26 @@
   line-height: 20px;
   font-weight: @font-weight-base;
   text-transform: none;
+  margin-bottom: 27px;
+}
+
+@media (min-width: @tablet-width) {
+  .contacts__title {
+    width: 155px;
+  }
+
+  .contacts__add {
+    width: 155px;
+    margin-left: auto;
+  }
+
+  .contacts__image {
+    width: 100%;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .contacts__add {
+    margin-left: 0;
+  }
 }
