@@ -1,22 +1,24 @@
 .page-header {
-  width: 280px;
-  display: flex;
-  justify-content: space-around;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1;
-  font-weight: @font-weight-base;
-  background-color: @color-text;
+  padding-top: 10px;
 }
 
 @media (min-width: @tablet-width) {
   .page-header {
-    width: 708px;
+    padding-top: 22px;
   }
 }
 
 @media (min-width: @desktop-width) {
   .page-header {
-    width: 1220px;
+    padding-top: 55px;
   }
+}
+
+.page-header__inner {
+  .wrapper;
+  .flex-around;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: @font-weight-base;
+  background-color: @color-text;
 }

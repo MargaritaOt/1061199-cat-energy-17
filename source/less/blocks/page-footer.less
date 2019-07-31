@@ -1,12 +1,11 @@
 .page-footer {
-  margin: 27px auto;
+  margin-top: 27px;
   background-color: @color-gray;
 }
 
-.page-footer__wrapper {
-  .flex-column ();
-  margin: 0 auto;
-  width: 280px;
+.page-footer__inner {
+  .wrapper;
+  .flex-column;
 }
 
 .page-footer__copyright {
@@ -15,23 +14,15 @@
 }
 
 @media (min-width: @tablet-width) {
-  .page-footer {
-    width: 708px;
-  }
-
-  .page-footer__wrapper {
-    width: 708px;
-    .flex-row ();
+  .page-footer__inner {
+    .flex-row;
     justify-content: space-around;
+    padding: 58px 30px;
   }
 }
 
 @media (min-width: @desktop-width) {
-  .page-footer {
-    width: 1220px;
-  }
-
-  .page-footer__wrapper {
-    width: 1220px;
+  .page-footer__inner {
+    padding: 58px 40px;
   }
 }
