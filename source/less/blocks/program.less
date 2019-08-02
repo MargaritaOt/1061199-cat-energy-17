@@ -1,4 +1,5 @@
 .program {
+  font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: 1;
   font-weight: 400;
@@ -16,33 +17,53 @@
   background-image: url("../img/index-background-mobile@1x.jpg");
   background-position: top center;
   background-repeat: no-repeat;
+  margin-bottom: 30px;
 }
 
 .program__title {
-  padding: 27px 0 20px;
+  padding: 25px 0;
   margin: 0;
   font-size: 36px;
   line-height: 1;
   font-weight: 400;
+  text-align: center;
 }
 
 .program__tagline {
   text-transform: @text-transform-base;
+  text-align: center;
+  margin: 0;
 }
 
 .program__choice-program {
   background-color: @color-base;
   color: @color-text;
   text-transform: @text-transform-base;
-  padding: 12px 0;
+  padding: 15px 0;
   text-align: center;
 }
 
 @media (min-width: @tablet-width) {
+  .program {
+    .tagline-tablet;
+  }
+
   .program__header {
     background-image: none;
     background-color: @color-text;
     color: #111111;
+    text-align: left;
+    margin-left: 95px;
+  }
+
+  .program__title {
+    .tatle-tablet;
+    padding: 55px 40px 40px 0;
+    text-align: left;
+    text-transform: none;
+  }
+
+  .program__tagline {
     text-align: left;
   }
 
@@ -51,8 +72,8 @@
   }
 
   .program__choice-program {
-    margin-right: auto;
-    margin-top: 26px;
+    margin: 19px auto 0 95px;
+    padding: 15px 26px;
   }
 }
 
@@ -64,6 +85,7 @@
 
   .program__header {
     width: 550px;
+    margin: 50px 0 0 90px;
   }
 
   .program__logo {

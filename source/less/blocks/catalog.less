@@ -16,12 +16,12 @@
 
 .catalog__item {
   .flex-wrap;
-  margin-bottom: 25px;
 }
 
 .catalog__wrapper {
   .flex-column;
   width: 140px;
+  margin-top: 20px;
 }
 
 .catalog__item-name {
@@ -45,13 +45,18 @@ span {
   text-transform: @text-transform-base;
   background-color: @color-base;
   color: @color-text;
+  margin-bottom: 17px;
 }
 
 .catalog__all {
   .flex-column;
-  margin: 0 auto;
+  margin: 70px auto 0;
   width: 280px;
   text-align: center;
+}
+
+.catalog__all p {
+  margin: 15px 0 12px;
 }
 
 .catalog__list-button {
@@ -67,8 +72,8 @@ span {
 
   .catalog__item {
     .flex-column;
-    width: 250px;
-    margin: 35px;
+    width: 324px;
+    margin: 10px;
   }
 
   .catalog__wrapper {
@@ -76,7 +81,15 @@ span {
   }
 
   .catalog__item-name {
+    .tagline-tablet;
     margin: 0 auto;
+    width: 145px;
+    text-align: center;
+  }
+
+  .catalog__item-price {
+    font-size: 16px;
+    line-height: 1;
   }
 
   .catalog__all {

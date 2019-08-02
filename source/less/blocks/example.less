@@ -15,6 +15,7 @@
   line-height: 60px;
   font-weight: @font-weight-base;
   text-transform: none;
+  margin: 10px 0 23px;
 }
 
 .example__description {
@@ -23,13 +24,16 @@
   line-height: 18px;
   font-weight: @font-weight-base;
   text-transform: none;
+  margin: 0;
+  padding: 0 10px 0 0;
 }
 
 .example__total {
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
-  margin: 20px 0;
+  margin: 20px;
+  text-align: center;
 }
 
 .example__table {
@@ -38,12 +42,26 @@
   font-weight: @font-weight-base;
 }
 
+.example__changes {
+  margin: 20px 0 45px;
+}
+
 @media (min-width: @tablet-width) {
   .example__list {
     display: flex;
   }
 
+  .example__title {
+    .tatle-tablet;
+    margin: 45px 0 65px;
+  }
+
+  .example__description {
+    .description-tablet;
+  }
+
   .example__total {
+    .tagline-tablet;
     margin-left: auto;
   }
 }
