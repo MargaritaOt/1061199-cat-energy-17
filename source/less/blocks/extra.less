@@ -27,7 +27,7 @@
 }
 
 .extra__item-price {
-  font-family: @font-family;
+  font-family: Arial;
   font-size: 14px;
   line-height: 1;
   font-weight: @font-weight-base;
@@ -46,7 +46,7 @@
 .extra__gift {
   width: 280px;
   height: 289px;
-  font-family: @font-family;
+  font-family: Arial;
   font-size: 16px;
   line-height: 20px;
   font-weight: @font-weight-base;
@@ -56,8 +56,23 @@
   background-image: url("../img/gift-photo-mobile@1x.jpg");
   background-position: top center;
   background-repeat: no-repeat;
-  margin: 40px 0;
+  margin: 55px 0;
   display: flex;
+  position: relative;
+}
+
+.extra__gift::before {
+  content: "";
+  position: absolute;
+  top: 65px;
+  left: 110px;
+  width: 55px;
+  height: 60px;
+  background-repeat: no-repeat;
+}
+
+.extra__gift--case::before {
+  background-image: url("../img/icon-gift.svg");
 }
 
 .extra__gift p {
@@ -92,8 +107,19 @@
 }
 
 @media (min-width: @desktop-width) {
+  .extra__title {
+    font-size: 36px;
+    line-height: 1;
+    margin: 27px 0;
+  }
+
+  .extra__wrapper {
+    flex-basis: 70%;
+  }
+
   .extra__list {
-    width: 895px;
+    flex-basis: 75%;
+    margin: 60px 0;
   }
 
   .extra__item {
@@ -102,6 +128,8 @@
 
   .extra__item-name {
     width: 245px;
+    font-size: 20px;
+    line-height: 1;
   }
 
   .extra__item-price {
@@ -110,6 +138,7 @@
 
   .extra__item-button {
     width: 245px;
+    margin: 10px 0 10px 10px;
   }
 
   .extra__wrap {
@@ -117,7 +146,7 @@
   }
 
   .extra__gift {
-    width: 1220px;
-    margin: 27px 0;
+    flex-basis: 20%;
+    margin: 60px 0 0 60px;
   }
 }

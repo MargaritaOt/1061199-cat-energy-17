@@ -31,9 +31,9 @@
   .site-list__item--active::before {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 10px;
-    width: 65px;
+    width: 67px;
     height: 2px;
     background-color: @color-base;
   }
@@ -42,5 +42,10 @@
 @media (min-width: @desktop-width) {
   .site-list__item--active::before {
     background-color: #ffffff;
+    padding: 0;
+    left: 40px;
+  }
+  .site-list a {
+    padding: 20px 0;
   }
 }

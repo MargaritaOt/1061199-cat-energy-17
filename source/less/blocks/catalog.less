@@ -16,12 +16,13 @@
 
 .catalog__item {
   .flex-wrap;
+  min-height: 210px;
 }
 
 .catalog__wrapper {
   .flex-column;
-  width: 140px;
-  margin-top: 20px;
+  flex-basis: 49%;
+  margin-top: 22px;
 }
 
 .catalog__item-name {
@@ -30,7 +31,7 @@
 
 .catalog__item-price,
 span {
-  font-family: @font-family;
+  font-family: Arial;
   font-size: 12px;
   line-height: 16px;
   font-weight: @font-weight-base;
@@ -40,19 +41,34 @@ span {
 
 .catalog__item-button {
   flex-grow: 1;
-  padding: 12px 0;
+  padding: 10px 0;
   text-align: center;
   text-transform: @text-transform-base;
   background-color: @color-base;
   color: @color-text;
-  margin-bottom: 17px;
+  margin-bottom: 25px;
 }
 
 .catalog__all {
   .flex-column;
   margin: 70px auto 0;
-  width: 280px;
+  width: 100%;
   text-align: center;
+  position: relative;
+}
+
+.catalog__all::before {
+  content: "";
+  position: absolute;
+  top: -35px;
+  left: 125px;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+}
+
+.catalog__all--plus::before {
+  background-image: url("../img/icon-plus-mobile.svg");
 }
 
 .catalog__all p {
@@ -72,12 +88,24 @@ span {
 
   .catalog__item {
     .flex-column;
-    width: 324px;
-    margin: 10px;
+    flex-basis: 45%;
+    min-height: 435px;
+    background-color: @color-gray;
+    margin-bottom: 140px;
+  }
+
+  .catalog__item:nth-child(odd) {
+    margin-right: 60px;
+  }
+
+  .catalog__item-button {
+    flex-grow: 0;
+    margin: 15px 35px;
   }
 
   .catalog__wrapper {
-    width: 250px;
+    flex-basis: 30%;
+    margin-bottom: 40px;
   }
 
   .catalog__item-name {
@@ -99,8 +127,26 @@ span {
 }
 
 @media (min-width: @desktop-width) {
+  .catalog__wrapper {
+    margin-bottom: 10px;
+  }
+
+  .catalog__list {
+    margin-top: 160px;
+  }
+
   .catalog__item {
-    width: 245px;
-    margin: 0 20px;
+    margin: 0;
+    flex-basis: 20%;
+    margin-right: 80px;
+    margin-bottom: 143px;
+  }
+
+  .catalog__item:nth-child(odd) {
+    margin-right: 80px;
+  }
+
+  .catalog__item:nth-child(4n+4) {
+    margin-right: 0;
   }
 }
