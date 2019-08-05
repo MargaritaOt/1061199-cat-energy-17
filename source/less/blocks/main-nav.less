@@ -10,8 +10,8 @@
 .main-nav__toggle {
   position: absolute;
   content: "";
-  top: 20px;
-  right: 10px;
+  top: 23px;
+  right: 20px;
   z-index: 2;
   width: 18px;
   height: 18px;
@@ -23,8 +23,8 @@
 .main-nav--closed .main-nav__toggle::before {
   content: "";
   position: absolute;
-  top: 3px;
-  right: 12px;
+  top: 0;
+  right: 0;
   width: 24px;
   height: 18px;
   background-image: url("../img/icon-mobile-menu.svg");
@@ -34,8 +34,8 @@
 .main-nav--opened .main-nav__toggle::before {
   content: "";
   position: absolute;
-  top: 3px;
-  right: 12px;
+  top: 0;
+  right: 0;
   width: 18px;
   height: 18px;
   background-image: url("../img/icon-close.svg");
@@ -44,6 +44,7 @@
 
 .main-nav__wrapper {
   margin: 0 auto;
+  z-index: 1;
 }
 
 @media (max-width: @mobile-width-only) {
@@ -71,7 +72,6 @@
 
   .main-nav__wrapper {
     margin: 0;
-    z-index: 1;
   }
 
   .main-nav__list {
