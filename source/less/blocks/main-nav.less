@@ -1,6 +1,10 @@
 .main-nav {
   .flex-column;
   width: 280px;
+  position: fixed;
+  z-index: 10;
+  top: 65px;
+  right: 10px;
 }
 
 .main-nav__list {
@@ -10,8 +14,8 @@
 .main-nav__toggle {
   position: absolute;
   content: "";
-  top: 23px;
-  right: 20px;
+  top: -40px;
+  right: 10px;
   z-index: 2;
   width: 18px;
   height: 18px;
@@ -68,6 +72,10 @@
   .main-nav {
     .flex-row;
     flex-basis: 65%;
+    position: relative;
+    z-index: 10;
+    top: 0;
+    right: 0x;
   }
 
   .main-nav__wrapper {
@@ -76,7 +84,7 @@
 
   .main-nav__list {
     .flex-row;
-    margin-left: 15px;
+    margin-left: 30px;
     font-family: @font-family-base;
     font-size: 18px;
     line-height: 25px;

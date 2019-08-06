@@ -1,0 +1,44 @@
+.facts {
+  display: table;
+  border-collapse: collapse;
+  margin: 10px 0 0;
+  font-family: @font-family-base;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.facts__fact {
+  display: table-cell;
+  padding: 0 25px;
+  text-align: center;
+}
+
+.facts__weight-time {
+  display: table-row;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: @font-weight-base;
+  text-transform: none;
+}
+
+@media (min-width: @tablet-width) {
+  .facts {
+    font-size: 30px;
+    line-height: 37px;
+  }
+
+  .facts__fact {
+    padding: 0 30px;
+  }
+
+  .facts__weight-time {
+    font-size: 14px;
+    line-height: 40px;
+  }
+
+}
+
+@media (min-width: @desktop-width) {
+
+}

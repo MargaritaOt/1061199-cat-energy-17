@@ -37,6 +37,7 @@
   color: @color-text;
   text-transform: @text-transform-base;
   padding: 15px 0;
+  margin-top: 272px;
   text-align: center;
 }
 
@@ -55,7 +56,7 @@
 }
 
 .program__logo-image {
-  position: relative;
+  position: absolute;
 }
 
 @media (min-width: @tablet-width) {
@@ -68,12 +69,12 @@
     background-color: @color-text;
     color: #111111;
     text-align: left;
-    margin-left: 85px;
+    margin-left: 90px;
   }
 
   .program__title {
     .title-tablet;
-    padding: 55px 50px 40px 0;
+    padding: 55px 60px 40px 0;
     text-align: left;
     text-transform: none;
   }
@@ -84,6 +85,7 @@
 
   .program__logo {
     order: 4;
+    position: relative;
   }
 
   .program__logo::before {
@@ -91,15 +93,38 @@
     background-image: none;
   }
 
+  .program__logo-image {
+    z-index: 3;
+    bottom: -175px;
+    right: 30%;
+  }
+
   .program__choice-program {
-    margin: 15px auto 0 85px;
+    margin: 15px auto 0 90px;
     padding: 15px 28px;
+    z-index: 4;
   }
 }
 
 @media (min-width: @desktop-width) {
+  .program {
+    position: relative;
+  }
+
+  .program::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #64a83b;
+    background-image: url("../img/index-background-desktop@1x.jpg");
+    background-size: content;
+  }
+
   .program__inner {
-    .flex-row;
+    .flex-column;
     flex-wrap: wrap;
   }
 
@@ -119,20 +144,12 @@
   }
 
   .program__logo-image {
-    position: relative;
-  }
-
-  .program__logo::before {
+    position: absolute;
     top: 0;
     right: 0;
-    width: 720px;
-    height: 696px;
-    background-color: #64a83b;
-    background-image: url("../img/index-background-desktop@1x.jpg");
-    background-size: content;
   }
 
   .program__choice-program {
-    margin: 55px 80px;
+    margin-top: 55px;
   }
 }
