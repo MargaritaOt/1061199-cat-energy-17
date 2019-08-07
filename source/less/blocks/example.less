@@ -15,46 +15,96 @@
   line-height: 60px;
   font-weight: @font-weight-base;
   text-transform: none;
+  margin: 10px 0 23px;
 }
 
 .example__description {
-  font-family: @font-family;
+  font-family: "Arial", sans-serif;
   font-size: 14px;
   line-height: 18px;
   font-weight: @font-weight-base;
   text-transform: none;
+  margin: 0;
+  padding: 0 10px 0 0;
+}
+
+.example__list {
+  margin-top: 40px;
 }
 
 .example__total {
+  margin: 20px 0 0 47px;
+}
+
+.example__total span {
+  font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
-  margin: 20px 0;
+  text-align: center;
 }
 
 .example__table {
   font-size: 24px;
-  line-height: 1;
+  line-height: 29px;
   font-weight: @font-weight-base;
+}
+
+.example__changes {
+  margin: 20px 0;
 }
 
 @media (min-width: @tablet-width) {
   .example__list {
     display: flex;
+    margin-top: 55px;
+  }
+
+  .example__title {
+    .title-tablet;
+    margin: 45px 0 65px;
+  }
+
+  .example__description {
+    .description-tablet;
   }
 
   .example__total {
+    .tagline-tablet;
     margin-left: auto;
+    margin-top: 10px;
+  }
+
+  .example__total span {
+    .tagline-tablet;
+    text-align: right;
+    margin: 9px 0;
+    display: block;
   }
 }
 
 @media (min-width: @desktop-width) {
   .example__inner {
     .flex-row;
+    padding-bottom: 70px;
+  }
+
+  .example__title {
+    margin: 5px 0 145px;
+  }
+
+  .example__description {
+    padding-right: 160px;
+    margin-bottom: 70px;
   }
 
   .example__list {
     .flex-column;
+  }
+
+  .example__table {
+    font-size: 30px;
+    line-height: 37px;
   }
 
   .example__wrapper {
@@ -62,10 +112,19 @@
   }
 
   .example__total {
-    margin-left: 20px;
+    margin: 40px auto 0 0;
   }
 
   .example__changes {
     flex-basis: 49%;
+  }
+
+  .example__total span {
+    font-family: @font-family-base;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-left: 60px;
   }
 }

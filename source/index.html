@@ -13,19 +13,19 @@
 <body>
   <header class="page-header">
     <div class="page-header__inner">
-      <a class="page-header__logo logo"><img alt="Кэт энерджи" class="logo__image" height="18" src="img/logo-mobile.svg" width="101"></a>
-      <nav class="main-nav">
-        <button class="main-nav__toggle" type="button">Открыть меню</button>
+      <a class="page-header__logo logo"><img alt="Кэт энерджи" class="logo__image" height="33" src="img/logo-mobile.svg" width="38"></a>
+      <nav class="main-nav main-nav--opened main-nav--nojs">
+        <button class="main-nav__toggle" type="button"><span class="visually-hidden">Открыть меню</span></button>
         <div class="main-nav__wrapper">
-          <ul class="main-nav__list site-list">
+          <ul class="main-nav__list site-list site-list--page">
             <li class="site-list__item site-list__item--active">
-              <a>Главная</a>
+              <a><span>Главная</span></a>
             </li>
             <li class="site-list__item">
-              <a href="catalog.html">Каталог продукции</a>
+              <a href="catalog.html"><span>Каталог продукции</span></a>
             </li>
             <li class="site-list__item">
-              <a href="form.html">Подбор программы</a>
+              <a href="form.html"><span>Подбор программы</span></a>
             </li>
           </ul>
         </div>
@@ -46,12 +46,14 @@
         <ul class="categories__list">
           <li class="categories__item categories__item--slim">
             <h2 class="categories__title">Похудение</h2>
-            <p class="categories__description">Ваш кот весит больше собаки и почти утратил способность лазить по деревьям? Пора на диету! Cat Energy Slim поможет вашему питомцу сбросить лишний вес.</p><a class="categories__view" href="#">Каталог
+            <p class="categories__description">Ваш кот весит больше собаки и почти утратил способность лазить по деревьям? Пора на диету! Cat Energy Slim поможет вашему питомцу сбросить лишний вес.</p><a
+              class="categories__view categories__view--arrow" href="#">Каталог
               Slim</a>
           </li>
           <li class="categories__item categories__item--pro">
             <h2 class="categories__title">Набор массы</h2>
-            <p class="categories__description">Заработать авторитет среди дворовых котов и даже собак? Серия Cat Energy Pro поможет вашему коту нарастить необходимые мышцы!</p><a class="categories__view" href="#">Каталог Pro</a>
+            <p class="categories__description">Заработать авторитет среди дворовых котов и даже собак? Серия Cat Energy Pro поможет вашему коту нарастить необходимые мышцы!</p><a class="categories__view categories__view--arrow" href="#">Каталог
+              Pro</a>
           </li>
         </ul>
       </div>
@@ -74,17 +76,17 @@
           <p class="example__description">Борис сбросил 5 кг за 2 месяца, просто заменив свой обычный корм на Cat Energy Slim. Отличный результат без изнуряющих тренировок! При этом он не менял своих привычек и по-прежнему спит по 16 часов в день.
           </p>
           <div class="example__list">
-            <table class="example__table table">
-              <tr class="table__row">
-                <td class="table__value">5 кг</td>
-                <td class="table__field">снижение веса</td>
+            <table class="example__facts facts">
+              <tr class="facts__fact">
+                <td class="facts__kilograms-days">5 кг</td>
+                <td class="facts__weight-time">снижение веса</td>
               </tr>
-              <tr class="table__row">
-                <td class="table__value">60 дней</td>
-                <td class="table__field">затрачено времени</td>
+              <tr class="facts__fact">
+                <td class="facts__kilograms-days">60 дней</td>
+                <td class="facts__weight-time">затрачено времени</td>
               </tr>
             </table>
-            <div class="example__total">Затраты на питание: 15 000 руб.</div>
+            <div class="example__total">Затраты на питание: <span>15 000 руб.</span></div>
           </div>
         </div>
         <div class="example__changes slider">
@@ -105,10 +107,10 @@
         <div class="contacts__wrapper">
           <p class="contacts__title">приглашаем к сотрудничеству дилеров!</p>
           <div class="contacts__add">
-            ул. Большая Конюшенная, д. 19/8 Санкт-Петербург
+            ул. Большая Конюшенная, д. 19/8 <span>Санкт-Петербург</span>
           </div>
         </div>
-        <img class="contacts__image" alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" height="400" src="img/bg-map-mobile@1x.png" width="320">
+        <img class="contacts__image contacts__image--pin" alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" height="365" src="img/bg-map-mobile@1x.png" width="320">
       </div>
     </section>
   </main>
@@ -120,22 +122,24 @@
       <div class="page-footer__social social">
         <ul class="social__list">
           <li class="social__item">
-            <a class="social__link social__link--vkontakte" href="https://vk.com/htmlacademy">Мы в Вконтакте</a>
+            <a class="social__link social__link--vkontakte" href="https://vk.com/htmlacademy"><span class="visually-hidden">Мы в Вконтакте</span></a>
           </li>
           <li class="social__item">
-            <a class="social__link social__link--instagram" href="https://www.instagram.com/htmlacademy">Мы в Инстаграме</a>
+            <a class="social__link social__link--instagram" href="https://www.instagram.com/htmlacademy"><span class="visually-hidden">Мы в Инстаграме</span></a>
           </li>
           <li class="social__item">
-            <a class="social__link social__link--facebook" href="https://www.facebook.com/htmlacademy">Мы в Фейсбуке</a>
+            <a class="social__link social__link--facebook" href="https://www.facebook.com/htmlacademy"><span class="visually-hidden">Мы в Фейсбуке</span></a>
           </li>
         </ul>
       </div>
       <div class="page-footer__copyright copyright">
-        <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a> <a class="copyright__link link" href="index.html"><img alt="Логотип Academy" class="link__image" height="36" src="img/htmlacademy.svg"
-            width="28"></a>
+        <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a> <a class="copyright__link link" href="index.html"><img alt="Логотип Academy" class="link__image" height="34" src="img/htmlacademy.svg"
+            width="27"></a>
       </div>
     </div>
   </footer>
+  <script src="js/script.js">
+  </script>
 </body>
 
 </html>

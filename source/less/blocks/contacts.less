@@ -1,11 +1,15 @@
 .contacts__inner {
   .wrapper;
   .flex-column;
-  margin-top: 38px;
+  padding: 0;
+  position: relative;
 }
 
 .contacts__wrapper {
   .flex-row;
+  margin-top: 10px;
+  padding: 0 20px;
+  z-index: 1;
 }
 
 .contacts__title {
@@ -18,31 +22,104 @@
 }
 
 .contacts__add {
-  font-family: @font-family;
+  font-family: "Arial", sans-serif;
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin-bottom: 27px;
+  margin: 0 0 27px 20px;
 }
 
+.contacts__add span {
+  font-size: @font-size-base;
+  line-height: 20px;
+  font-weight: @font-weight-base;
+  margin: 0;
+}
+
+.contacts__image {
+  height: 365px;
+}
+/*.contacts__image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55px;
+  height: 53px;
+  background-repeat: no-repeat;
+  background-position: top center;
+    z-index: 1;
+}
+
+.contacts__image--pin::before {
+  background-image: url("../img/map-pin.png");
+}*/
+
 @media (min-width: @tablet-width) {
+  .contacts__inner {
+    padding: 0;
+  }
+
+  .contacts__wrapper {
+    margin: 85px 0 0 55px;
+  }
+
   .contacts__title {
     width: 155px;
+    font-size: 20px;
+    line-height: 25px;
   }
 
   .contacts__add {
-    width: 155px;
+    width: 175px;
     margin-left: auto;
+    margin-right: 50px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: right;
+  }
+
+  .contacts__add span {
+    font-size: 16px;
+    line-height: 20px;
+    display: block;
+    padding-top: 20px;
   }
 
   .contacts__image {
+    height: 400px;
     width: 100%;
   }
 }
 
 @media (min-width: @desktop-width) {
+  .contacts__inner {
+    padding: 0;
+    min-height: 400px;
+  }
+
+  .contacts__wrapper {
+    width: 570px;
+    min-height: 203px;
+    background-color: #ffffff;
+    z-index: 1;
+    margin: 90px 0 0 40px;
+    padding: 0;
+    display: flex;
+  }
+
+  .contacts__title {
+    padding: 75px;
+  }
+
+  .contacts__image {
+    position: absolute;
+    top: 0;
+  }
+
   .contacts__add {
-    margin-left: 0;
+    padding: 75px 25px;
+    margin: 0;
   }
 }

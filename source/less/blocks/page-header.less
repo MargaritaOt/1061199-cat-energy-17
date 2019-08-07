@@ -2,6 +2,11 @@
   padding-top: 10px;
 }
 
+.page-header__inner {
+  .flex-wrap;
+  .wrapper;
+}
+
 @media (min-width: @tablet-width) {
   .page-header {
     padding-top: 22px;
@@ -9,16 +14,16 @@
 }
 
 @media (min-width: @desktop-width) {
-  .page-header {
-    padding-top: 55px;
+  .page-header__inner {
+    .wrapper;
+    .flex-around;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: @font-weight-base;
+    background-color: @color-text;
   }
-}
 
-.page-header__inner {
-  .wrapper;
-  .flex-around;
-  font-size: 20px;
-  line-height: 1;
-  font-weight: @font-weight-base;
-  background-color: @color-text;
+  .page-header {
+    padding-top: 50px;
+  }
 }

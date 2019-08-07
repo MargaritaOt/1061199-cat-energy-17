@@ -1,17 +1,50 @@
 .table {
   display: table;
+  border-collapse: collapse;
+  margin: 10px 0 0;
 }
 
 .table__row {
   display: table-cell;
-  padding: 0 20px;
+  padding: 0 25px;
+  text-align: center;
 }
 
 .table__field {
   display: table-row;
-  font-family: @font-family;
+  font-family: "Arial", sans-serif;
   font-size: 12px;
-  line-height: 1;
+  line-height: 16px;
   font-weight: @font-weight-base;
   text-transform: none;
+}
+
+@media (min-width: @tablet-width) {
+  .table {
+    margin: 25px 0 0 35px;
+  }
+
+  .table__field {
+    font-size: 16px;
+    line-height: 1;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .table {
+    margin: 20px 0 0;
+  }
+
+  .table__row {
+    padding: 6px 0 0 30px;
+  }
+
+  .table__value {
+    text-align: center;
+  }
+
+  .table__field {
+    font-size: 14px;
+    line-height: 35px;
+  }
 }

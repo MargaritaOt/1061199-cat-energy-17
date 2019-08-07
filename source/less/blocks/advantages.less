@@ -1,8 +1,9 @@
 .advantages {
-  font-family: @font-family;
+  font-family: "Arial", sans-serif;
   font-size: @font-size-base;
   line-height: @line-height-base;
   font-weight: @font-weight-base;
+  margin-bottom: 40px;
 }
 
 .advantages__inner {
@@ -15,28 +16,79 @@
   font-size: 36px;
   line-height: 60px;
   font-weight: @font-weight-base;
-  margin: 30px 0;
+  margin: 18px 0;
 }
 
 .advantages__list {
   .list-unstyled;
+  position: relative;
 }
 
 .advantages__list li {
-  padding: 10px 0;
+  padding: 12px 0 15px 80px;
+}
+
+.advantages__item::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-color: @color-base;
+}
+
+.advantages__item--composition::before {
+  top: 14px;
+  left: 6px;
+  background-image: url("../img/advantage-leaf@1x.png");
+}
+
+.advantages__item--view::before {
+  top: 94px;
+  left: 3px;
+  background-image: url("../img/advantage-powder@1x.png");
+}
+
+.advantages__item--instruction::before {
+  bottom: 85px;
+  left: 5px;
+  background-image: url("../img/advantage-dining@1x.png");
+}
+
+.advantages__item--result::before {
+  bottom: 5px;
+  left: 5px;
+  background-image: url("../img/advantage-clock@1x.png");
 }
 
 @media (min-width: @tablet-width) {
   .advantages__list {
     .flex-wrap;
-    width: 640px;
     flex-basis: 100%;
   }
 
   .advantages__list li {
-    flex-basis: 49%;
-    padding: 60px 0;
-    width: 324px;
+    flex-basis: 35%;
+    padding: 90px 0 155px;
+  }
+
+  .advantages__item--composition,
+  .advantages__item--instruction {
+    margin-right: 135px;
+  }
+
+  .advantages__item--instruction,
+  .advantages__item--result {
+    padding-bottom: 0;
+  }
+
+  .advantages__title {
+    .title-tablet;
+    margin: 40px 0 90px;
+  }
+
+  .advantages__item {
+    .description-tablet;
   }
 }
 
@@ -46,6 +98,17 @@
   }
 
   .advantages__list li {
-    flex-basis: 25%;
+    flex-basis: 20%;
+    padding: 85px 0;
+  }
+
+  .advantages__title {
+    margin: 45px 0 95px;
+  }
+
+  .advantages__item--composition,
+  .advantages__item--instruction,
+  .advantages__item--view {
+    margin-right: 80px;
   }
 }
