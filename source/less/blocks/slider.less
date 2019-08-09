@@ -124,9 +124,40 @@
 @media (min-width: @desktop-width) {
   .slider__list {
     margin-top: 0;
+    width: 690px;
+  }
+
+  .slider__changes-after img {
+    position: absolute;
+    top: 0;
+    right: 370px;
   }
 
   .slider__changes-before img {
-    left: 320px;
+    left: -20px;
+  }
+
+  .slider__toggles {
+    margin: 57px 0;
+  }
+
+  .slider__toggles::before {
+      left: 128px;
+  }
+
+  .slider__toggles::after {
+      left: 325px;
+  }
+
+  .slider__toggle-after::before {
+      left: 339px;
+  }
+
+  .slider__toggle-before {
+    margin-left: 57px;
+  }
+
+  .slider__toggle-after {
+    margin-right: 60px;
   }
 }
