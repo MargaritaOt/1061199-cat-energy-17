@@ -1,338 +1,338 @@
-/ *! picturefill - v3.0.2 - 2016-02-12
+/*! picturefill - v3.0.2 - 2016-02-12
  * https://scottjehl.github.io/picturefill/
- * Авторские права (c) 2016 г. https://github.com/scottjehl/picturefill/blob/master/Authors.txt; Лицензионный MIT
- * /
-/ *! Геккон-Картинка - v1.0
+ * Copyright (c) 2016 https://github.com/scottjehl/picturefill/blob/master/Authors.txt; Licensed MIT
+ */
+/*! Gecko-Picture - v1.0
  * https://github.com/scottjehl/picturefill/tree/3.0/src/plugins/gecko-picture
- * Ранняя реализация картинки Firefox (до FF41) является статичной и делает
- * не реагирует на изменения вида. Этот крошечный модуль исправляет это.
- * /
-(функция (окно) {
-	/ * jshint eqnull: true * /
+ * Firefox's early picture implementation (prior to FF41) is static and does
+ * not react to viewport changes. This tiny module fixes this.
+ */
+(function(window) {
+	/*jshint eqnull:true */
 	var ua = navigator.userAgent;
 
-	if (window.HTMLPictureElement && ((/ecko/).test(ua) && ua.match (/ rv \: (\ d +) /) && RegExp. $ 1 <45)) {
-		addEventListener ("resize", (function () {
-			таймер вар;
+	if ( window.HTMLPictureElement && ((/ecko/).test(ua) && ua.match(/rv\:(\d+)/) && RegExp.$1 < 45) ) {
+		addEventListener("resize", (function() {
+			var timer;
 
-			var dummySrc = document.createElement ("source");
+			var dummySrc = document.createElement("source");
 
-			var fixRespimg = function (img) {
-				вар источник, размеры;
+			var fixRespimg = function(img) {
+				var source, sizes;
 				var picture = img.parentNode;
 
-				if (picture.nodeName.toUpperCase () === "ИЗОБРАЖЕНИЕ") {
-					source = dummySrc.cloneNode ();
+				if (picture.nodeName.toUpperCase() === "PICTURE") {
+					source = dummySrc.cloneNode();
 
-					picture.insertBefore (source, picture.firstElementChild);
-					setTimeout (function () {
-						picture.removeChild (источник);
+					picture.insertBefore(source, picture.firstElementChild);
+					setTimeout(function() {
+						picture.removeChild(source);
 					});
-				} else if (! img._pfLastSize || img.offsetWidth> img._pfLastSize) {
+				} else if (!img._pfLastSize || img.offsetWidth > img._pfLastSize) {
 					img._pfLastSize = img.offsetWidth;
-					размеры = img.sizes;
-					img.sizes + = ", 100vw";
-					setTimeout (function () {
-						img.sizes = размеры;
+					sizes = img.sizes;
+					img.sizes += ",100vw";
+					setTimeout(function() {
+						img.sizes = sizes;
 					});
 				}
 			};
 
-			var findPictureImgs = function () {
-				вар я;
-				var imgs = document.querySelectorAll ("picture> img, img [srcset] [sizes]");
-				для (i = 0; i <imgs.length; i ++) {
-					fixRespimg (ГИМ [I]);
+			var findPictureImgs = function() {
+				var i;
+				var imgs = document.querySelectorAll("picture > img, img[srcset][sizes]");
+				for (i = 0; i < imgs.length; i++) {
+					fixRespimg(imgs[i]);
 				}
 			};
-			var onResize = function () {
-				clearTimeout (таймер);
-				timer = setTimeout (findPictureImgs, 99);
+			var onResize = function() {
+				clearTimeout(timer);
+				timer = setTimeout(findPictureImgs, 99);
 			};
-			var mq = window.matchMedia && matchMedia ("(ориентация: ландшафт)");
-			var init = function () {
-				OnResize ();
+			var mq = window.matchMedia && matchMedia("(orientation: landscape)");
+			var init = function() {
+				onResize();
 
 				if (mq && mq.addListener) {
-					mq.addListener (OnResize);
+					mq.addListener(onResize);
 				}
 			};
 
-			dummySrc.srcset = "data: image / gif; base64, R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw ==";
+			dummySrc.srcset = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
 			if (/^[c|i]|d$/.test(document.readyState || "")) {
-				в этом();
-			} еще {
-				document.addEventListener ("DOMContentLoaded", init);
+				init();
+			} else {
+				document.addEventListener("DOMContentLoaded", init);
 			}
 
-			вернуть onResize;
-		}) ());
+			return onResize;
+		})());
 	}
-})(окно);
+})(window);
 
-/ *! Picturefill - v3.0.2
+/*! Picturefill - v3.0.2
  * http://scottjehl.github.io/picturefill
- * Авторские права (c) 2015 г. https://github.com/scottjehl/picturefill/blob/master/Authors.txt;
- * Лицензия: MIT
- * /
+ * Copyright (c) 2015 https://github.com/scottjehl/picturefill/blob/master/Authors.txt;
+ *  License: MIT
+ */
 
-(функция (окно, документ, не определено) {
-	// Включить строгий режим
-	«использовать строгое»;
+(function( window, document, undefined ) {
+	// Enable strict mode
+	"use strict";
 
-	// HTML shim | v для старого IE (IE9 все еще будет нуждаться в обходе тега HTML-видео)
-	document.createElement ("изображение");
+	// HTML shim|v it for old IE (IE9 will still need the HTML video tag workaround)
+	document.createElement( "picture" );
 
 	var warn, eminpx, alwaysCheckWDescriptor, evalId;
-	// локальный объект для ссылок на методы и тестирования воздействия
+	// local object for method references and testing exposure
 	var pf = {};
 	var isSupportTestReady = false;
-	var noop = function () {};
-	var image = document.createElement ("img");
+	var noop = function() {};
+	var image = document.createElement( "img" );
 	var getImgAttr = image.getAttribute;
 	var setImgAttr = image.setAttribute;
 	var removeImgAttr = image.removeAttribute;
 	var docElem = document.documentElement;
 	var types = {};
 	var cfg = {
-		// выбор ресурса:
-		алгоритм: ""
+		//resource selection:
+		algorithm: ""
 	};
 	var srcAttr = "data-pfsrc";
 	var srcsetAttr = srcAttr + "set";
-	// сниффинг выполняется для незаметных функций загрузки img,
-	// сделать некоторые несущественные перф оптимизации
+	// ua sniffing is done for undetectable img loading features,
+	// to do some non crucial perf optimizations
 	var ua = navigator.userAgent;
-	var supportAbort = (/rident/).test(ua) || ((/ecko/).test(ua) && ua.match (/ rv \: (\ d +) /) && RegExp. $ 1> 35);
+	var supportAbort = (/rident/).test(ua) || ((/ecko/).test(ua) && ua.match(/rv\:(\d+)/) && RegExp.$1 > 35 );
 	var curSrcProp = "currentSrc";
-	var regWDesc = / \ s + \ +? \ d + (e \ d +)? w /;
+	var regWDesc = /\s+\+?\d+(e\d+)?w/;
 	var regSize = /(\([^)]+\))?\s*(.+)/;
 	var setOptions = window.picturefillCFG;
-	/ **
-	 * Свойство ярлыка для https://w3c.github.io/webappsec/specs/mixedcontent/#restricts-mixed-content (для простого переопределения в тестах)
-	 * /
-	// baseStyle также используется getEmValue (то есть: width: 1em важно)
-	var baseStyle = "position: absolute; left: 0; видимость: скрытая; display: block; padding: 0; border: none; размер шрифта: 1em; ширина: 1em; переполнение: скрытое; clip: rect (0px, 0px, 0px, 0px) ";
-	var fsCss = "font-size: 100%! Important;";
+	/**
+	 * Shortcut property for https://w3c.github.io/webappsec/specs/mixedcontent/#restricts-mixed-content ( for easy overriding in tests )
+	 */
+	// baseStyle also used by getEmValue (i.e.: width: 1em is important)
+	var baseStyle = "position:absolute;left:0;visibility:hidden;display:block;padding:0;border:none;font-size:1em;width:1em;overflow:hidden;clip:rect(0px, 0px, 0px, 0px)";
+	var fsCss = "font-size:100%!important;";
 	var isVwDirty = true;
 
 	var cssCache = {};
 	var sizeLengthCache = {};
 	var DPR = window.devicePixelRatio;
-	вар единицы = {
+	var units = {
 		px: 1,
-		"в": 96
+		"in": 96
 	};
-	var anchor = document.createElement ("a");
-	/ **
-	 * флаг yesRun, используемый для setOptions. это правда, setOptions переоценит
+	var anchor = document.createElement( "a" );
+	/**
+	 * alreadyRun flag used for setOptions. is it true setOptions will reevaluate
 	 * @type {boolean}
-	 * /
-	varreadyRun = false;
+	 */
+	var alreadyRun = false;
 
-	// Многоразовые, не "g" регулярные выражения
+	// Reusable, non-"g" Regexes
 
-	// (Не используйте \ s, чтобы избежать совпадения с неразрывным пробелом.)
-	var regexLeadingSpaces = / ^ [\ t \ n \ r \ u000c] + /,
-	    regexLeadingCommasOrSpaces = / ^ [, \ t \ n \ r \ u000c] + /,
-	    regexLeadingNotSpaces = / ^ [^ \ t \ n \ r \ u000c] + /,
-	    regexTrailingCommas = / [,] + $ /,
-	    regexNonNegativeInteger = / ^ \ d + $ /,
+	// (Don't use \s, to avoid matching non-breaking space.)
+	var regexLeadingSpaces = /^[ \t\n\r\u000c]+/,
+	    regexLeadingCommasOrSpaces = /^[, \t\n\r\u000c]+/,
+	    regexLeadingNotSpaces = /^[^ \t\n\r\u000c]+/,
+	    regexTrailingCommas = /[,]+$/,
+	    regexNonNegativeInteger = /^\d+$/,
 
-	    // (положительные или отрицательные или беззнаковые целые или десятичные числа, без или без показателей степени.
-	    // Должен содержать хотя бы одну цифру.
-	    // В соответствии со спецификацией тестов любая десятичная точка должна сопровождаться цифрой.
-	    // Не допускается начальный знак плюс.)
+	    // ( Positive or negative or unsigned integers or decimals, without or without exponents.
+	    // Must include at least one digit.
+	    // According to spec tests any decimal point must be followed by a digit.
+	    // No leading plus sign is allowed.)
 	    // https://html.spec.whatwg.org/multipage/infrastructure.html#valid-floating-point-number
-	    regexFloatingPoint = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)? $ /;
+	    regexFloatingPoint = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/;
 
-	var on = function (obj, evt, fn, capture) {
-		if (obj.addEventListener) {
-			obj.addEventListener (evt, fn, capture || false);
-		} else if (obj.attachEvent) {
-			obj.attachEvent ("on" + evt, fn);
+	var on = function(obj, evt, fn, capture) {
+		if ( obj.addEventListener ) {
+			obj.addEventListener(evt, fn, capture || false);
+		} else if ( obj.attachEvent ) {
+			obj.attachEvent( "on" + evt, fn);
 		}
 	};
 
-	/ **
-	 * простая функция памятки:
-	 * /
+	/**
+	 * simple memoize function:
+	 */
 
-	var memoize = function (fn) {
+	var memoize = function(fn) {
 		var cache = {};
-		функция возврата (вход) {
-			if (! (вход в кеш)) {
-				кеш [вход] = fn (вход);
+		return function(input) {
+			if ( !(input in cache) ) {
+				cache[ input ] = fn(input);
 			}
-			возврат кеша [вход];
+			return cache[ input ];
 		};
 	};
 
-	// ПОЛЕЗНЫЕ ФУНКЦИИ
+	// UTILITY FUNCTIONS
 
-	// Руководство быстрее чем RegEx
+	// Manual is faster than RegEx
 	// http://jsperf.com/whitespace-character/5
-	function isSpace (c) {
-		return (c === "\ u0020" || // пробел
-		        c === "\ u0009" || // горизонтальная вкладка
-		        c === "\ u000A" || // новая линия
-		        c === "\ u000C" || // подача формы
-		        c === "\ u000D"); // возврат каретки
+	function isSpace(c) {
+		return (c === "\u0020" || // space
+		        c === "\u0009" || // horizontal tab
+		        c === "\u000A" || // new line
+		        c === "\u000C" || // form feed
+		        c === "\u000D");  // carriage return
 	}
 
-	/ **
-	 * получает медиазапрос и возвращает логическое значение или получает длину CSS и возвращает число
-	 * @param css mediaqueries или css length
-	 * @returns {логическое | число}
+	/**
+	 * gets a mediaquery and returns a boolean or gets a css length and returns a number
+	 * @param css mediaqueries or css length
+	 * @returns {boolean|number}
 	 *
-	 * на основании: https://gist.github.com/jonathantneal/db4f77009b155f083738
-	 * /
-	var evalCSS = (function () {
+	 * based on: https://gist.github.com/jonathantneal/db4f77009b155f083738
+	 */
+	var evalCSS = (function() {
 
 		var regLength = /^([\d\.]+)(em|vw|px)$/;
-		var replace = function () {
-			var args = arguments, index = 0, string = args [0];
-			while (индекс ++ в аргументах) {
-				string = string.replace (args [index], args [++ index]);
+		var replace = function() {
+			var args = arguments, index = 0, string = args[0];
+			while (++index in args) {
+				string = string.replace(args[index], args[++index]);
 			}
-			возвращаемая строка;
+			return string;
 		};
 
-		var buildStr = memoize (function (css) {
+		var buildStr = memoize(function(css) {
 
-			return "return" + replace ((css || "") .toLowerCase (),
-				// интерпретируем `и`
-				/ \ band \ b / g, "&&",
+			return "return " + replace((css || "").toLowerCase(),
+				// interpret `and`
+				/\band\b/g, "&&",
 
-				// интерпретируем `,`
-				/, / г, "||",
+				// interpret `,`
+				/,/g, "||",
 
-				// интерпретировать `min-` как> =
-				/ min - ([az- \ s] +): / g, "e. $ 1> =",
+				// interpret `min-` as >=
+				/min-([a-z-\s]+):/g, "e.$1>=",
 
-				// интерпретировать `max-` как <=
-				/ max - ([az- \ s] +): / g, "e. $ 1 <=",
+				// interpret `max-` as <=
+				/max-([a-z-\s]+):/g, "e.$1<=",
 
-				// вычисляем значение
-				/ calc ([^)] +) / g, "($ 1)",
+				//calc value
+				/calc([^)]+)/g, "($1)",
 
-				// интерпретировать значения CSS
-				/(\d+[\.]*[\d]*)([az]+)/g, "($ 1 * e. $ 2)",
-				// сделать eval менее злым
-				/^(?!(e.[az]|[0-9\.&=|><\+\-\*\(\)\/])).*/ig, ""
+				// interpret css values
+				/(\d+[\.]*[\d]*)([a-z]+)/g, "($1 * e.$2)",
+				//make eval less evil
+				/^(?!(e.[a-z]|[0-9\.&=|><\+\-\*\(\)\/])).*/ig, ""
 			) + ";";
 		});
 
-		функция возврата (css, length) {
+		return function(css, length) {
 			var parsedLength;
-			if (! (css в cssCache)) {
-				cssCache [css] = false;
-				if (length && (parsedLength = css.match (regLength))) {
-					cssCache [css] = parsedLength [1] * единиц [parsedLength [2]];
-				} еще {
-					/ * jshint зло: правда * /
-					пытаться{
-						cssCache [css] = новая функция («e», buildStr (css)) (единицы измерения);
-					} catch (e) {}
-					/ * jshint зло: ложь * /
+			if (!(css in cssCache)) {
+				cssCache[css] = false;
+				if (length && (parsedLength = css.match( regLength ))) {
+					cssCache[css] = parsedLength[ 1 ] * units[parsedLength[ 2 ]];
+				} else {
+					/*jshint evil:true */
+					try{
+						cssCache[css] = new Function("e", buildStr(css))(units);
+					} catch(e) {}
+					/*jshint evil:false */
 				}
 			}
-			return cssCache [css];
+			return cssCache[css];
 		};
-	}) ();
+	})();
 
-	var setResolution = функция (кандидат, sizeattr) {
-		if (candid.w) {// h = означает высоту: || descriptor.type === 'h' не обрабатывать пока ...
-			кандидат.cWidth = pf.calcListLength (sizesattr || "100vw");
-			Кандидат.рес = Кандидат.w / Кандидат.cWidth;
-		} еще {
-			кандидат.рес = кандидат.д;
+	var setResolution = function( candidate, sizesattr ) {
+		if ( candidate.w ) { // h = means height: || descriptor.type === 'h' do not handle yet...
+			candidate.cWidth = pf.calcListLength( sizesattr || "100vw" );
+			candidate.res = candidate.w / candidate.cWidth ;
+		} else {
+			candidate.res = candidate.d;
 		}
-		вернуть кандидата;
+		return candidate;
 	};
 
-	/ **
+	/**
 	 *
 	 * @param opt
-	 * /
-	var picturefill = function (opt) {
+	 */
+	var picturefill = function( opt ) {
 
-		if (! isSupportTestReady) {return;}
+		if (!isSupportTestReady) {return;}
 
-		элементы var, i, plen;
+		var elements, i, plen;
 
 		var options = opt || {};
 
-		if (options.elements && options.elements.nodeType === 1) {
-			if (options.elements.nodeName.toUpperCase () === "IMG") {
-				options.elements = [options.elements];
-			} еще {
+		if ( options.elements && options.elements.nodeType === 1 ) {
+			if ( options.elements.nodeName.toUpperCase() === "IMG" ) {
+				options.elements =  [ options.elements ];
+			} else {
 				options.context = options.elements;
-				options.elements = null;
+				options.elements =  null;
 			}
 		}
 
-		elements = options.elements || pf.qsa ((options.context || документ), (options.reevaluate || options.reselect)? pf.sel: pf.selShort);
+		elements = options.elements || pf.qsa( (options.context || document), ( options.reevaluate || options.reselect ) ? pf.sel : pf.selShort );
 
-		if ((plen = elements.length)) {
+		if ( (plen = elements.length) ) {
 
-			pf.setupRun (параметры);
-			readyRun = true;
+			pf.setupRun( options );
+			alreadyRun = true;
 
-			// Перебираем все элементы
-			для (i = 0; i <plen; i ++) {
-				pf.fillImg (elements [i], options);
+			// Loop through all elements
+			for ( i = 0; i < plen; i++ ) {
+				pf.fillImg(elements[ i ], options);
 			}
 
-			pf.teardownRun (параметры);
+			pf.teardownRun( options );
 		}
 	};
 
-	/ **
-	 * выводит предупреждение для разработчика
+	/**
+	 * outputs a warning for the developer
 	 * @param {message}
 	 * @type {Function}
-	 * /
-	warn = (window.console && console.warn)?
-		функция (сообщение) {
-			console.warn (сообщение);
-		}:
-		Noop
+	 */
+	warn = ( window.console && console.warn ) ?
+		function( message ) {
+			console.warn( message );
+		} :
+		noop
 	;
 
-	if (! (curSrcProp в изображении)) {
+	if ( !(curSrcProp in image) ) {
 		curSrcProp = "src";
 	}
 
-	// Добавить поддержку стандартных типов пантомимы.
-	types ["image / jpeg"] = true;
-	types ["image / gif"] = true;
-	types ["image / png"] = true;
+	// Add support for standard mime types.
+	types[ "image/jpeg" ] = true;
+	types[ "image/gif" ] = true;
+	types[ "image/png" ] = true;
 
-	function detectTypeSupport (type, typeUri) {
-		// на основе теста img-webp без потерь Modernizr
-		// примечание: асинхронный
-		var image = new window.Image ();
-		image.onerror = function () {
-			типы [тип] = ложь;
-			picturefill ();
+	function detectTypeSupport( type, typeUri ) {
+		// based on Modernizr's lossless img-webp test
+		// note: asynchronous
+		var image = new window.Image();
+		image.onerror = function() {
+			types[ type ] = false;
+			picturefill();
 		};
-		image.onload = function () {
-			types [type] = image.width === 1;
-			picturefill ();
+		image.onload = function() {
+			types[ type ] = image.width === 1;
+			picturefill();
 		};
 		image.src = typeUri;
-		возврат "в ожидании";
+		return "pending";
 	}
 
-	// проверить поддержку SVG
-	types ["image / svg + xml"] = document.implementation.hasFeature ("http://www.w3.org/TR/SVG11/feature#Image", "1.1");
+	// test svg support
+	types[ "image/svg+xml" ] = document.implementation.hasFeature( "http://www.w3.org/TR/SVG11/feature#Image", "1.1" );
 
-	/ **
-	 * обновляет внутреннее свойство vW с текущей шириной области просмотра в пикселях
-	 * /
-	function updateMetrics () {
+	/**
+	 * updates the internal vW property with the current viewport width in px
+	 */
+	function updateMetrics() {
 
 		isVwDirty = false;
 		DPR = window.devicePixelRatio;
@@ -341,473 +341,473 @@
 
 		pf.DPR = DPR || 1;
 
-		units.width = Math.max (window.innerWidth || 0, docElem.clientWidth);
-		units.height = Math.max (window.innerHeight || 0, docElem.clientHeight);
+		units.width = Math.max(window.innerWidth || 0, docElem.clientWidth);
+		units.height = Math.max(window.innerHeight || 0, docElem.clientHeight);
 
-		unit.vw = units.width / 100;
-		unit.vh = unit.height / 100;
+		units.vw = units.width / 100;
+		units.vh = units.height / 100;
 
-		evalId = [unit.height, unit.width, DPR] .join ("-");
+		evalId = [ units.height, units.width, DPR ].join("-");
 
-		unit.em = pf.getEmValue ();
-		unit.rem = units.em;
+		units.em = pf.getEmValue();
+		units.rem = units.em;
 	}
 
-	function chooseLowRes (lowerValue, upperValue, dprValue, isCached) {
+	function chooseLowRes( lowerValue, higherValue, dprValue, isCached ) {
 		var bonusFactor, tooMuch, bonus, meanDensity;
 
-		// экспериментальная
-		if (cfg.algorithm === "saveData") {
-			if (lowerValue> 2.7) {
+		//experimental
+		if (cfg.algorithm === "saveData" ){
+			if ( lowerValue > 2.7 ) {
 				meanDensity = dprValue + 1;
-			} еще {
-				tooMuch = upperValue - dprValue;
-				bonusFactor = Math.pow (lowerValue - 0,6, 1,5);
+			} else {
+				tooMuch = higherValue - dprValue;
+				bonusFactor = Math.pow(lowerValue - 0.6, 1.5);
 
 				bonus = tooMuch * bonusFactor;
 
 				if (isCached) {
-					бонус + = 0,1 * bonusFactor;
+					bonus += 0.1 * bonusFactor;
 				}
 
-				meanDensity = lowerValue + бонус;
+				meanDensity = lowerValue + bonus;
 			}
-		} еще {
-			meanDensity = (dprValue> 1)?
-				Math.sqrt (lowerValue * upperValue):
+		} else {
+			meanDensity = (dprValue > 1) ?
+				Math.sqrt(lowerValue * higherValue) :
 				lowerValue;
 		}
 
-		return meanDensity> dprValue;
+		return meanDensity > dprValue;
 	}
 
-	function applyBestCandidate (img) {
+	function applyBestCandidate( img ) {
 		var srcSetCandidates;
-		var MatchSet = pf.getSet (img);
-		переменная оценена = ложь;
-		if (matchSet! == "pending") {
-			оцененный = evalId;
-			if (MatchSet) {
-				srcSetCandidates = pf.setRes (MatchSet);
-				pf.applySetCandidate (srcSetCandidates, img);
+		var matchingSet = pf.getSet( img );
+		var evaluated = false;
+		if ( matchingSet !== "pending" ) {
+			evaluated = evalId;
+			if ( matchingSet ) {
+				srcSetCandidates = pf.setRes( matchingSet );
+				pf.applySetCandidate( srcSetCandidates, img );
 			}
 		}
-		img [pf.ns] .evaled = оцененный;
+		img[ pf.ns ].evaled = evaluated;
 	}
 
-	function ascendingSort (a, b) {
-		вернуть a.res - b.res;
+	function ascendingSort( a, b ) {
+		return a.res - b.res;
 	}
 
-	функция setSrcToCur (img, src, set) {
-		Вар кандидат;
-		if (! set && src) {
-			set = img [pf.ns] .sets;
-			set = set && set [set.length - 1];
+	function setSrcToCur( img, src, set ) {
+		var candidate;
+		if ( !set && src ) {
+			set = img[ pf.ns ].sets;
+			set = set && set[set.length - 1];
 		}
 
-		кандидат = getCandidateForSrc (src, set);
+		candidate = getCandidateForSrc(src, set);
 
-		если (кандидат) {
-			src = pf.makeUrl (src);
-			img [pf.ns] .curSrc = src;
-			img [pf.ns] .curCan = кандидат;
+		if ( candidate ) {
+			src = pf.makeUrl(src);
+			img[ pf.ns ].curSrc = src;
+			img[ pf.ns ].curCan = candidate;
 
-			if (! candid.res) {
-				setResolution (кандидат, кандидат.set.sizes);
+			if ( !candidate.res ) {
+				setResolution( candidate, candidate.set.sizes );
 			}
 		}
-		вернуть кандидата;
+		return candidate;
 	}
 
-	function getCandidateForSrc (src, set) {
-		я, кандидат, кандидаты;
-		if (src && set) {
-			андидаты = pf.parseSet (set);
-			src = pf.makeUrl (src);
-			для (я = 0; я <кандидатов. длина; я ++) {
-				if (src === pf.makeUrl (андидаты [i] .url)) {
-					кандидат = кандидаты [я];
-					перерыв;
+	function getCandidateForSrc( src, set ) {
+		var i, candidate, candidates;
+		if ( src && set ) {
+			candidates = pf.parseSet( set );
+			src = pf.makeUrl(src);
+			for ( i = 0; i < candidates.length; i++ ) {
+				if ( src === pf.makeUrl(candidates[ i ].url) ) {
+					candidate = candidates[ i ];
+					break;
 				}
 			}
 		}
-		вернуть кандидата;
+		return candidate;
 	}
 
-	function getAllSourceElements (изображение, кандидаты) {
+	function getAllSourceElements( picture, candidates ) {
 		var i, len, source, srcset;
 
-		// Несоответствие SPEC, предназначенное для размера и производительности:
-		// фактически должны использоваться только исходные элементы, предшествующие img
-		// также обратите внимание: не используйте qsa здесь, потому что IE8 иногда не любит source как ключевую часть в селекторе
-		var sources = picture.getElementsByTagName ("source");
+		// SPEC mismatch intended for size and perf:
+		// actually only source elements preceding the img should be used
+		// also note: don't use qsa here, because IE8 sometimes doesn't like source as the key part in a selector
+		var sources = picture.getElementsByTagName( "source" );
 
-		для (i = 0, len = sources.length; i <len; i ++) {
-			источник = источники [я];
-			source [pf.ns] = true;
-			srcset = source.getAttribute ("srcset");
+		for ( i = 0, len = sources.length; i < len; i++ ) {
+			source = sources[ i ];
+			source[ pf.ns ] = true;
+			srcset = source.getAttribute( "srcset" );
 
-			// если у источника нет атрибута srcset, пропустить
-			if (srcset) {
-				кандидатов.пуш ({
+			// if source does not have a srcset attribute, skip
+			if ( srcset ) {
+				candidates.push( {
 					srcset: srcset,
-					media: source.getAttribute ("media"),
-					type: source.getAttribute ("type"),
-					размеры: source.getAttribute ("размеры")
-				});
+					media: source.getAttribute( "media" ),
+					type: source.getAttribute( "type" ),
+					sizes: source.getAttribute( "sizes" )
+				} );
 			}
 		}
 	}
 
-	/ **
+	/**
 	 * Srcset Parser
-	 * Алекс Белл | Лицензия MIT
+	 * By Alex Bell |  MIT License
 	 *
-	 * @returns Array [{url: _, d: _, w: _, h: _, набор: _ (????)}, ...]
+	 * @returns Array [{url: _, d: _, w: _, h:_, set:_(????)}, ...]
 	 *
-	 * На основе Super Duper тесно на эталонный алгоритм в:
+	 * Based super duper closely on the reference algorithm at:
 	 * https://html.spec.whatwg.org/multipage/embedded-content.html#parse-a-srcset-attribute
-	 * /
+	 */
 
-	// 1. Пусть input будет значением, переданным этому алгоритму.
-	// (TO-DO: Объясните, что такое аргумент «set». Возможно, выберите более
-	// описательное и более доступное для поиска имя. Так как прохождение "набора" в самом деле
-	// ничего общего с синтаксическим анализом, я бы предпочел это назначение в конце концов
-	// перейти во внешний фн.)
-	function parseSrcset (input, set) {
+	// 1. Let input be the value passed to this algorithm.
+	// (TO-DO : Explain what "set" argument is here. Maybe choose a more
+	// descriptive & more searchable name.  Since passing the "set" in really has
+	// nothing to do with parsing proper, I would prefer this assignment eventually
+	// go in an external fn.)
+	function parseSrcset(input, set) {
 
-		function collectCharacters (regEx) {
-			вар чарс,
-			    match = regEx.exec (input.substring (pos));
+		function collectCharacters(regEx) {
+			var chars,
+			    match = regEx.exec(input.substring(pos));
 			if (match) {
-				chars = match [0];
-				pos + = chars.length;
-				возвратные символы;
+				chars = match[ 0 ];
+				pos += chars.length;
+				return chars;
 			}
 		}
 
 		var inputLength = input.length,
-		    URL,
-		    дескрипторы,
+		    url,
+		    descriptors,
 		    currentDescriptor,
-		    государство,
-		    с,
+		    state,
+		    c,
 
-		    // 2. Пусть position будет указателем на вход, изначально указывающий на начало
-		    // строки.
+		    // 2. Let position be a pointer into input, initially pointing at the start
+		    //    of the string.
 		    pos = 0,
 
-		    // 3. Пусть кандидаты будут изначально пустым исходным набором.
-		    кандидаты = [];
+		    // 3. Let candidates be an initially empty source set.
+		    candidates = [];
 
-		/ **
-		* Добавляет свойства дескриптора к кандидату, толкает в массив кандидатов
-		* возврат не определен
-		* /
-		// (Объявлен вне цикла while, так что он создается только один раз.
-		// (Этот fn определен перед использованием, чтобы передать JSHINT.
-		// К сожалению, это нарушает последовательность комментариев спецификации. : /)
-		function parseDescriptors () {
+		/**
+		* Adds descriptor properties to a candidate, pushes to the candidates array
+		* @return undefined
+		*/
+		// (Declared outside of the while loop so that it's only created once.
+		// (This fn is defined before it is used, in order to pass JSHINT.
+		// Unfortunately this breaks the sequencing of the spec comments. :/ )
+		function parseDescriptors() {
 
-			// 9. Парсер дескриптора: Пусть error будет no.
+			// 9. Descriptor parser: Let error be no.
 			var pError = false,
 
-			// 10. Пусть ширина отсутствует.
-			// 11. Пусть плотность отсутствует.
-			// 12. Пусть future-compat-h отсутствует. (Мы реализуем это сейчас как ч)
-			    ш, д, ч, я,
-			    кандидат = {},
+			// 10. Let width be absent.
+			// 11. Let density be absent.
+			// 12. Let future-compat-h be absent. (We're implementing it now as h)
+			    w, d, h, i,
+			    candidate = {},
 			    desc, lastChar, value, intVal, floatVal;
 
-			// 13. Для каждого дескриптора в дескрипторах запускаем соответствующий набор шагов
-			// из следующего списка:
-			для (i = 0; i <descriptors.length; i ++) {
-				desc = descriptors [i];
+			// 13. For each descriptor in descriptors, run the appropriate set of steps
+			// from the following list:
+			for (i = 0 ; i < descriptors.length; i++) {
+				desc = descriptors[ i ];
 
-				lastChar = desc [desc.length - 1];
-				значение = desc.substring (0, desc.length - 1);
-				intVal = parseInt (значение, 10);
-				floatVal = parseFloat (значение);
+				lastChar = desc[ desc.length - 1 ];
+				value = desc.substring(0, desc.length - 1);
+				intVal = parseInt(value, 10);
+				floatVal = parseFloat(value);
 
-				// Если дескриптор состоит из действительного неотрицательного целого числа, за которым следует
-				// символ U + 0077 LATIN SMALL LETTER W
-				if (regexNonNegativeInteger.test (value) && (lastChar === "w")) {
+				// If the descriptor consists of a valid non-negative integer followed by
+				// a U+0077 LATIN SMALL LETTER W character
+				if (regexNonNegativeInteger.test(value) && (lastChar === "w")) {
 
-					// Если ширина и плотность не отсутствуют, то пусть error будет yes.
+					// If width and density are not both absent, then let error be yes.
 					if (w || d) {pError = true;}
 
-					// Применяем правила разбора неотрицательных целых чисел к дескриптору.
-					// Если результат равен нулю, пусть error будет yes.
-					// Иначе, пусть ширина будет результатом.
+					// Apply the rules for parsing non-negative integers to the descriptor.
+					// If the result is zero, let error be yes.
+					// Otherwise, let width be the result.
 					if (intVal === 0) {pError = true;} else {w = intVal;}
 
-				// Если дескриптор состоит из действительного числа с плавающей запятой, за которым следует
-				// символ U + 0078 LATIN SMALL LETTER X
-				} else if (regexFloatingPoint.test (value) && (lastChar === "x")) {
+				// If the descriptor consists of a valid floating-point number followed by
+				// a U+0078 LATIN SMALL LETTER X character
+				} else if (regexFloatingPoint.test(value) && (lastChar === "x")) {
 
-					// Если ширина, плотность и future-compat-h отсутствуют, тогда допустим ошибку
-					// быть да.
+					// If width, density and future-compat-h are not all absent, then let error
+					// be yes.
 					if (w || d || h) {pError = true;}
 
-					// Применяем правила разбора значений чисел с плавающей запятой к дескриптору.
-					// Если результат меньше нуля, пусть error будет yes. В противном случае, пусть плотность
-					// быть результатом.
-					if (floatVal <0) {pError = true;} else {d = floatVal;}
+					// Apply the rules for parsing floating-point number values to the descriptor.
+					// If the result is less than zero, let error be yes. Otherwise, let density
+					// be the result.
+					if (floatVal < 0) {pError = true;} else {d = floatVal;}
 
-				// Если дескриптор состоит из действительного неотрицательного целого числа, за которым следует
-				// символ U + 0068 LATIN SMALL LETTER H
-				} else if (regexNonNegativeInteger.test (value) && (lastChar === "h")) {
+				// If the descriptor consists of a valid non-negative integer followed by
+				// a U+0068 LATIN SMALL LETTER H character
+				} else if (regexNonNegativeInteger.test(value) && (lastChar === "h")) {
 
-					// Если высота и плотность не оба отсутствуют, тогда пусть error будет yes.
+					// If height and density are not both absent, then let error be yes.
 					if (h || d) {pError = true;}
 
-					// Применяем правила разбора неотрицательных целых чисел к дескриптору.
-					// Если результат равен нулю, пусть error будет yes. В противном случае, пусть в будущем compat-h
-					// быть результатом.
+					// Apply the rules for parsing non-negative integers to the descriptor.
+					// If the result is zero, let error be yes. Otherwise, let future-compat-h
+					// be the result.
 					if (intVal === 0) {pError = true;} else {h = intVal;}
 
-				// Все остальное, пусть ошибка будет да.
+				// Anything else, Let error be yes.
 				} else {pError = true;}
-			} // (закрыть шаг 13 для цикла)
+			} // (close step 13 for loop)
 
-			// 15. Если ошибки все еще нет, то добавляем новый источник изображения к кандидатам, чьи
-			// URL - это URL, связанный с шириной ширины, если не отсутствует, и пикселем
-			// плотность плотности, если не отсутствует. В противном случае возникает ошибка разбора.
-			if (! pError) {
-				кандидат.url = URL;
+			// 15. If error is still no, then append a new image source to candidates whose
+			// URL is url, associated with a width width if not absent and a pixel
+			// density density if not absent. Otherwise, there is a parse error.
+			if (!pError) {
+				candidate.url = url;
 
-				if (w) {кандидат.w = w;}
-				if (d) {кандидат.d = d;}
-				if (h) {кандидат.h = h;}
-				if (! h &&! d &&! w) {кандидат.d = 1;}
-				if (андидат.d === 1) {set.has1x = true;}
-				кандидат.сеть = набор;
+				if (w) { candidate.w = w;}
+				if (d) { candidate.d = d;}
+				if (h) { candidate.h = h;}
+				if (!h && !d && !w) {candidate.d = 1;}
+				if (candidate.d === 1) {set.has1x = true;}
+				candidate.set = set;
 
-				candidates.push (кандидат);
+				candidates.push(candidate);
 			}
-		} // (закрыть parseDescriptors fn)
+		} // (close parseDescriptors fn)
 
-		/ **
-		* Токенизирует свойства дескриптора до разбора
-		* Возвращает неопределенное.
-		* (Опять же, этот fn определен перед использованием, чтобы передать JSHINT.
-		* К сожалению, это нарушает логическую последовательность комментариев к спецификации. : /)
-		* /
-		function tokenize () {
+		/**
+		* Tokenizes descriptor properties prior to parsing
+		* Returns undefined.
+		* (Again, this fn is defined before it is used, in order to pass JSHINT.
+		* Unfortunately this breaks the logical sequencing of the spec comments. :/ )
+		*/
+		function tokenize() {
 
-			// 8.1. Токенайзер дескриптора: пропустить пробел
-			collectCharacters (regexLeadingSpaces);
+			// 8.1. Descriptor tokeniser: Skip whitespace
+			collectCharacters(regexLeadingSpaces);
 
-			// 8.2. Пусть текущий дескриптор будет пустой строкой.
+			// 8.2. Let current descriptor be the empty string.
 			currentDescriptor = "";
 
-			// 8.3. Пусть состояние будет в дескрипторе.
-			состояние = "в дескрипторе";
+			// 8.3. Let state be in descriptor.
+			state = "in descriptor";
 
 			while (true) {
 
-				// 8.4. Пусть с будет символ в позиции.
-				c = input.charAt (pos);
+				// 8.4. Let c be the character at position.
+				c = input.charAt(pos);
 
-				// Выполните следующие действия в зависимости от значения состояния.
-				// Для этого шага EOF - это специальный символ, представляющий
-				// эта позиция после конца ввода.
+				//  Do the following depending on the value of state.
+				//  For the purpose of this step, "EOF" is a special character representing
+				//  that position is past the end of input.
 
-				// в дескрипторе
+				// In descriptor
 				if (state === "in descriptor") {
-					// Делаем следующее в зависимости от значения c:
+					// Do the following, depending on the value of c:
 
-				  // Пробел
-				  // Если текущий дескриптор не пустой, добавляем текущий дескриптор к
-				  // дескрипторы и пусть текущий дескриптор будет пустой строкой.
-				  // Установить состояние после дескриптора.
-					if (isSpace (c)) {
+				  // Space character
+				  // If current descriptor is not empty, append current descriptor to
+				  // descriptors and let current descriptor be the empty string.
+				  // Set state to after descriptor.
+					if (isSpace(c)) {
 						if (currentDescriptor) {
-							descriptors.push (currentDescriptor);
+							descriptors.push(currentDescriptor);
 							currentDescriptor = "";
-							состояние = "после дескриптора";
+							state = "after descriptor";
 						}
 
-					// U + 002C COMMA (,)
-					// Переход на следующую позицию ввода. Если текущий дескриптор
-					// не пусто, добавить текущий дескриптор к дескрипторам. Прыгать на ступеньку
-					// помеченный дескриптор парсера.
+					// U+002C COMMA (,)
+					// Advance position to the next character in input. If current descriptor
+					// is not empty, append current descriptor to descriptors. Jump to the step
+					// labeled descriptor parser.
 					} else if (c === ",") {
-						pos + = 1;
+						pos += 1;
 						if (currentDescriptor) {
-							descriptors.push (currentDescriptor);
+							descriptors.push(currentDescriptor);
 						}
-						parseDescriptors ();
-						вернуть;
+						parseDescriptors();
+						return;
 
-					// U + 0028 ЛЕВОЙ РОДИТЕЛЬ (()
-					// Добавить c к текущему дескриптору. Установите состояние в паранах.
-					} else if (c === "\ u0028") {
+					// U+0028 LEFT PARENTHESIS (()
+					// Append c to current descriptor. Set state to in parens.
+					} else if (c === "\u0028") {
 						currentDescriptor = currentDescriptor + c;
-						состояние = "в паранах";
+						state = "in parens";
 
 					// EOF
-					// Если текущий дескриптор не пустой, добавляем текущий дескриптор к
-					// дескрипторы. Перейти к шагу, помеченному дескриптором парсера.
+					// If current descriptor is not empty, append current descriptor to
+					// descriptors. Jump to the step labeled descriptor parser.
 					} else if (c === "") {
 						if (currentDescriptor) {
-							descriptors.push (currentDescriptor);
+							descriptors.push(currentDescriptor);
 						}
-						parseDescriptors ();
-						вернуть;
+						parseDescriptors();
+						return;
 
-					// Что-нибудь еще
-					// Добавить c к текущему дескриптору.
-					} еще {
+					// Anything else
+					// Append c to current descriptor.
+					} else {
 						currentDescriptor = currentDescriptor + c;
 					}
-				// (конец "в дескрипторе"
+				// (end "in descriptor"
 
-				// в паренсе
+				// In parens
 				} else if (state === "in parens") {
 
-					// U + 0029 ПРАВЫЙ РОДИТЕЛЬ ())
-					// Добавить c к текущему дескриптору. Установить состояние в дескрипторе.
+					// U+0029 RIGHT PARENTHESIS ())
+					// Append c to current descriptor. Set state to in descriptor.
 					if (c === ")") {
 						currentDescriptor = currentDescriptor + c;
-						состояние = "в дескрипторе";
+						state = "in descriptor";
 
 					// EOF
-					// Добавляем текущий дескриптор к дескрипторам. Перейти к шагу с надписью
-					// парсер дескриптора.
+					// Append current descriptor to descriptors. Jump to the step labeled
+					// descriptor parser.
 					} else if (c === "") {
-						descriptors.push (currentDescriptor);
-						parseDescriptors ();
-						вернуть;
+						descriptors.push(currentDescriptor);
+						parseDescriptors();
+						return;
 
-					// Что-нибудь еще
-					// Добавить c к текущему дескриптору.
-					} еще {
+					// Anything else
+					// Append c to current descriptor.
+					} else {
 						currentDescriptor = currentDescriptor + c;
 					}
 
-				// после дескриптора
-				} else if (state === "после дескриптора") {
+				// After descriptor
+				} else if (state === "after descriptor") {
 
-					// Делаем следующее в зависимости от значения c:
-					// Пробел: оставайтесь в этом состоянии.
-					if (isSpace (c)) {
+					// Do the following, depending on the value of c:
+					// Space character: Stay in this state.
+					if (isSpace(c)) {
 
-					// EOF: Перейти к шагу, помеченному синтаксическим анализатором дескриптора.
+					// EOF: Jump to the step labeled descriptor parser.
 					} else if (c === "") {
-						parseDescriptors ();
-						вернуть;
+						parseDescriptors();
+						return;
 
-					// Что-нибудь еще
-					// Установить состояние в дескриптор. Установить позицию для предыдущего символа при вводе.
-					} еще {
-						состояние = "в дескрипторе";
-						pos - = 1;
+					// Anything else
+					// Set state to in descriptor. Set position to the previous character in input.
+					} else {
+						state = "in descriptor";
+						pos -= 1;
 
 					}
 				}
 
-				// Переход на следующую позицию ввода.
-				pos + = 1;
+				// Advance position to the next character in input.
+				pos += 1;
 
-			// Повторить этот шаг.
-			} // (закрываем пока истинный цикл)
+			// Repeat this step.
+			} // (close while true loop)
 		}
 
-		// 4. Цикл разделения: Собираем последовательность символов, которые являются пробелами
-		// символы или символы U + 002C COMMA. Если какие-либо символы U + 002C COMMA
-		// были собраны, то есть ошибка разбора.
+		// 4. Splitting loop: Collect a sequence of characters that are space
+		//    characters or U+002C COMMA characters. If any U+002C COMMA characters
+		//    were collected, that is a parse error.
 		while (true) {
-			collectCharacters (regexLeadingCommasOrSpaces);
+			collectCharacters(regexLeadingCommasOrSpaces);
 
-			// 5. Если позиция находится за концом ввода, вернуть кандидатов и отменить эти шаги.
-			if (pos> = inputLength) {
-				вернуть кандидатов; // (мы закончили, это единственный путь возврата)
+			// 5. If position is past the end of input, return candidates and abort these steps.
+			if (pos >= inputLength) {
+				return candidates; // (we're done, this is the sole return path)
 			}
 
-			// 6. Собрать последовательность символов, которые не являются пробелами,
-			// и пусть это будет URL.
-			url = collectCharacters (regexLeadingNotSpaces);
+			// 6. Collect a sequence of characters that are not space characters,
+			//    and let that be url.
+			url = collectCharacters(regexLeadingNotSpaces);
 
-			// 7. Пусть дескрипторы будут новым пустым списком.
-			дескрипторы = [];
+			// 7. Let descriptors be a new empty list.
+			descriptors = [];
 
-			// 8. Если URL заканчивается символом COMMA U + 002C (,), выполните следующие подэтапы:
-			// (1). Удалите все завершающие символы U + 002C COMMA из URL. Если это удалено
-			// более одного символа, это ошибка разбора.
-			if (url.slice (-1) === ",") {
-				url = url.replace (regexTrailingCommas, "");
-				// (Перейти к шагу 9, чтобы пропустить токенизацию и просто выдвинуть кандидата).
-				parseDescriptors ();
+			// 8. If url ends with a U+002C COMMA character (,), follow these substeps:
+			//		(1). Remove all trailing U+002C COMMA characters from url. If this removed
+			//         more than one character, that is a parse error.
+			if (url.slice(-1) === ",") {
+				url = url.replace(regexTrailingCommas, "");
+				// (Jump ahead to step 9 to skip tokenization and just push the candidate).
+				parseDescriptors();
 
-			// В противном случае выполните следующие подэтапы:
-			} еще {
-				токенизировать ();
-			} // (закрыть остальное из шага 8)
+			//	Otherwise, follow these substeps:
+			} else {
+				tokenize();
+			} // (close else of step 8)
 
-		// 16. Возвращаемся к шагу с меткой цикла разбиения.
-		} // (Закрытие большого цикла while.)
+		// 16. Return to the step labeled splitting loop.
+		} // (Close of big while loop.)
 	}
 
-	/ *
-	 * Размер парсера
+	/*
+	 * Sizes Parser
 	 *
-	 * Алекс Белл | Лицензия MIT
+	 * By Alex Bell |  MIT License
 	 *
-	 * Не строгий, но точный и легкий JS Parser для строкового значения <img sizes = "here">
+	 * Non-strict but accurate and lightweight JS Parser for the string value <img sizes="here">
 	 *
-	 * Справочный алгоритм по адресу:
+	 * Reference algorithm at:
 	 * https://html.spec.whatwg.org/multipage/embedded-content.html#parse-a-sizes-attribute
 	 *
-	 * Большинство комментариев копируются прямо из спецификации
-	 * (кроме комментариев в скобках).
+	 * Most comments are copied in directly from the spec
+	 * (except for comments in parens).
 	 *
-	 * Грамматика это:
-	 * <source-size-list> = <source-size> # [, <source-size-value>]? | <Источник-размер-значение>
+	 * Grammar is:
+	 * <source-size-list> = <source-size># [ , <source-size-value> ]? | <source-size-value>
 	 * <source-size> = <media-condition> <source-size-value>
-	 * <source-size-value> = <длина>
+	 * <source-size-value> = <length>
 	 * http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#attr-img-sizes
 	 *
-	 * Например, "(максимальная ширина: 30em) 100vw, (максимальная ширина: 50em) 70vw, 100vw"
-	 * или "(min-width: 30em), calc (30vw - 15px)" или просто "30vw"
+	 * E.g. "(max-width: 30em) 100vw, (max-width: 50em) 70vw, 100vw"
+	 * or "(min-width: 30em), calc(30vw - 15px)" or just "30vw"
 	 *
-	 * Возвращает первый допустимый <css-length> с условием носителя, которое оценивается как true,
-	 * или "100vw", если все действительные условия носителей оцениваются как ложные.
+	 * Returns the first valid <css-length> with a media condition that evaluates to true,
+	 * or "100vw" if all valid media conditions evaluate to false.
 	 *
-	 * /
+	 */
 
-	function parseSizes (strValue) {
+	function parseSizes(strValue) {
 
-		// (Процент длины CSS не допускается в этом случае, чтобы избежать путаницы:
+		// (Percentage CSS lengths are not allowed in this case, to avoid confusion:
 		// https://html.spec.whatwg.org/multipage/embedded-content.html#valid-source-size-list
-		// CSS допускает один необязательный знак плюс или минус:
+		// CSS allows a single optional plus or minus sign:
 		// http://www.w3.org/TR/CSS2/syndata.html#numbers
-		// CSS не зависит от регистра ASCII:
-		// http://www.w3.org/TR/CSS2/syndata.html#characters)
-		// Spec допускает экспоненциальную запись типа <number>:
+		// CSS is ASCII case-insensitive:
+		// http://www.w3.org/TR/CSS2/syndata.html#characters )
+		// Spec allows exponential notation for <number> type:
 		// http://dev.w3.org/csswg/css-values/#numbers
-		var regexCssLengthWithUnits = /^(?:[+-]?[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9 ] +) (?: ч | см | эм | ех | в | мм | шт | пт | ПВ | бэр | В.Х. | Vmin | Vmax | оч.сл.) $ / я;
+		var regexCssLengthWithUnits = /^(?:[+-]?[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?:ch|cm|em|ex|in|mm|pc|pt|px|rem|vh|vmin|vmax|vw)$/i;
 
-		// (Это быстрый и мягкий тест. Из-за необязательного внутреннего
-		// группирование паренов и строгих правил пробелов, это может быть очень сложно.)
-		var regexCssCalc = / ^ calc \ ((?: [0-9a-z \. \ + \ - \ * \ / \ (\)] +) \) $ / i;
+		// (This is a quick and lenient test. Because of optional unlimited-depth internal
+		// grouping parens and strict spacing rules, this could get very complicated.)
+		var regexCssCalc = /^calc\((?:[0-9a-z \.\+\-\*\/\(\)]+)\)$/i;
 
-		вар я;
+		var i;
 		var unparsedSizesList;
 		var unparsedSizesListLength;
 		var unparsedSize;
 		var lastComponentValue;
-		размер вар;
+		var size;
 
-		// ПОЛЕЗНЫЕ ФУНКЦИИ
+		// UTILITY FUNCTIONS
 
-		// (Игрушечный парсер CSS. Цели здесь:
-		// 1) расширенный охват тестов без веса полного синтаксического анализатора CSS.
-		// 2) Избегать регулярных выражений везде, где это удобно.
-		// Быстрые тесты: http://jsfiddle.net/gtntL4gr/3/
-		// Возвращает массив массивов.)
-		function parseComponentValues ​​(str) {
+		//  (Toy CSS parser. The goals here are:
+		//  1) expansive test coverage without the weight of a full CSS parser.
+		//  2) Avoiding regex wherever convenient.
+		//  Quick tests: http://jsfiddle.net/gtntL4gr/3/
+		//  Returns an array of arrays.)
+		function parseComponentValues(str) {
 			var chrctr;
 			var component = "";
 			var componentArray = [];
@@ -816,581 +816,581 @@
 			var pos = 0;
 			var inComment = false;
 
-			function pushComponent () {
+			function pushComponent() {
 				if (component) {
-					componentArray.push (компонент);
-					компонент = "";
+					componentArray.push(component);
+					component = "";
 				}
 			}
 
-			function pushComponentArray () {
-				if (componentArray [0]) {
-					listArray.push (componentArray);
+			function pushComponentArray() {
+				if (componentArray[0]) {
+					listArray.push(componentArray);
 					componentArray = [];
 				}
 			}
 
-			// (цикл вперед от начала строки.)
+			// (Loop forwards from the beginning of the string.)
 			while (true) {
-				chrctr = str.charAt (pos);
+				chrctr = str.charAt(pos);
 
-				if (chrctr === "") {// (Конец строки достигнут.)
-					pushComponent ();
-					pushComponentArray ();
-					вернуть listArray;
+				if (chrctr === "") { // ( End of string reached.)
+					pushComponent();
+					pushComponentArray();
+					return listArray;
 				} else if (inComment) {
-					if ((chrctr === "*") && (str [pos + 1] === "/")) {// (в конце комментария.)
+					if ((chrctr === "*") && (str[pos + 1] === "/")) { // (At end of a comment.)
 						inComment = false;
-						pos + = 2;
-						pushComponent ();
-						Продолжить;
-					} еще {
-						pos + = 1; // (Пропустить все символы внутри комментариев.)
-						Продолжить;
+						pos += 2;
+						pushComponent();
+						continue;
+					} else {
+						pos += 1; // (Skip all characters inside comments.)
+						continue;
 					}
-				} else if (isSpace (chrctr)) {
-					// (Если предыдущий символ в цикле тоже был пробел, или если
-					// в начале строки не добавлять пробел в
-					// составная часть.)
-					if ((str.charAt (pos-1) && isSpace (str.charAt (pos-1))) ||! component) {
-						pos + = 1;
-						Продолжить;
+				} else if (isSpace(chrctr)) {
+					// (If previous character in loop was also a space, or if
+					// at the beginning of the string, do not add space char to
+					// component.)
+					if ( (str.charAt(pos - 1) && isSpace( str.charAt(pos - 1) ) ) || !component ) {
+						pos += 1;
+						continue;
 					} else if (parenDepth === 0) {
-						pushComponent ();
-						pos + = 1;
-						Продолжить;
-					} еще {
-						// (Заменить любой пробел на простой для разборчивости.)
-						chrctr = "";
+						pushComponent();
+						pos +=1;
+						continue;
+					} else {
+						// (Replace any space character with a plain space for legibility.)
+						chrctr = " ";
 					}
 				} else if (chrctr === "(") {
-					parenDepth + = 1;
+					parenDepth += 1;
 				} else if (chrctr === ")") {
-					parenDepth - = 1;
+					parenDepth -= 1;
 				} else if (chrctr === ",") {
-					pushComponent ();
-					pushComponentArray ();
-					pos + = 1;
-					Продолжить;
-				} else if ((chrctr === "/") && (str.charAt (pos + 1) === "*")) {
+					pushComponent();
+					pushComponentArray();
+					pos += 1;
+					continue;
+				} else if ( (chrctr === "/") && (str.charAt(pos + 1) === "*") ) {
 					inComment = true;
-					pos + = 2;
-					Продолжить;
+					pos += 2;
+					continue;
 				}
 
-				компонент = компонент + chrctr;
-				pos + = 1;
+				component = component + chrctr;
+				pos += 1;
 			}
 		}
 
-		function isValidNonNegativeSourceSizeValue (s) {
-			if (regexCssLengthWithUnits.test (s) && (parseFloat (s)> = 0)) {return true;}
-			if (regexCssCalc.test (s)) {return true;}
-			// (http://www.w3.org/TR/CSS2/syndata.html#numbers говорит:
-			// "-0 эквивалентно 0 и не является отрицательным числом." Который означает, что
-			// нулевой единичный и отрицательный нулевой без единицы должны приниматься как особые случаи.)
+		function isValidNonNegativeSourceSizeValue(s) {
+			if (regexCssLengthWithUnits.test(s) && (parseFloat(s) >= 0)) {return true;}
+			if (regexCssCalc.test(s)) {return true;}
+			// ( http://www.w3.org/TR/CSS2/syndata.html#numbers says:
+			// "-0 is equivalent to 0 and is not a negative number." which means that
+			// unitless zero and unitless negative zero must be accepted as special cases.)
 			if ((s === "0") || (s === "-0") || (s === "+0")) {return true;}
-			вернуть ложь;
+			return false;
 		}
 
-		// Когда вас попросят проанализировать атрибут размеров у элемента,
-		// разделенный запятыми список значений компонента из значения элемента
-		// атрибуты размеров (или пустая строка, если атрибут отсутствует), и пусть
-		// список неразобранных размеров будет результатом.
+		// When asked to parse a sizes attribute from an element, parse a
+		// comma-separated list of component values from the value of the element's
+		// sizes attribute (or the empty string, if the attribute is absent), and let
+		// unparsed sizes list be the result.
 		// http://dev.w3.org/csswg/css-syntax/#parse-comma-separated-list-of-component-values
 
-		unparsedSizesList = parseComponentValues ​​(strValue);
+		unparsedSizesList = parseComponentValues(strValue);
 		unparsedSizesListLength = unparsedSizesList.length;
 
-		// Для каждого необработанного размера в списке неразобранных размеров:
-		for (i = 0; i <unparsedSizesListLength; i ++) {
-			unparsedSize = unparsedSizesList [i];
+		// For each unparsed size in unparsed sizes list:
+		for (i = 0; i < unparsedSizesListLength; i++) {
+			unparsedSize = unparsedSizesList[i];
 
-			// 1. Удаляем все последовательные <whitespace-token> с конца неразобранного размера.
-			// (parseComponentValues ​​() уже пропускает пробелы вне паренов.)
+			// 1. Remove all consecutive <whitespace-token>s from the end of unparsed size.
+			// ( parseComponentValues() already omits spaces outside of parens. )
 
-			// Если размер без разбора теперь пуст, это ошибка разбора; перейти к следующему
-			// итерация этого алгоритма.
-			// (parseComponentValues ​​() не будет выдвигать пустой массив.)
+			// If unparsed size is now empty, that is a parse error; continue to the next
+			// iteration of this algorithm.
+			// ( parseComponentValues() won't push an empty array. )
 
-			// 2. Если последнее значение компонента в неразобранном размере является действительным неотрицательным
-			// <source-size-value>, пусть size будет его значением и удалит значение компонента
-			// из непарсированного размера. Любая функция CSS, кроме функции calc ()
-			// недействительным. В противном случае возникает ошибка разбора; перейти к следующей итерации
-			// этого алгоритма.
+			// 2. If the last component value in unparsed size is a valid non-negative
+			// <source-size-value>, let size be its value and remove the component value
+			// from unparsed size. Any CSS function other than the calc() function is
+			// invalid. Otherwise, there is a parse error; continue to the next iteration
+			// of this algorithm.
 			// http://dev.w3.org/csswg/css-syntax/#parse-component-value
-			lastComponentValue = unparsedSize [unparsedSize.length - 1];
+			lastComponentValue = unparsedSize[unparsedSize.length - 1];
 
-			if (isValidNonNegativeSourceSizeValue (lastComponentValue)) {
+			if (isValidNonNegativeSourceSizeValue(lastComponentValue)) {
 				size = lastComponentValue;
-				unparsedSize.pop ();
-			} еще {
-				Продолжить;
+				unparsedSize.pop();
+			} else {
+				continue;
 			}
 
-			// 3. Удалить все последовательные <whitespace-token> с конца непарсированного
-			// размер. Если непарсированный размер теперь пуст, верните размер и выйдите из этого алгоритма.
-			// Если это был не последний элемент в списке неразобранных размеров, это ошибка разбора.
+			// 3. Remove all consecutive <whitespace-token>s from the end of unparsed
+			// size. If unparsed size is now empty, return size and exit this algorithm.
+			// If this was not the last item in unparsed sizes list, that is a parse error.
 			if (unparsedSize.length === 0) {
-				возвращаемый размер;
+				return size;
 			}
 
-			// 4. Анализируем оставшиеся значения компонентов в разобраном виде как
-			// <медиа-условие>. Если он не анализируется правильно, или он анализирует
-			// правильно, но <media-condition> оценивается как false, продолжаем до
-			// следующая итерация этого алгоритма.
-			// (Разбор всех возможных составных состояний среды в JS тяжелый, сложный,
-			// и выигрыш неясен. Есть ли когда-нибудь ситуация, когда
-			// условие носителя анализирует неправильно, но все равно каким-то образом оценивается как true?
-			// Можем ли мы просто полагаться на браузер / полифилл, чтобы сделать это?)
-			unparsedSize = unparsedSize.join ("");
-			if (! (pf.matchesMedia (unparsedSize))) {
-				Продолжить;
+			// 4. Parse the remaining component values in unparsed size as a
+			// <media-condition>. If it does not parse correctly, or it does parse
+			// correctly but the <media-condition> evaluates to false, continue to the
+			// next iteration of this algorithm.
+			// (Parsing all possible compound media conditions in JS is heavy, complicated,
+			// and the payoff is unclear. Is there ever an situation where the
+			// media condition parses incorrectly but still somehow evaluates to true?
+			// Can we just rely on the browser/polyfill to do it?)
+			unparsedSize = unparsedSize.join(" ");
+			if (!(pf.matchesMedia( unparsedSize ) ) ) {
+				continue;
 			}
 
-			// 5. Вернуть размер и выйти из этого алгоритма.
-			возвращаемый размер;
+			// 5. Return size and exit this algorithm.
+			return size;
 		}
 
-		// Если приведенный выше алгоритм исчерпывает список непарсированных размеров, не возвращая
-		// значение размера, возвращаемое 100vw.
-		возврат "100vw";
+		// If the above algorithm exhausts unparsed sizes list without returning a
+		// size value, return 100vw.
+		return "100vw";
 	}
 
-	// пространство имен
-	pf.ns = ("pf" + new Date (). getTime ()). substr (0, 9);
+	// namespace
+	pf.ns = ("pf" + new Date().getTime()).substr(0, 9);
 
-	// тест поддержки srcset
-	pf.supSrcset = "srcset" в изображении;
-	pf.supSizes = "размеры" в изображении;
-	pf.supPicture = !! window.HTMLPictureElement;
+	// srcset support test
+	pf.supSrcset = "srcset" in image;
+	pf.supSizes = "sizes" in image;
+	pf.supPicture = !!window.HTMLPictureElement;
 
-	// UC-браузер утверждает, что поддерживает srcset и picture, но не размеры,
-	// этот расширенный тест показывает, что браузер ничего не поддерживает
-	if (pf.supSrcset && pf.supPicture &&! pf.supSizes) {
-		(функция (изображение2) {
-			image.srcset = "data:, a";
-			image2.src = "data:, a";
+	// UC browser does claim to support srcset and picture, but not sizes,
+	// this extended test reveals the browser does support nothing
+	if (pf.supSrcset && pf.supPicture && !pf.supSizes) {
+		(function(image2) {
+			image.srcset = "data:,a";
+			image2.src = "data:,a";
 			pf.supSrcset = image.complete === image2.complete;
 			pf.supPicture = pf.supSrcset && pf.supPicture;
-		}) (Document.createElement ( "IMG"));
+		})(document.createElement("img"));
 	}
 
-	// Safari9 имеет базовую поддержку размеров, но не раскрывает атрибут `sizes` idl
-	if (pf.supSrcset &&! pf.supSizes) {
+	// Safari9 has basic support for sizes, but does't expose the `sizes` idl attribute
+	if (pf.supSrcset && !pf.supSizes) {
 
-		(function () {
-			var width2 = "data: image / gif; base64, R0lGODlhAgABAPAAAP /// wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw ==";
-			var width1 = "data: image / gif; base64, R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw ==";
-			var img = document.createElement ("img");
-			var test = function () {
+		(function() {
+			var width2 = "data:image/gif;base64,R0lGODlhAgABAPAAAP///wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw==";
+			var width1 = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+			var img = document.createElement("img");
+			var test = function() {
 				var width = img.width;
 
 				if (width === 2) {
 					pf.supSizes = true;
 				}
 
-				alwaysCheckWDescriptor = pf.supSrcset &&! pf.supSizes;
+				alwaysCheckWDescriptor = pf.supSrcset && !pf.supSizes;
 
 				isSupportTestReady = true;
-				// принудительная асинхронность
-				SetTimeout (picturefill);
+				// force async
+				setTimeout(picturefill);
 			};
 
 			img.onload = test;
 			img.onerror = test;
-			img.setAttribute («размеры», «9 пикселей»);
+			img.setAttribute("sizes", "9px");
 
-			img.srcset = width1 + "1w," + width2 + "9w";
+			img.srcset = width1 + " 1w," + width2 + " 9w";
 			img.src = width1;
-		}) ();
+		})();
 
-	} еще {
+	} else {
 		isSupportTestReady = true;
 	}
 
-	// использование pf.qsa вместо обхода dom значительно лучше масштабируется,
-	// особенно на сайтах, смешивающих отзывчивые и неотзывчивые изображения
-	pf.selShort = "picture> img, img [srcset]";
+	// using pf.qsa instead of dom traversing does scale much better,
+	// especially on sites mixing responsive and non-responsive images
+	pf.selShort = "picture>img,img[srcset]";
 	pf.sel = pf.selShort;
 	pf.cfg = cfg;
 
-	/ **
-	 * Свойство ярлыка для `devicePixelRatio` (для легкого переопределения в тестах)
-	 * /
-	pf.DPR = (DPR || 1);
-	pf.u = единицы;
+	/**
+	 * Shortcut property for `devicePixelRatio` ( for easy overriding in tests )
+	 */
+	pf.DPR = (DPR  || 1 );
+	pf.u = units;
 
-	// контейнер поддерживаемых типов MIME, которые могут понадобиться для определения перед использованием
-	pf.types = types;
+	// container of supported mime types that one might need to qualify before using
+	pf.types =  types;
 
 	pf.setSize = noop;
 
-	/ **
-	 * Получает строку и возвращает абсолютный URL
+	/**
+	 * Gets a string and returns the absolute URL
 	 * @param src
-	 * @returns {String} абсолютный URL
-	 * /
+	 * @returns {String} absolute URL
+	 */
 
-	pf.makeUrl = memoize (function (src) {
+	pf.makeUrl = memoize(function(src) {
 		anchor.href = src;
-		вернуть anchor.href;
+		return anchor.href;
 	});
 
-	/ **
-	 * Получает элемент DOM или документ и селектор и возвращает найденные совпадения
-	 * Может быть расширен с поддержкой jQuery / Sizzle для IE7
+	/**
+	 * Gets a DOM element or document and a selctor and returns the found matches
+	 * Can be extended with jQuery/Sizzle for IE7 support
 	 * @param context
 	 * @param sel
-	 * @returns {NodeList | Array}
-	 * /
-	pf.qsa = function (context, sel) {
-		возврат («querySelector» в контексте)? context.querySelectorAll (sel): [];
+	 * @returns {NodeList|Array}
+	 */
+	pf.qsa = function(context, sel) {
+		return ( "querySelector" in context ) ? context.querySelectorAll(sel) : [];
 	};
 
-	/ **
-	 * Метод ярлыков для matchMedia (для легкого переопределения в тестах)
-	 * будет ли использоваться родной или pf.mMQ, будет решено ленивым при первом вызове
-	 * @returns {логическое значение}
-	 * /
-	pf.matchesMedia = function () {
-		if (window.matchMedia && (matchMedia ("(min-width: 0.1em)") || {}). соответствует) {
-			pf.matchesMedia = function (media) {
-				вернуться! СМИ || (matchMedia (media) .matches);
+	/**
+	 * Shortcut method for matchMedia ( for easy overriding in tests )
+	 * wether native or pf.mMQ is used will be decided lazy on first call
+	 * @returns {boolean}
+	 */
+	pf.matchesMedia = function() {
+		if ( window.matchMedia && (matchMedia( "(min-width: 0.1em)" ) || {}).matches ) {
+			pf.matchesMedia = function( media ) {
+				return !media || ( matchMedia( media ).matches );
 			};
-		} еще {
+		} else {
 			pf.matchesMedia = pf.mMQ;
 		}
 
-		return pf.matchesMedia.apply (this, arguments);
+		return pf.matchesMedia.apply( this, arguments );
 	};
 
-	/ **
-	 * Упрощенная реализация matchMedia для IE8 и IE9
-	 * обрабатывает только значения min-width / max-width со значениями px или em
+	/**
+	 * A simplified matchMedia implementation for IE8 and IE9
+	 * handles only min-width/max-width with px or em values
 	 * @param media
-	 * @returns {логическое значение}
-	 * /
-	pf.mMQ = function (media) {
-		вернуть СМИ? evalCSS (СМИ): правда;
+	 * @returns {boolean}
+	 */
+	pf.mMQ = function( media ) {
+		return media ? evalCSS(media) : true;
 	};
 
-	/ **
-	 * Возвращает рассчитанную длину в пикселе CSS из заданного sourceSizeValue
+	/**
+	 * Returns the calculated length in css pixel from the given sourceSizeValue
 	 * http://dev.w3.org/csswg/css-values-3/#length-value
-	 * предполагаемые несоответствия спецификации:
-	 * * Не проверяет на недопустимое использование функций CSS
-	 * * Обрабатывает ли вычисленная длина 0 то же самое, что и отрицательное и, следовательно, недопустимое значение
+	 * intended Spec mismatches:
+	 * * Does not check for invalid use of CSS functions
+	 * * Does handle a computed length of 0 the same as a negative and therefore invalid value
 	 * @param sourceSizeValue
 	 * @returns {Number}
-	 * /
-	pf.calcLength = function (sourceSizeValue) {
+	 */
+	pf.calcLength = function( sourceSizeValue ) {
 
-		var value = evalCSS (sourceSizeValue, true) || ложный;
-		if (значение <0) {
-			значение = ложь;
+		var value = evalCSS(sourceSizeValue, true) || false;
+		if (value < 0) {
+			value = false;
 		}
 
-		возвращаемое значение;
+		return value;
 	};
 
-	/ **
-	 * Принимает строку типа и проверяет, поддерживается ли она
-	 * /
+	/**
+	 * Takes a type string and checks if its supported
+	 */
 
-	pf.supportsType = function (type) {
-		возврат (тип)? типы [тип]: правда;
+	pf.supportsType = function( type ) {
+		return ( type ) ? types[ type ] : true;
 	};
 
-	/ **
-	 * Разбирает sourceSize в mediaCondition (media) и sourceSizeValue (length)
+	/**
+	 * Parses a sourceSize into mediaCondition (media) and sourceSizeValue (length)
 	 * @param sourceSizeStr
 	 * @returns {*}
-	 * /
-	pf.parseSize = memoize (function (sourceSizeStr) {
-		var match = (sourceSizeStr || "") .match (regSize);
-		вернуть {
-			media: match && match [1],
-			длина: совпадение && совпадение [2]
+	 */
+	pf.parseSize = memoize(function( sourceSizeStr ) {
+		var match = ( sourceSizeStr || "" ).match(regSize);
+		return {
+			media: match && match[1],
+			length: match && match[2]
 		};
 	});
 
-	pf.parseSet = function (set) {
-		if (! set.cands) {
-			set.cands = parseSrcset (set.srcset, set);
+	pf.parseSet = function( set ) {
+		if ( !set.cands ) {
+			set.cands = parseSrcset(set.srcset, set);
 		}
-		вернуть set.cands;
+		return set.cands;
 	};
 
-	/ **
-	 * возвращает 1em в css px для размера html / body по умолчанию
-	 * функция взята из responsejs
-	 * @returns {* | номер}
-	 * /
-	pf.getEmValue = function () {
-		вар тело;
-		if (! eminpx && (body = document.body)) {
-			var div = document.createElement ("div"),
+	/**
+	 * returns 1em in css px for html/body default size
+	 * function taken from respondjs
+	 * @returns {*|number}
+	 */
+	pf.getEmValue = function() {
+		var body;
+		if ( !eminpx && (body = document.body) ) {
+			var div = document.createElement( "div" ),
 				originalHTMLCSS = docElem.style.cssText,
 				originalBodyCSS = body.style.cssText;
 
 			div.style.cssText = baseStyle;
 
-			// 1em в медиа-запросе - это значение размера шрифта браузера по умолчанию
-			// сбрасываем docElem и body, чтобы гарантировать возвращение правильного значения
+			// 1em in a media query is the value of the default font size of the browser
+			// reset docElem and body to ensure the correct value is returned
 			docElem.style.cssText = fsCss;
 			body.style.cssText = fsCss;
 
-			body.appendChild (div);
+			body.appendChild( div );
 			eminpx = div.offsetWidth;
-			body.removeChild (div);
+			body.removeChild( div );
 
-			// также обновляем eminpx перед возвратом
-			eminpx = parseFloat (eminpx, 10);
+			//also update eminpx before returning
+			eminpx = parseFloat( eminpx, 10 );
 
-			// восстановить исходные значения
+			// restore the original values
 			docElem.style.cssText = originalHTMLCSS;
 			body.style.cssText = originalBodyCSS;
 
 		}
-		вернуть eminpx || 16;
+		return eminpx || 16;
 	};
 
-	/ **
-	 * Принимает строку размеров и возвращает ширину в пикселях в виде числа
-	 * /
-	pf.calcListLength = function (sourceSizeListStr) {
-		// Разделить список размеров источника, т.е. (max-width: 30em) 100%, (max-width: 50em) 50%, 33%
+	/**
+	 * Takes a string of sizes and returns the width in pixels as a number
+	 */
+	pf.calcListLength = function( sourceSizeListStr ) {
+		// Split up source size list, ie ( max-width: 30em ) 100%, ( max-width: 50em ) 50%, 33%
 		//
-		// или (min-width: 30em) calc (30% - 15px)
-		if (! (sourceSizeListStr в sizeLengthCache) || cfg.uT) {
-			var winLength = pf.calcLength (parseSizes (sourceSizeListStr));
+		//                           or (min-width:30em) calc(30% - 15px)
+		if ( !(sourceSizeListStr in sizeLengthCache) || cfg.uT ) {
+			var winningLength = pf.calcLength( parseSizes( sourceSizeListStr ) );
 
-			sizeLengthCache [sourceSizeListStr] =! victoryLength? unit.width: victoryLength;
+			sizeLengthCache[ sourceSizeListStr ] = !winningLength ? units.width : winningLength;
 		}
 
-		return sizeLengthCache [sourceSizeListStr];
+		return sizeLengthCache[ sourceSizeListStr ];
 	};
 
-	/ **
-	 * Принимает объект-кандидат со свойством srcset в форме url /
-	 * бывший "images / pic-medium.png 1x, images / pic-medium-2x.png 2x" или
-	 * "images / pic-medium.png 400 Вт, images / pic-medium-2x.png 800 Вт" или
-	 * "images / pic-small.png"
-	 * Получить массив изображений кандидатов в виде
-	 * {url: "/foo/bar.png", разрешение: 1}
-	 * где разрешение: http://dev.w3.org/csswg/css-values-3/#resolution-value
-	 * Если указаны размеры, рассчитывается res
-	 * /
-	pf.setRes = function (set) {
-		вар кандидатов;
-		if (set) {
+	/**
+	 * Takes a candidate object with a srcset property in the form of url/
+	 * ex. "images/pic-medium.png 1x, images/pic-medium-2x.png 2x" or
+	 *     "images/pic-medium.png 400w, images/pic-medium-2x.png 800w" or
+	 *     "images/pic-small.png"
+	 * Get an array of image candidates in the form of
+	 *      {url: "/foo/bar.png", resolution: 1}
+	 * where resolution is http://dev.w3.org/csswg/css-values-3/#resolution-value
+	 * If sizes is specified, res is calculated
+	 */
+	pf.setRes = function( set ) {
+		var candidates;
+		if ( set ) {
 
-			андидаты = pf.parseSet (set);
+			candidates = pf.parseSet( set );
 
-			for (var i = 0, len = кандидатов. длина; i <len; i ++) {
-				setResolution (андидаты [i], set.sizes);
+			for ( var i = 0, len = candidates.length; i < len; i++ ) {
+				setResolution( candidates[ i ], set.sizes );
 			}
 		}
-		вернуть кандидатов;
+		return candidates;
 	};
 
 	pf.setRes.res = setResolution;
 
-	pf.applySetCandidate = функция (кандидаты, img) {
-		if (! candid.length) {return;}
-		кандидат в вар,
-			я,
-			J,
-			длина,
+	pf.applySetCandidate = function( candidates, img ) {
+		if ( !candidates.length ) {return;}
+		var candidate,
+			i,
+			j,
+			length,
 			bestCandidate,
 			curSrc,
 			curCan,
 			candidateSrc,
 			abortCurSrc;
 
-		var imageData = img [pf.ns];
+		var imageData = img[ pf.ns ];
 		var dpr = pf.DPR;
 
-		curSrc = imageData.curSrc || IMG [curSrcProp];
+		curSrc = imageData.curSrc || img[curSrcProp];
 
-		curCan = imageData.curCan || setSrcToCur (img, curSrc ,андидаты [0] .set);
+		curCan = imageData.curCan || setSrcToCur(img, curSrc, candidates[0].set);
 
-		// если у нас есть текущий источник, мы можем либо стать ленивыми, либо дать этому источнику некоторое преимущество
-		if (curCan && curCan.set ===андидаты [0] .set) {
+		// if we have a current source, we might either become lazy or give this source some advantage
+		if ( curCan && curCan.set === candidates[ 0 ].set ) {
 
-			// если браузер может прервать запрос изображения, а изображение имеет более высокую плотность пикселей, чем необходимо
-			// и это изображение еще не загружено, мы пропускаем следующую часть и пытаемся сохранить пропускную способность
-			abortCurSrc = (supportAbort &&! img.complete && curCan.res - 0.1> dpr);
+			// if browser can abort image request and the image has a higher pixel density than needed
+			// and this image isn't downloaded yet, we skip next part and try to save bandwidth
+			abortCurSrc = (supportAbort && !img.complete && curCan.res - 0.1 > dpr);
 
-			if (! abortCurSrc) {
+			if ( !abortCurSrc ) {
 				curCan.cached = true;
 
-				// если текущий кандидат "лучший", "лучше" или "хорошо",
-				// установить для bestCandidate
-				if (curCan.res> = dpr) {
+				// if current candidate is "best", "better" or "okay",
+				// set it to bestCandidate
+				if ( curCan.res >= dpr ) {
 					bestCandidate = curCan;
 				}
 			}
 		}
 
-		if (! bestCandidate) {
+		if ( !bestCandidate ) {
 
-			кандидатов.sort (ascendingSort);
+			candidates.sort( ascendingSort );
 
-			длина = кандидатов. длина;
-			bestCandidate = кандидатов [длина - 1];
+			length = candidates.length;
+			bestCandidate = candidates[ length - 1 ];
 
-			для (i = 0; i <длина; i ++) {
-				кандидат = кандидаты [я];
-				if (candid.res> = dpr) {
+			for ( i = 0; i < length; i++ ) {
+				candidate = candidates[ i ];
+				if ( candidate.res >= dpr ) {
 					j = i - 1;
 
-					// мы нашли идеального кандидата,
-					// но давайте улучшим это немного с некоторыми предположениями ;-)
-					если (кандидаты [j] &&
-						(abortCurSrc || curSrc! == pf.makeUrl (андидат.url)) &&
-						chooseLowRes (андидаты [j] .res, кандидат.res, dpr, кандидаты [j] .cached)) {
+					// we have found the perfect candidate,
+					// but let's improve this a little bit with some assumptions ;-)
+					if (candidates[ j ] &&
+						(abortCurSrc || curSrc !== pf.makeUrl( candidate.url )) &&
+						chooseLowRes(candidates[ j ].res, candidate.res, dpr, candidates[ j ].cached)) {
 
-						bestCandidate = кандидатов [j];
+						bestCandidate = candidates[ j ];
 
-					} еще {
-						bestCandidate = кандидат;
+					} else {
+						bestCandidate = candidate;
 					}
-					перерыв;
+					break;
 				}
 			}
 		}
 
-		if (bestCandidate) {
+		if ( bestCandidate ) {
 
-			КандидатСрк = pf.makeUrl (bestCandidate.url);
+			candidateSrc = pf.makeUrl( bestCandidate.url );
 
-			imageData.curSrc = candidSrc;
+			imageData.curSrc = candidateSrc;
 			imageData.curCan = bestCandidate;
 
-			if (candidSrc! == curSrc) {
-				pf.setSrc (img, bestCandidate);
+			if ( candidateSrc !== curSrc ) {
+				pf.setSrc( img, bestCandidate );
 			}
-			pf.setSize (img);
+			pf.setSize( img );
 		}
 	};
 
-	pf.setSrc = function (img, bestCandidate) {
+	pf.setSrc = function( img, bestCandidate ) {
 		var origWidth;
 		img.src = bestCandidate.url;
 
-		// хотя это конкретная проблема Safari, мы не хотим использовать слишком много разных путей кода
-		if (bestCandidate.set.type === "image / svg + xml") {
+		// although this is a specific Safari issue, we don't want to take too much different code paths
+		if ( bestCandidate.set.type === "image/svg+xml" ) {
 			origWidth = img.style.width;
 			img.style.width = (img.offsetWidth + 1) + "px";
 
-			// только следующая строка должна вызвать перерисовку
-			// если ... сделано только для обмана мертвого кода
-			if (img.offsetWidth + 1) {
+			// next line only should trigger a repaint
+			// if... is only done to trick dead code removal
+			if ( img.offsetWidth + 1 ) {
 				img.style.width = origWidth;
 			}
 		}
 	};
 
-	pf.getSet = function (img) {
-		var i, set, поддерживает тип;
+	pf.getSet = function( img ) {
+		var i, set, supportsType;
 		var match = false;
-		var sets = img [pf.ns] .sets;
+		var sets = img [ pf.ns ].sets;
 
-		for (i = 0; i <sets.length &&! match; i ++) {
-			set = sets [i];
+		for ( i = 0; i < sets.length && !match; i++ ) {
+			set = sets[i];
 
-			if (! set.srcset ||! pf.matchesMedia (set.media) ||! (supportType = pf.supportsType (set.type))) {
-				Продолжить;
+			if ( !set.srcset || !pf.matchesMedia( set.media ) || !(supportsType = pf.supportsType( set.type )) ) {
+				continue;
 			}
 
-			if (supportType === "pending") {
-				set = supportType;
+			if ( supportsType === "pending" ) {
+				set = supportsType;
 			}
 
 			match = set;
-			перерыв;
+			break;
 		}
 
-		ответный матч;
+		return match;
 	};
 
-	pf.parseSets = function (element, parent, options) {
+	pf.parseSets = function( element, parent, options ) {
 		var srcsetAttribute, imageSet, isWDescripor, srcsetParsed;
 
-		var hasPicture = parent && parent.nodeName.toUpperCase () === "PICTURE";
-		var imageData = element [pf.ns];
+		var hasPicture = parent && parent.nodeName.toUpperCase() === "PICTURE";
+		var imageData = element[ pf.ns ];
 
-		if (imageData.src === undefined || options.src) {
-			imageData.src = getImgAttr.call (element, "src");
-			if (imageData.src) {
-				setImgAttr.call (element, srcAttr, imageData.src);
-			} еще {
-				removeImgAttr.call (element, srcAttr);
+		if ( imageData.src === undefined || options.src ) {
+			imageData.src = getImgAttr.call( element, "src" );
+			if ( imageData.src ) {
+				setImgAttr.call( element, srcAttr, imageData.src );
+			} else {
+				removeImgAttr.call( element, srcAttr );
 			}
 		}
 
-		if (imageData.srcset === undefined || options.srcset ||! pf.supSrcset || element.srcset) {
-			srcsetAttribute = getImgAttr.call (element, "srcset");
+		if ( imageData.srcset === undefined || options.srcset || !pf.supSrcset || element.srcset ) {
+			srcsetAttribute = getImgAttr.call( element, "srcset" );
 			imageData.srcset = srcsetAttribute;
 			srcsetParsed = true;
 		}
 
 		imageData.sets = [];
 
-		if (hasPicture) {
+		if ( hasPicture ) {
 			imageData.pic = true;
-			getAllSourceElements (parent, imageData.sets);
+			getAllSourceElements( parent, imageData.sets );
 		}
 
-		if (imageData.srcset) {
+		if ( imageData.srcset ) {
 			imageSet = {
 				srcset: imageData.srcset,
-				размеры: getImgAttr.call (элемент, «размеры»)
+				sizes: getImgAttr.call( element, "sizes" )
 			};
 
-			imageData.sets.push (imageSet);
+			imageData.sets.push( imageSet );
 
-			isWDescripor = (alwaysCheckWDescriptor || imageData.src) && regWDesc.test (imageData.srcset || "");
+			isWDescripor = (alwaysCheckWDescriptor || imageData.src) && regWDesc.test(imageData.srcset || "");
 
-			// добавить нормальный src в качестве кандидата, если у источника нет дескриптора w
-			if (! isWDescripor && imageData.src &&! getCandidateForSrc (imageData.src, imageSet) &&! imageSet.has1x) {
-				imageSet.srcset + = "," + imageData.src;
-				imageSet.cands.push ({
-					URL: imageData.src,
-					д: 1,
-					набор: imageSet
+			// add normal src as candidate, if source has no w descriptor
+			if ( !isWDescripor && imageData.src && !getCandidateForSrc(imageData.src, imageSet) && !imageSet.has1x ) {
+				imageSet.srcset += ", " + imageData.src;
+				imageSet.cands.push({
+					url: imageData.src,
+					d: 1,
+					set: imageSet
 				});
 			}
 
-		} else if (imageData.src) {
-			imageData.sets.push ({
+		} else if ( imageData.src ) {
+			imageData.sets.push( {
 				srcset: imageData.src,
-				размеры: ноль
-			});
+				sizes: null
+			} );
 		}
 
 		imageData.curCan = null;
 		imageData.curSrc = undefined;
 
-		// если у img есть изображение или srcset был удален или имеет srcset и вообще не поддерживает srcset
-		// или имеет дескриптор aw (и не поддерживает размеры), устанавливающий поддержку false для оценки
-		imageData.supported =! (hasPicture || (imageSet &&! pf.supSrcset) || (isWDescripor &&! pf.supSizes));
+		// if img has picture or the srcset was removed or has a srcset and does not support srcset at all
+		// or has a w descriptor (and does not support sizes) set support to false to evaluate
+		imageData.supported = !( hasPicture || ( imageSet && !pf.supSrcset ) || (isWDescripor && !pf.supSizes) );
 
-		if (srcsetParsed && pf.supSrcset &&! imageData.supported) {
-			if (srcsetAttribute) {
-				setImgAttr.call (element, srcsetAttr, srcsetAttribute);
+		if ( srcsetParsed && pf.supSrcset && !imageData.supported ) {
+			if ( srcsetAttribute ) {
+				setImgAttr.call( element, srcsetAttr, srcsetAttribute );
 				element.srcset = "";
-			} еще {
-				removeImgAttr.call (element, srcsetAttr);
+			} else {
+				removeImgAttr.call( element, srcsetAttr );
 			}
 		}
 
-		if (imageData.supported &&! imageData.srcset && ((! imageData.src && element.src) || ​​element.src! == pf.makeUrl (imageData.src)))) {
+		if (imageData.supported && !imageData.srcset && ((!imageData.src && element.src) ||  element.src !== pf.makeUrl(imageData.src))) {
 			if (imageData.src === null) {
-				element.removeAttribute ( "SRC");
-			} еще {
+				element.removeAttribute("src");
+			} else {
 				element.src = imageData.src;
 			}
 		}
@@ -1398,147 +1398,147 @@
 		imageData.parsed = true;
 	};
 
-	pf.fillImg = function (element, options) {
+	pf.fillImg = function(element, options) {
 		var imageData;
 		var extreme = options.reselect || options.reevaluate;
 
-		// раскрываем для кеширования данных на img
-		if (! element [pf.ns]) {
-			element [pf.ns] = {};
+		// expando for caching data on the img
+		if ( !element[ pf.ns ] ) {
+			element[ pf.ns ] = {};
 		}
 
-		imageData = element [pf.ns];
+		imageData = element[ pf.ns ];
 
-		// если элемент уже был оценен, пропустите его
-		// если `options.reevaluate` не установлен в true (это, например,
-		// устанавливается в true при запуске `picturefill` для` resize`).
-		if (! extreme && imageData.evaled === evalId) {
-			вернуть;
+		// if the element has already been evaluated, skip it
+		// unless `options.reevaluate` is set to true ( this, for example,
+		// is set to true when running `picturefill` on `resize` ).
+		if ( !extreme && imageData.evaled === evalId ) {
+			return;
 		}
 
-		if (! imageData.parsed || options.reevaluate) {
-			pf.parseSets (element, element.parentNode, options);
+		if ( !imageData.parsed || options.reevaluate ) {
+			pf.parseSets( element, element.parentNode, options );
 		}
 
-		if (! imageData.supported) {
-			applyBestCandidate (element);
-		} еще {
+		if ( !imageData.supported ) {
+			applyBestCandidate( element );
+		} else {
 			imageData.evaled = evalId;
 		}
 	};
 
-	pf.setupRun = function () {
-		if (!readyRun || isVwDirty || (DPR! == window.devicePixelRatio)) {
-			updateMetrics ();
+	pf.setupRun = function() {
+		if ( !alreadyRun || isVwDirty || (DPR !== window.devicePixelRatio) ) {
+			updateMetrics();
 		}
 	};
 
-	// Если изображение поддерживается, это круто.
-	if (pf.supPicture) {
+	// If picture is supported, well, that's awesome.
+	if ( pf.supPicture ) {
 		picturefill = noop;
 		pf.fillImg = noop;
-	} еще {
+	} else {
 
-		 // Настройка рисунка для полифилла путем опроса документа
-		(function () {
+		 // Set up picture polyfill by polling the document
+		(function() {
 			var isDomReady;
-			var regReady = window.attachEvent? / d $ | ^ c /: / d $ | ^ c | ^ i /;
+			var regReady = window.attachEvent ? /d$|^c/ : /d$|^c|^i/;
 
-			var run = function () {
+			var run = function() {
 				var readyState = document.readyState || "";
 
-				timerId = setTimeout (run, readyState === "загрузка"? 200: 999);
-				if (document.body) {
-					pf.fillImgs ();
-					isDomReady = isDomReady || regReady.test (readyState);
-					if (isDomReady) {
-						clearTimeout (timerId);
+				timerId = setTimeout(run, readyState === "loading" ? 200 :  999);
+				if ( document.body ) {
+					pf.fillImgs();
+					isDomReady = isDomReady || regReady.test(readyState);
+					if ( isDomReady ) {
+						clearTimeout( timerId );
 					}
 
 				}
 			};
 
-			var timerId = setTimeout (run, document.body? 9: 99);
+			var timerId = setTimeout(run, document.body ? 9 : 99);
 
-			// Также прикрепляем picturefill к resize и readystatechange
+			// Also attach picturefill on resize and readystatechange
 			// http://modernjavascript.blogspot.com/2013/08/building-better-debounce.html
-			var debounce = function (func, wait) {
+			var debounce = function(func, wait) {
 				var timeout, timestamp;
-				var позже = function () {
-					var last = (new Date ()) - отметка времени;
+				var later = function() {
+					var last = (new Date()) - timestamp;
 
-					if (last <wait) {
-						timeout = setTimeout (позже, wait - последний);
-					} еще {
-						тайм-аут = ноль;
-						FUNC ();
+					if (last < wait) {
+						timeout = setTimeout(later, wait - last);
+					} else {
+						timeout = null;
+						func();
 					}
 				};
 
-				функция возврата () {
-					отметка времени = новая дата ();
+				return function() {
+					timestamp = new Date();
 
-					if (! timeout) {
-						timeout = setTimeout (позже, подождите);
+					if (!timeout) {
+						timeout = setTimeout(later, wait);
 					}
 				};
 			};
 			var lastClientWidth = docElem.clientHeight;
-			var onResize = function () {
-				isVwDirty = Math.max (window.innerWidth || 0, docElem.clientWidth)! == units.width || docElem.clientHeight! == lastClientWidth;
+			var onResize = function() {
+				isVwDirty = Math.max(window.innerWidth || 0, docElem.clientWidth) !== units.width || docElem.clientHeight !== lastClientWidth;
 				lastClientWidth = docElem.clientHeight;
-				if (isVwDirty) {
-					pf.fillImgs ();
+				if ( isVwDirty ) {
+					pf.fillImgs();
 				}
 			};
 
-			on (окно, «изменить размер», debounce (onResize, 99));
-			вкл (документ, «readystatechange», запустить);
-		}) ();
+			on( window, "resize", debounce(onResize, 99 ) );
+			on( document, "readystatechange", run );
+		})();
 	}
 
 	pf.picturefill = picturefill;
-	// используем это внутренне для легкого исправления обезьян / тестирования производительности
+	//use this internally for easy monkey patching/performance testing
 	pf.fillImgs = picturefill;
 	pf.teardownRun = noop;
 
-	/ * выставить методы для тестирования * /
+	/* expose methods for testing */
 	picturefill._ = pf;
 
 	window.picturefillCFG = {
-		пф: пф,
-		push: function (args) {
-			var name = args.shift ();
-			if (typeof pf [name] === "function") {
-				pf [имя] .apply (pf, args);
-			} еще {
-				cfg [name] = args [0];
-				if (readyRun) {
-					pf.fillImgs ({reselect: true});
+		pf: pf,
+		push: function(args) {
+			var name = args.shift();
+			if (typeof pf[name] === "function") {
+				pf[name].apply(pf, args);
+			} else {
+				cfg[name] = args[0];
+				if (alreadyRun) {
+					pf.fillImgs( { reselect: true } );
 				}
 			}
 		}
 	};
 
 	while (setOptions && setOptions.length) {
-		window.picturefillCFG.push (setOptions.shift ());
+		window.picturefillCFG.push(setOptions.shift());
 	}
 
-	/ * выставить картинку *
+	/* expose picturefill */
 	window.picturefill = picturefill;
 
-	/ * выставить картинку *
-	if (typeof module === "object" && typeof module.exports === "object") {
-		// CommonJS, просто экспорт
+	/* expose picturefill */
+	if ( typeof module === "object" && typeof module.exports === "object" ) {
+		// CommonJS, just export
 		module.exports = picturefill;
-	} else if (typeof define === "function" && define.amd) {
-		// Поддержка AMD
-		define ("picturefill", function () {return picturefill;});
+	} else if ( typeof define === "function" && define.amd ) {
+		// AMD support
+		define( "picturefill", function() { return picturefill; } );
 	}
 
-	// IE8 проверяет эту синхронизацию, поэтому это должно быть последнее, что мы делаем
-	if (! pf.supPicture) {
-		types ["image / webp"] = detectTypeSupport ("image / webp", "data: image / webp; base64, UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR / QAERBQAAAAAAJAJAJAQAJAQAJAQAQAQAJAQAJAJAUBAGAUB)
+	// IE8 evals this sync, so it must be the last thing we do
+	if ( !pf.supPicture ) {
+		types[ "image/webp" ] = detectTypeSupport("image/webp", "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==" );
 	}
 
-}) (окно, документ);
+} )( window, document );
