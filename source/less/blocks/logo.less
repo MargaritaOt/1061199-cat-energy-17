@@ -1,11 +1,23 @@
 .logo {
-  margin: 0 auto 10px 15px;
+  margin: 0 auto 10px 0;
 }
 
-.logo img {
+.logo__image {
   width: 200px;
 }
 
 .logo___logo-footer img {
   width: 128px;
+}
+
+@media (min-width: @tablet-width) {
+  .logo__image {
+    width: 175px;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .logo__image {
+    width: 200px;
+  }
 }

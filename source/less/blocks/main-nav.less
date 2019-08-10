@@ -91,8 +91,8 @@
     font-weight: @font-weight-base;
   }
 
-  .main-nav__list li {
-    padding: 0 15px 0 0;
+  .main-nav__list li:not(:last-child) {
+    padding: 0 35px 0 0;
   }
 
   .main-nav__toggle {
@@ -105,15 +105,15 @@
     flex-direction: row-reverse;
   }
 
+  .main-nav__wrapper {
+    flex-basis: 65%;
+  }
+
   .main-nav__list {
     font-family: @font-family-base;
     font-size: 20px;
     line-height: 25px;
     font-weight: @font-weight-base;
-    margin-left: 35px;
-  }
-
-  .main-nav__list li {
-    padding: 0 0 0 35px;
+    margin-left: 45px;
   }
 }

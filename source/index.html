@@ -8,12 +8,19 @@
   <meta name="format-detection" content="telephone=no">
   <link href="css/normalize.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script src="js/picturefill.js"></script>
 </head>
 
 <body>
   <header class="page-header">
     <div class="page-header__inner">
-      <a class="page-header__logo logo"><img alt="Кэт энерджи" class="logo__image" height="33" src="img/logo-mobile.svg" width="38"></a>
+      <a class="page-header__logo logo">
+        <picture>
+          <source media="(min-width: 1280px)" srcset="img/logo-desktop.svg">
+          <source media="(min-width: 768px)" srcset="img/logo-tablet.svg">
+          <img alt="Кэт энерджи" class="logo__image" height="33" src="img/logo-mobile.svg" width="38">
+        </picture>
+      </a>
       <nav class="main-nav main-nav--opened main-nav--nojs">
         <button class="main-nav__toggle" type="button"><span class="visually-hidden">Открыть меню</span></button>
         <div class="main-nav__wrapper">
@@ -38,7 +45,14 @@
         <header class="program__header">
           <h1 class="program__title">Функциональное питание для котов</h1>
           <p class="program__tagline">Занялся собой? Займись котом!</p>
-        </header><a class="program__logo"><img alt="Кэт энерджи" class="program__logo-image" height="270" src="img/index-can-mobile@1x.png" width="280"></a> <a class="program__choice-program" href="#">Подобрать программу</a>
+        </header><a class="program__logo">
+          <picture>
+            <source media="(min-width: 1280px)" srcset="img/index-can-desktop@1x.png 1x, img/index-can-desktop@2x.png 2x">
+            <source media="(min-width: 768px)" srcset="img/index-can-tablet@1x.jpg 1x, img/index-can-tablet@2x.jpg 2x">
+            <img alt="Кэт энерджи" class="program__logo-image" src="img/index-can-mobile@1x.png" srcset="img/index-can-mobile@1x.png 1x, img/index-can-mobile@2x.png 2x">
+          </picture>
+        </a>
+        <a class="program__choice-program" href="#">Подобрать программу</a>
       </div>
     </section>
     <section class="categories">
@@ -92,13 +106,28 @@
         <div class="example__changes slider">
           <ul class="slider__list">
             <li class="slider__item">
-              <a class="slider__changes-before"><img alt="Кот до" height="232" src="img/before-mobile@1x.png" width="311"></a>
+              <a class="slider__changes-before">
+                <picture>
+                  <source media="(min-width: 1280px)" srcset="img/before-desktop@1x.png 1x, img/before-desktop@2x.png 2x">
+                  <source media="(min-width: 768px)" srcset="img/before-tablet@1x.png 1x, img/before-tablet@2x.png 2x">
+                  <img alt="Кот до" src="img/before-mobile@1x.png" srcset="img/before-mobile@1x.png 1x, img/before-mobile@2x.png 2x">
+                </picture>
+              </a>
             </li>
             <li class="slider__item">
-              <a class="slider__changes-after"><img alt="Кот после" height="240" src="img/after-mobile@1x.png" width="251"></a>
+              <a class="slider__changes-after">
+                <picture>
+                  <source media="(min-width: 1280px)" srcset="img/after-desktop@1x.png 1x, img/after-desktop@2x.png 2x">
+                  <source media="(min-width: 768px)" srcset="img/after-tablet@1x.png 1x, img/after-tablet@2x.png 2x">
+                  <img alt="Кот после" src="img/after-mobile@1x.png" srcset="img/after-mobile@1x.png 1x, img/after-mobile@2x.png 2x">
+                </picture>
+              </a>
             </li>
           </ul>
-          <div class="slider__toggles"><div class="slider__toggle-before">было</div> <div class="slider__toggle-after">стало</div></div>
+          <div class="slider__toggles">
+            <div class="slider__toggle-before">было</div>
+            <div class="slider__toggle-after">стало</div>
+          </div>
         </div>
       </div>
     </section>
@@ -110,14 +139,23 @@
             ул. Большая Конюшенная, д. 19/8 <span>Санкт-Петербург</span>
           </div>
         </div>
-        <img class="contacts__image contacts__image--pin" alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" height="365" src="img/bg-map-mobile@1x.png" width="320">
+        <div class="contacts__map">
+          <picture>
+            <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.png 1x, img/bg-map-desktop@2x.png 2x">
+            <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.png 1x, img/bg-map-tablet@2x.png 2x">
+            <img class="contacts__image" alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" src="img/bg-map-mobile@1x.png" srcset="img/bg-map-mobile@1x.png 1x, img/bg-map-mobile@2x.png 2x">
+          </picture>
+          <div class="contacts__icon"></div>
+        </div>
       </div>
     </section>
   </main>
   <footer class="page-footer">
     <div class="page-footer__inner">
       <div class="page-footer__logo logo">
-        <a class="logo___logo-footer logo--footer"><img alt="Кэт энерджи" class="logo__image" height="24" src="img/logo-footer.svg" width="128"></a>
+        <a class="logo___logo-footer logo--footer">
+          <img alt="Кэт энерджи" class="logo__image" height="24" src="img/logo-footer.svg" width="128">
+        </a>
       </div>
       <div class="page-footer__social social">
         <ul class="social__list">
@@ -133,13 +171,15 @@
         </ul>
       </div>
       <div class="page-footer__copyright copyright">
-        <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a> <a class="copyright__link link" href="index.html"><img alt="Логотип Academy" class="link__image" height="34" src="img/htmlacademy.svg"
-            width="27"></a>
+        <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a>
+        <a class="copyright__link link" href="index.html">
+          <img alt="Логотип Academy" class="link__image" height="34" src="img/htmlacademy.svg" width="27">
+        </a>
       </div>
     </div>
   </footer>
-  <script src="js/script.js">
-  </script>
+  <script src="js/script.js"></script>
+
 </body>
 
 </html>

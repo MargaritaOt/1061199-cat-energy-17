@@ -45,7 +45,7 @@
 
 .extra__gift {
   width: auto;
-  height: 289px;
+  min-height: 289px;
   font-family: "Arial", sans-serif;
   font-size: 16px;
   line-height: 20px;
@@ -59,6 +59,10 @@
   margin: 55px 0;
   display: flex;
   position: relative;
+}
+
+@media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
+  background-image: url("img/gift-photo-mobile@2x.jpg");
 }
 
 .extra__gift::before {
@@ -82,16 +86,24 @@
 }
 
 @media (min-width: @tablet-width) {
+  .extra {
+    .tagline-tablet;
+  }
+
   .extra__title {
     width: 635px;
-    margin: 27px 37px;
+    margin: 5px 37px;
     font-size: 36px;
     line-height: 1;
   }
 
   .extra__list {
     width: 635px;
-    margin: 27px 37px;
+    margin: 85px 40px 20px;
+  }
+
+  .extra__item {
+    margin-bottom: 27px;
   }
 
   .extra__wrapper {
@@ -102,9 +114,23 @@
     margin-left: auto;
   }
 
+  .extra__item-button {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 6px 0;
+    padding: 10px 0;
+  }
+
   .extra__gift {
-    width: 708px;
+    min-height: 200px;
     display: flex;
+    background-image: url("../img/gift-photo-tablet@1x.jpg");
+    background-size: cover;
+    margin: 90px 0 75px;
+  }
+
+  @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
+      background-image: url("img/gift-photo-tablet@2x.jpg");
   }
 }
 
@@ -112,7 +138,7 @@
   .extra__title {
     font-size: 36px;
     line-height: 1;
-    margin: 27px 0;
+    margin: 8px 0;
   }
 
   .extra__wrapper {
@@ -121,11 +147,13 @@
 
   .extra__list {
     flex-basis: 75%;
-    margin: 60px 0;
+    margin: 80px 0;
   }
 
   .extra__item {
     .flex-row;
+    margin-bottom: 0;
+    min-height: 72px;
   }
 
   .extra__item-name {
@@ -139,7 +167,7 @@
 
   .extra__item-button {
     width: 245px;
-    margin: 10px 0 10px 10px;
+    margin: 10px 0 20px 10px;
   }
 
   .extra__wrap {
@@ -148,6 +176,16 @@
 
   .extra__gift {
     flex-basis: 20%;
-    margin: 60px 0 0 60px;
+    margin: 75px 0 0 60px;
+    background-image: url("../img/gift-photo-desktop@1x.jpg");
+    height: 290px;
+  }
+
+  .extra__gift p {
+    padding: 30px 40px;
+  }
+
+  @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
+    background-image: url("img/gift-photo-desktop@2x.jpg");
   }
 }

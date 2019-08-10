@@ -1,6 +1,6 @@
 .slider__list {
   .list-unstyled;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .slider__changes-after {
@@ -53,18 +53,21 @@
 @media (min-width: @tablet-width) {
   .slider__list {
     display: flex;
+    margin-top: 50px;
+    margin-left: -336px;
   }
 
   .slider__toggles {
     .tagline-tablet;
+    margin-top: 33px;
   }
 
   .slider__toggle-before {
-    margin-left: 55px;
+    margin-left: 47px;
   }
 
   .slider__toggle-after {
-    margin-right: 45px;
+    margin-right: 50px;
   }
 
   .slider__toggle-after::before {
@@ -73,7 +76,7 @@
     height: 9px;
     width: 9px;
     top: 7px;
-    left: 334px;
+    left: 330px;
     border-radius: 50%;
     background-color: #63a73a;
     z-index: 1;
@@ -81,7 +84,7 @@
 
   .slider__toggles::before {
     height: 6px;
-    width: 435px;
+    width: 427px;
     top: 7px;
     left: 120px;
     border: none;
@@ -90,8 +93,8 @@
   .slider__toggles::after {
     height: 33px;
     width: 33px;
-    top: -7px;
-    left: 320px;
+    top: -8px;
+    left: 315px;
     border-radius: 50%;
     border: 2px solid #cdcdcd;
     background-color: #ffffff;
@@ -102,19 +105,59 @@
     display: flex;
     position: relative;
     overflow: hidden;
-    width: 250px;
-    height: 450px;
+    width: 690px;
+    height: 500px;
   }
 
   .slider__changes-after img {
     position: absolute;
     top: 0;
-    left: -130px;
+    right: 49%;
   }
 
   .slider__changes-before img {
     position: absolute;
     top: 0;
-    left: 120px;
+    left: 51%;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .slider__list {
+    margin-top: 0;
+    width: 690px;
+    margin-left: -315px;
+  }
+
+  .slider__changes-after img {
+    right: 53%;
+  }
+
+  .slider__changes-before img {
+    left: 47%;
+  }
+
+  .slider__toggles {
+    margin: 60px 0 75px;
+  }
+
+  .slider__toggles::before {
+      left: 158px;
+  }
+
+  .slider__toggles::after {
+      left: 355px;
+  }
+
+  .slider__toggle-after::before {
+      left: 369px;
+  }
+
+  .slider__toggle-before {
+    margin-left: 87px;
+  }
+
+  .slider__toggle-after {
+    margin-right: 0;
   }
 }
