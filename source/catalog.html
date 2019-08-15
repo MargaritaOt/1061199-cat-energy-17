@@ -344,7 +344,12 @@
             <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.png 1x, img/bg-map-tablet@2x.png 2x">
             <img class="contacts__image" alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" src="img/bg-map-mobile@1x.png" srcset="img/bg-map-mobile@1x.png 1x, img/bg-map-mobile@2x.png 2x">
           </picture>
-          <div class="contacts__icon"></div>
+          <div class="contacts__icon">
+          <picture>
+            <source type="image/webp" srcset="img/map-pin.webp">
+            <img alt="Метка на карте" height="55" src="img/map-pin.png" width="53">
+          </picture>
+          </div>
         </div>
       </div>
     </section>
@@ -357,23 +362,31 @@
       <div class="page-footer__social social">
         <ul class="social__list">
           <li class="social__item">
-            <a class="social__link social__link--vkontakte" href="https://vk.com/htmlacademy"><span class="visually-hidden">Мы в Вконтакте</span></a>
+            <a class="social__link social__link--vkontakte" href="https://vk.com/htmlacademy">
+              <span class="visually-hidden">Мы в Вконтакте</span>
+            <svg class="social__icon-vk" width="22" height="12"><use xlink:href="#icon-vk"></use></svg></a>
           </li>
           <li class="social__item">
-            <a class="social__link social__link--instagram" href="https://www.instagram.com/htmlacademy"><span class="visually-hidden">Мы в Инстаграме</span></a>
+            <a class="social__link social__link--instagram" href="https://www.instagram.com/htmlacademy">
+              <span class="visually-hidden">Мы в Инстаграме</span>
+            <svg class="social__icon-insta" width="16" height="16"><use xlink:href="#icon-insta"></use></svg></a>
           </li>
           <li class="social__item">
-            <a class="social__link social__link--facebook" href="https://www.facebook.com/htmlacademy"><span class="visually-hidden">Мы в Фейсбуке</span></a>
+            <a class="social__link social__link--facebook" href="https://www.facebook.com/htmlacademy">
+              <span class="visually-hidden">Мы в Фейсбуке</span>
+            <svg class="social__icon-fb" width="10" height="19"><use xlink:href="#icon-fb"></use></svg></a>
           </li>
         </ul>
       </div>
       <div class="page-footer__copyright copyright">
-        <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a> <a class="copyright__link link" href="index.html"><img alt="Логотип Academy" class="link__image" height="34" src="img/htmlacademy.svg"
-            width="27"></a>
+        <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a>
+        <a class="copyright__link link" href="index.html">
+        <img alt="Логотип Academy" class="link__image" height="34" src="img/htmlacademy.svg" width="27"></a>
       </div>
     </div>
   </footer>
   <script src="js/script.js"></script>
+
 </body>
 
 </html>
