@@ -1,42 +1,42 @@
-.table {
+.info {
   display: table;
   border-collapse: collapse;
   margin: 10px 0 0;
+  width: 100%;
 }
 
-.table__field {
+.info__price {
   display: table-row;
   font-family: "Arial", sans-serif;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 1;
   font-weight: @font-weight-base;
   text-transform: none;
   display: block;
-  margin-left: 57px;
   text-align: right;
 }
 
 @media (min-width: @tablet-width) {
-  .table {
+  .info {
     margin: 25px 0 0 35px;
   }
 
-  .table__field {
+  .info__price {
     font-size: 16px;
     line-height: 1;
   }
 }
 
 @media (min-width: @desktop-width) {
-  .table {
+  .info {
     margin: 20px 0 0;
   }
 
-  .table__value {
+  .info__quantity {
     text-align: center;
   }
 
-  .table__field {
+  .info__price {
     font-size: 14px;
     line-height: 35px;
   }

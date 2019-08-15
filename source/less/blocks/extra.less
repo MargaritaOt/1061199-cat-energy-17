@@ -14,16 +14,23 @@
   line-height: 1;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin: 55px 0 30px;
+  margin: 30px 0;
 }
 
 .extra__list {
   .list-unstyled;
 }
 
+.extra__list li {
+  min-height: 130px;
+}
+
 .extra__item {
   .flex-column;
-  margin-bottom: 16px;
+}
+
+.extra__item-name {
+  margin: 15px 0 14px;
 }
 
 .extra__item-price {
@@ -38,9 +45,9 @@
 .extra__item-button {
   background-color: @color-base;
   color: @color-text;
-  padding: 12px 0;
-  margin: 10px 0 0;
+  padding: 12px 0 11px;
   text-align: center;
+  margin: 12px 0 0;
 }
 
 .extra__gift {
