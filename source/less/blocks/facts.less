@@ -9,8 +9,14 @@
 
 .facts__fact {
   display: table-cell;
-  padding: 0 25px;
+  padding: 0;
   text-align: center;
+}
+
+.facts__fact:not(:last-child) {
+  margin-right: 60px;
+  display: block;
+  margin-left: 20px;
 }
 
 .facts__kilograms-days {
@@ -36,6 +42,15 @@
     padding: 0 30px;
   }
 
+  .facts__fact:not(:last-child) {
+    margin-right: 30px;
+    margin-left: 0;
+  }
+
+  .facts__kilograms-days {
+    padding: 0;
+  }
+
   .facts__weight-time {
     font-size: 14px;
     line-height: 40px;
@@ -43,6 +58,10 @@
 }
 
 @media (min-width: @desktop-width) {
+  .facts__kilograms-days {
+      padding: 0 0 5px 0;
+  }
+
   .facts__weight-time {
     font-size: 14px;
     line-height: 30px;

@@ -14,7 +14,7 @@
   line-height: 1;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin: 30px 0;
+  margin: 28px 0 32px;
 }
 
 .extra__list {
@@ -22,7 +22,7 @@
 }
 
 .extra__list li {
-  min-height: 130px;
+  min-height: 129px;
 }
 
 .extra__item {
@@ -67,7 +67,7 @@
   background-image: url("../img/gift-photo-mobile@1x.webp");
   background-position: top center;
   background-repeat: no-repeat;
-  margin: 38px 0 35px;
+  margin: 40px 0 35px;
   display: flex;
   position: relative;
 }
@@ -88,9 +88,10 @@
 }
 
 .extra__gift p {
+  .flex-column;
   margin-top: auto;
   text-align: center;
-  padding: 25px 50px;
+  padding: 25px 0 25px 56px;
 }
 
 @media (min-width: @tablet-width) {
@@ -141,7 +142,7 @@
     background-image: url("../img/gift-photo-tablet@1x.jpg");
     background-image: url("../img/gift-photo-tablet@1x.webp");
     background-size: cover;
-    margin: 70px 0 75px;
+    margin: 75px 0;
   }
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
@@ -150,7 +151,6 @@
   }
 
   .extra__gift p {
-    .flex-column;
     margin-top: 73px;
     text-align: left;
     padding: 0;
