@@ -107,7 +107,7 @@
 
   .extra__list {
     width: 635px;
-    margin: 85px 40px 20px;
+    margin: 85px 40px 0;
   }
 
   .extra__list li {
@@ -116,7 +116,7 @@
 
   .extra__item-name {
     margin: 20px 0;
-    flex-basis: 70%;
+    flex-basis: 49%;
   }
 
   .extra__wrapper {
@@ -137,15 +137,29 @@
   .extra__gift {
     min-height: 200px;
     display: flex;
+    flex-direction: row-reverse;
     background-image: url("../img/gift-photo-tablet@1x.jpg");
     background-image: url("../img/gift-photo-tablet@1x.webp");
     background-size: cover;
-    margin: 90px 0 75px;
+    margin: 70px 0 75px;
   }
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
       background-image: url("img/gift-photo-tablet@2x.jpg");
       background-image: url("img/gift-photo-tablet@2x.webp");
+  }
+
+  .extra__gift p {
+    .flex-column;
+    margin-top: 73px;
+    text-align: left;
+    padding: 0;
+    flex-basis: 24%;
+    padding-right: 115px;
+  }
+
+  .extra__icon {
+    left: 91px;
   }
 }
 

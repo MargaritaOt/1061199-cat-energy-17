@@ -16,6 +16,7 @@
 }
 
 .contacts__title {
+  .flex-column;
   margin: 0;
   font-family: @font-family-base;
   font-size: 16px;
@@ -24,13 +25,16 @@
   text-transform: @text-transform-base;
 }
 
+.contacts__title span {
+  width: 140px;
+}
+
 .contacts__add {
   font-family: "Arial", sans-serif;
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin: 0 0 27px 20px;
 }
 
 .contacts__add span {
@@ -57,7 +61,7 @@
   }
 
   .contacts__wrapper {
-    margin: 68px 0 30px 50px;
+    padding: 65px 0 25px 70px;
   }
 
   .contacts__title {
@@ -69,7 +73,7 @@
   .contacts__add {
     width: 175px;
     margin-left: auto;
-    margin-right: 50px;
+    margin-right: 70px;
     font-size: 16px;
     line-height: 20px;
     text-align: right;
