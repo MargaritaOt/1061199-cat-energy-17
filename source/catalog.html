@@ -264,8 +264,12 @@
           <li class="catalog__item">
             <article class="catalog__all">
               <p>Показать еще 100500 товаров</p><span>На самом деле вкусов гораздо больше!</span>
-              <a class="catalog__list-button" href="#">
-              <svg class="catalog__icon" width="30" height="30"><use xlink:href="#icon-plus-mobile"></use></svg>Показать все</a>
+            <a class="catalog__list-button" href="#">
+            <picture class="catalog__icon">
+              <source media="(min-width: 1280px)" srcset="img//icon-plus.svg">
+              <source media="(min-width: 768px)" srcset="img//icon-plus.svg">
+              <img alt="Товары" src="img/icon-plus-mobile.svg">
+            </picture>Показать все</a>
             </article>
           </li>
         </ul>
