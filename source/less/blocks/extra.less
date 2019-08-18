@@ -48,6 +48,7 @@
   padding: 12px 0 11px;
   text-align: center;
   margin: 12px 0 0;
+
   &:active {
     color: rgba(255, 255, 255, 0.302);
   }
@@ -63,8 +64,7 @@
   color: @color-text;
   text-transform: none;
   background-color: @color-base;
-  background-image: url("../img/gift-photo-mobile@1x.jpg");
-  background-image: url("../img/gift-photo-mobile@1x.webp");
+  background-image: url("../img/gift-photo-mobile@1x.jpg"), url("../img/gift-photo-mobile@1x.webp");
   background-position: top center;
   background-repeat: no-repeat;
   margin: 40px 0 35px;
@@ -73,8 +73,7 @@
 }
 
 @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-  background-image: url("img/gift-photo-mobile@2x.jpg");
-  background-image: url("img/gift-photo-mobile@2x.webp");
+  background-image: url("img/gift-photo-mobile@2x.jpg"), url("img/gift-photo-mobile@2x.webp");
 }
 
 .extra__icon {
@@ -139,15 +138,13 @@
     min-height: 200px;
     display: flex;
     flex-direction: row-reverse;
-    background-image: url("../img/gift-photo-tablet@1x.jpg");
-    background-image: url("../img/gift-photo-tablet@1x.webp");
+    background-image: url("../img/gift-photo-tablet@1x.jpg"), url("../img/gift-photo-tablet@1x.webp");
     background-size: cover;
     margin: 75px 0;
   }
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-      background-image: url("img/gift-photo-tablet@2x.jpg");
-      background-image: url("img/gift-photo-tablet@2x.webp");
+    background-image: url("img/gift-photo-tablet@2x.jpg"), url("img/gift-photo-tablet@2x.webp");
   }
 
   .extra__gift p {
@@ -212,8 +209,7 @@
   .extra__gift {
     flex-basis: 20%;
     margin: 0 0 85px 60px;
-    background-image: url("../img/gift-photo-desktop@1x.jpg");
-    background-image: url("../img/gift-photo-desktop@1x.webp");
+    background-image: url("../img/gift-photo-desktop@1x.jpg"), url("../img/gift-photo-desktop@1x.webp");
     height: 290px;
   }
 
@@ -224,8 +220,7 @@
   }
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-    background-image: url("img/gift-photo-desktop@2x.jpg");
-    background-image: url("img/gift-photo-desktop@2x.webp");
+    background-image: url("img/gift-photo-desktop@2x.jpg"), url("img/gift-photo-desktop@2x.webp");
   }
 
   .extra__icon {

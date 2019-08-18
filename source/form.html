@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="utf-8">
   <title>HTML Academy: Кэт энерджи</title>
@@ -12,8 +13,11 @@
   <script src="js/picturefill.js">
   </script>
 </head>
+
 <body>
-  <div style="display:none"></div>
+  <svg style="display:none">
+    <include src="build/img/sprite.svg"></include>
+  </svg>
   <header class="page-header">
     <div class="page-header__inner">
       <a class="page-header__logo logo"><img alt="Кэт энерджи" class="logo__image" height="18" src="img/logo-mobile.svg" width="101"></a>
@@ -68,11 +72,13 @@
             <p class="form__title">Контактные данные (владельца кота)</p>
             <div>
               <label for="email">e-mail:<sup>*</sup></label> <input name="email" placeholder="KUKLACHEV@GMAIL.COM" required="" type="email"> <svg class="form__icon-mail" height="13" width="17">
-              <use xlink:href="#icon-mail"></use></svg>
+                <use xlink:href="#icon-mail"></use>
+              </svg>
             </div>
             <div>
               <label for="tel">телефон:<sup>*</sup></label> <input id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg class="form__icon-phone" height="20" width="20">
-              <use xlink:href="#icon-phone"></use></svg>
+                <use xlink:href="#icon-phone"></use>
+              </svg>
             </div>
           </div>
           <div class="form__comment">
@@ -105,9 +111,16 @@
             </div>
           </div>
           <div class="contacts__map">
-            <picture><source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.webp 1x, img/bg-map-desktop@2x.webp 2x" type="image/webp"> <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.webp 1x, img/bg-map-tablet@2x.webp 2x" type="image/webp"> <source srcset="img/bg-map-mobile@1x.webp 1x, img/bg-map-mobile@2x.webp 2x" type="image/webp"> <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.png 1x, img/bg-map-desktop@2x.png 2x"> <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.png 1x, img/bg-map-tablet@2x.png 2x"> <img alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" class="contacts__image" src="img/bg-map-mobile@1x.png" srcset="img/bg-map-mobile@1x.png 1x, img/bg-map-mobile@2x.png 2x"></picture>
+            <picture>
+              <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.webp 1x, img/bg-map-desktop@2x.webp 2x" type="image/webp">
+              <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.webp 1x, img/bg-map-tablet@2x.webp 2x" type="image/webp">
+              <source srcset="img/bg-map-mobile@1x.webp 1x, img/bg-map-mobile@2x.webp 2x" type="image/webp">
+              <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.png 1x, img/bg-map-desktop@2x.png 2x">
+              <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.png 1x, img/bg-map-tablet@2x.png 2x"> <img alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" class="contacts__image" src="img/bg-map-mobile@1x.png"
+                srcset="img/bg-map-mobile@1x.png 1x, img/bg-map-mobile@2x.png 2x"></picture>
             <div class="contacts__icon">
-              <picture><source srcset="img/map-pin.webp" type="image/webp"> <img alt="Метка на карте" height="55" src="img/map-pin.png" width="53"></picture>
+              <picture>
+                <source srcset="img/map-pin.webp" type="image/webp"> <img alt="Метка на карте" height="55" src="img/map-pin.png" width="53"></picture>
             </div>
           </div>
         </div>
@@ -122,15 +135,18 @@
           <ul class="social__list">
             <li class="social__item">
               <a class="social__link" href="https://vk.com/htmlacademy"><span class="visually-hidden">Мы в Вконтакте</span> <svg class="social__icon-vk" height="12" width="22">
-              <use xlink:href="#icon-vk"></use></svg></a>
+                  <use xlink:href="#icon-vk"></use>
+                </svg></a>
             </li>
             <li class="social__item">
               <a class="social__link" href="https://www.instagram.com/htmlacademy"><span class="visually-hidden">Мы в Инстаграме</span> <svg class="social__icon-insta" height="16" width="16">
-              <use xlink:href="#icon-insta"></use></svg></a>
+                  <use xlink:href="#icon-insta"></use>
+                </svg></a>
             </li>
             <li class="social__item">
               <a class="social__link" href="https://www.facebook.com/htmlacademy"><span class="visually-hidden">Мы в Фейсбуке</span> <svg class="social__icon-fb" height="19" width="10">
-              <use xlink:href="#icon-fb"></use></svg></a>
+                  <use xlink:href="#icon-fb"></use>
+                </svg></a>
             </li>
           </ul>
         </div>
@@ -143,4 +159,5 @@
     </script>
   </main>
 </body>
+
 </html>

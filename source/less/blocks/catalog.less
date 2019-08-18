@@ -52,6 +52,7 @@
   background-color: @color-base;
   color: @color-text;
   margin-bottom: 25px;
+
   &:active {
     color: rgba(255, 255, 255, 0.302);
   }
@@ -80,6 +81,7 @@
 .catalog__list-button {
   background-color: @color-gray;
   padding: 10px 0;
+
   &:active {
     color: rgba(68, 68, 68, 0.302);
   }
@@ -104,7 +106,7 @@
   .catalog__item-image {
     width: 325px;
     min-height: 208px;
-    align-items: flex-end
+    align-items: flex-end;
   }
 
   .catalog__item:not(:last-child)::before {
@@ -179,7 +181,7 @@
 @media (min-width: @desktop-width) {
   .catalog__wrapper {
     margin-bottom: 10px;
-    margin-top: 33px
+    margin-top: 33px;
   }
 
   .catalog__list {

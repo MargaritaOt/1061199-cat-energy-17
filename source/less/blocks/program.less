@@ -39,6 +39,7 @@
   padding: 14px 0;
   margin-top: 273px;
   text-align: center;
+
   &:active {
     color: rgba(255, 255, 255, 0.302);
   }
@@ -52,16 +53,14 @@
   width: 320px;
   height: 305px;
   background-color: #64a83b;
-  background-image: url("../img/index-background-mobile@1x.jpg");
-  background-image: url("../img/index-background-mobile@1x.webp");
+  background-image: url("../img/index-background-mobile@1x.jpg"), url("../img/index-background-mobile@1x.webp");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: content;
 }
 
 @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-  background-image: url("img/index-background-mobile@2x.jpg");
-  background-image: url("img/index-background-mobile@2x.webp");
+  background-image: url("img/index-background-mobile@2x.jpg"), url("img/index-background-mobile@2x.webp");
 }
 
 .program__logo-image {
@@ -130,14 +129,12 @@
     width: 50%;
     height: 180%;
     background-color: #64a83b;
-    background-image: url("../img/index-background-desktop@1x.jpg");
-    background-image: url("../img/index-background-desktop@1x.webp");
+    background-image: url("../img/index-background-desktop@1x.jpg"), url("../img/index-background-desktop@1x.webp");
     background-size: content;
   }
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-    background-image: url("img/index-background-desktop@2x.jpg");
-    background-image: url("img/index-background-desktop@2x.webp");
+    background-image: url("img/index-background-desktop@2x.jpg"), url("img/index-background-desktop@2x.webp");
     background-size: content;
   }
 

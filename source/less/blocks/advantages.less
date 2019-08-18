@@ -33,6 +33,7 @@
   position: absolute;
   width: 60px;
   height: 60px;
+  left: 0;
   background-repeat: no-repeat;
   background-position: center;
   background-color: @color-base;
@@ -40,30 +41,22 @@
 
 .advantages__item--composition::before {
   top: 13px;
-  left: 0;
-  background-image: url("../img/advantage-leaf@1x.png");
-  background-image: url("../img/advantage-leaf@1x.webp");
+  background-image: url("../img/advantage-leaf@1x.png"), url("../img/advantage-leaf@1x.webp");
 }
 
 .advantages__item--view::before {
   top: 93px;
-  left: 0;
-  background-image: url("../img/advantage-powder@1x.png");
-  background-image: url("../img/advantage-powder@1x.webp");
+  background-image: url("../img/advantage-powder@1x.png"), url("../img/advantage-powder@1x.webp");
 }
 
 .advantages__item--instruction::before {
   bottom: 90px;
-  left: 0;
-  background-image: url("../img/advantage-dining@1x.png");
-  background-image: url("../img/advantage-dining@1x.webp");
+  background-image: url("../img/advantage-dining@1x.png"), url("../img/advantage-dining@1x.webp");
 }
 
 .advantages__item--result::before {
   bottom: 10px;
-  left: 0;
-  background-image: url("../img/advantage-clock@1x.png");
-  background-image: url("../img/advantage-clock@1x.webp");
+  background-image: url("../img/advantage-clock@1x.png"), url("../img/advantage-clock@1x.webp");
 }
 
 @media (min-width: @tablet-width) {
@@ -97,30 +90,27 @@
     .description-tablet;
   }
 
-  .advantages__item--composition::before {
+  .advantages__item::before {
     width: 80px;
     height: 80px;
+  }
+
+  .advantages__item--composition::before {
     top: -20px;
     left: -1px;
   }
 
   .advantages__item--view::before {
-    width: 80px;
-    height: 80px;
     top: -20px;
     left: 382px;
   }
 
   .advantages__item--instruction::before {
-    width: 80px;
-    height: 80px;
     top: 296px;
     left: -1px;
   }
 
   .advantages__item--result::before {
-    width: 80px;
-    height: 80px;
     top: 296px;
     left: 382px;
   }
@@ -146,23 +136,23 @@
     margin: 43px 0 25px;
   }
 
-  .advantages__item--composition::before {
+  .advantages__item::before {
     top: -25px;
+  }
+
+  .advantages__item--composition::before {
     left: -1px;
   }
 
   .advantages__item--view::before {
-    top: -25px;
     left: 325px;
   }
 
   .advantages__item--instruction::before {
-    top: -25px;
     left: 650px;
   }
 
   .advantages__item--result::before {
-    top: -25px;
     left: 975px;
   }
 
