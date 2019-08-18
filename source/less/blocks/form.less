@@ -23,7 +23,7 @@
 
 .form__input {
   padding: 13px 15px;
-  margin: 0 0 0 15px;
+  margin: 0 0 0 13px;
   box-sizing: border-box;
   font-family: @font-family-base;
   border: 1px solid @color-gray;
@@ -43,13 +43,59 @@
 }
 
 .form__title {
-  padding-top: 30px;
+  padding-top: 15px;
+  margin: 0;
   text-transform: none;
   font-size: 24px;
   line-height: 1;
 }
 
+.form__info {
+  padding-top: 15px;
+}
+
 .form__info div {
   display: flex;
   margin-bottom: 15px;
+  position: relative;
+}
+
+.form__info div:not(:last-child) {
+  margin-top: 33px;
+  margin-bottom: 15px;
+}
+
+.form__icon-mail {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.form__icon-phone {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 12px;
+}
+
+.form__comment {
+  padding-top: 35px;
+}
+
+#note {
+  padding: 10px 0 13px 15px;
+  font-family: @font-family-base;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: @text-transform-base;
+  width: 265px;
+}
+
+.form__extra {
+  padding-top: 10px;
+}
+
+.form__extra div {
+
 }
