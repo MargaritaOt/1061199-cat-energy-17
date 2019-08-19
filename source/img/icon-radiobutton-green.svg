@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-opacity: 0;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="0" y="0" width="12" height="12" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#68b738"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <circle id="radiobutton" class="cls-1" cx="6" cy="6" r="6"/>
+</svg>
