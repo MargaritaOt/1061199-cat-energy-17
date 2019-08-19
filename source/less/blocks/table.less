@@ -1,22 +1,23 @@
 .table {
   display: table;
   border-collapse: collapse;
-  margin: 10px 0 0;
+  margin: 12px 0 0;
 }
 
-.table__row {
-  display: table-cell;
-  padding: 0 25px;
-  text-align: center;
+.table__value {
+  padding: 0;
 }
 
 .table__field {
-  display: table-row;
   font-family: "Arial", sans-serif;
   font-size: 12px;
   line-height: 16px;
   font-weight: @font-weight-base;
   text-transform: none;
+  display: block;
+  padding: 0;
+  margin-left: 57px;
+  text-align: right;
 }
 
 @media (min-width: @tablet-width) {
@@ -27,24 +28,24 @@
   .table__field {
     font-size: 16px;
     line-height: 1;
+    margin-right: 35px;
   }
 }
 
 @media (min-width: @desktop-width) {
   .table {
-    margin: 20px 0 0;
-  }
-
-  .table__row {
-    padding: 6px 0 0 30px;
+    width: 70%;
+    margin: 25px auto 0;
   }
 
   .table__value {
-    text-align: center;
+    text-align: left;
   }
 
   .table__field {
-    font-size: 14px;
-    line-height: 35px;
+    font-size: 16px;
+    line-height: 1;
+    text-align: right;
+    margin-right: 0;
   }
 }

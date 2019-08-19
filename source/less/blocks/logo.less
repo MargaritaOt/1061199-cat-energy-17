@@ -1,9 +1,27 @@
 .logo {
-  margin: 0 auto 10px 0;
+  margin: 5px auto 10px 5px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
 }
 
 .logo__image {
-  width: 200px;
+  width: 190px;
+}
+
+.logo___logo-footer {
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
 }
 
 .logo___logo-footer img {
@@ -11,6 +29,10 @@
 }
 
 @media (min-width: @tablet-width) {
+  .logo {
+    margin: 0 auto 10px 0;
+  }
+
   .logo__image {
     width: 175px;
   }

@@ -1,0 +1,153 @@
+.form {
+  .wrapper;
+  margin-top: 35px;
+  font-family: @font-family-base;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: @text-transform-base;
+}
+
+.form__user {
+  margin-bottom: 20px;
+}
+
+.form__user div {
+  display: flex;
+  max-height: 45px;
+  margin-bottom: 15px;
+}
+
+.form__lable {
+  padding-top: 10px;
+}
+
+.form__input {
+  padding: 13px 15px;
+  margin: 0 0 0 13px;
+  box-sizing: border-box;
+  font-family: @font-family-base;
+  border: 1px solid @color-gray;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: @text-transform-base;
+  flex-grow: 1;
+}
+
+.form__target {
+  padding-top: 28px;
+  margin-left: 45px;
+}
+
+.form__target div {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form__icon-radiobutton {
+  content: "";
+  position: absolute;
+  left: -45px;
+  top: -5px;
+}
+/*.form__checkbox1:checked+label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-image: url("../img/icon-radiobutton.svg");
+}*/
+
+.form__title {
+  padding-top: 30px;
+  margin: 0;
+  text-transform: none;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.form__info {
+  padding-top: 15px;
+}
+
+.form__info div {
+  display: flex;
+  position: relative;
+}
+
+.form__info div:not(:last-child) {
+  margin-top: 18px;
+  margin-bottom: 15px;
+}
+
+.form__icon-mail {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.form__icon-phone {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 12px;
+}
+
+.form__comment {
+  padding-top: 35px;
+}
+
+#note {
+  padding: 10px 0 10px 15px;
+  font-family: @font-family-base;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: @text-transform-base;
+  width: 280px;
+  box-sizing: border-box;
+  border: 1px solid @color-gray;
+}
+
+.form__extra {
+  padding-top: 40px;
+  margin-left: 45px;
+}
+
+.form__extra div {
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.form__icon-tick {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 0;
+}
+
+.fotm__button {
+  margin-top: 15px;
+  padding: 10px 80px;
+  font-family: @font-family-base;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: @text-transform-base;
+  border: none;
+  background-color: @color-base;
+  color: @color-text;
+
+  &:active {
+    color: rgba(255, 255, 255, 0.302);
+  }
+}
+
+.form__small {
+  margin: 15px 0 30px 64px;
+  display: block;
+  text-transform: none;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+}

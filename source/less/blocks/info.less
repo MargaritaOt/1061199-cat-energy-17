@@ -1,0 +1,50 @@
+.info {
+  display: table;
+  border-collapse: collapse;
+  margin: 10px 0 0;
+  width: 100%;
+}
+
+.info__price {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: @font-weight-base;
+  text-transform: none;
+  display: block;
+  text-align: right;
+}
+
+@media (min-width: @tablet-width) {
+  .info {
+    margin: 25px 0 0 35px;
+    flex-basis: 45%;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .info__quantity {
+    text-align: right;
+  }
+
+  .info__price {
+    margin-left: 25px;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .info {
+    margin: 30px 0 0;
+  }
+
+  .info__quantity {
+    text-align: center;
+  }
+
+  .info__price {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: end;
+    margin-right: 30px;
+  }
+}
