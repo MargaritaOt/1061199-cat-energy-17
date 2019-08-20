@@ -82,6 +82,10 @@
   font-size: 16px;
   line-height: 1;
   display: flex;
+
+  &:active {
+    color: rgba(17, 17, 17, 0.302);
+  }
 }
 
 .categories__wrapper {
@@ -92,17 +96,24 @@
   margin-left: 11px;
   margin-top: 2px;
 
+  &:active {
+    color: rgba(17, 17, 17, 0.302);
+  }
+}
+
+.categories__icon {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translateX(-25%);
+  fill: currentColor;
+
   &:hover {
-    svg {
-      transform: none;
-    }
+    transform: none;
   }
 
-  svg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform: translateX(-25%);
+  &:active {
+    fill: currentColor;
   }
 }
 

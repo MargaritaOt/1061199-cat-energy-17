@@ -20,7 +20,11 @@
   </svg>
   <header class="page-header">
     <div class="page-header__inner">
-      <a class="page-header__logo logo"><img alt="Кэт энерджи" class="logo__image" height="18" src="img/logo-mobile.svg" width="101"></a>
+      <a class="page-header__logo logo">
+        <picture>
+          <source media="(min-width: 1280px)" srcset="img/logo-desktop.svg">
+          <source media="(min-width: 768px)" srcset="img/logo-tablet.svg"> <img alt="Кэт энерджи" class="logo__image" height="33" src="img/logo-mobile.svg" width="38"></picture>
+      </a>
       <nav class="main-nav main-nav--opened main-nav--nojs">
         <button class="main-nav__toggle" type="button"><span class="visually-hidden">Открыть меню</span></button>
         <div class="main-nav__wrapper">
@@ -53,31 +57,40 @@
               <label class="form__lable" for="name">Вес (кг):<sup>*</sup></label> <input class="form__input" name="weight" placeholder="7" type="text">
             </div>
             <div>
-              <label class="form__lable" for="name">Возраст(лет):</label> <input class="form__input" name="age" placeholder="7" type="text">
+              <label class="form__lable" for="name">Возраст (лет):</label> <input class="form__input" name="age" placeholder="7" type="text">
             </div>
           </div>
           <div class="form__target">
-            <label></label>
             <div>
-              <label><svg class="form__icon-radiobutton" height="30" width="30">
+              <label><svg class="form__checked" height="12" width="12">
+                  <use xlink:href="#icon-radiobutton-green"></use>
+                </svg>
+                <svg class="form__unchecked" height="30" width="30">
                   <use xlink:href="#icon-radiobutton"></use>
-                </svg> <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">Похудение</label>
+                </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">Похудение</label>
             </div>
             <div>
-              <label><svg class="form__icon-radiobutton" height="30" width="30">
+              <label><svg class="form__checked" height="12" width="12">
+                  <use xlink:href="#icon-radiobutton-green"></use>
+                </svg>
+                <svg class="form__unchecked" height="30" width="30">
                   <use xlink:href="#icon-radiobutton"></use>
                 </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="набор массы">Набор массы</label>
             </div>
             <div>
-              <label><svg class="form__icon-radiobutton" height="30" width="30">
+              <label><svg class="form__checked" height="12" width="12">
+                  <use xlink:href="#icon-radiobutton-green"></use>
+                </svg>
+                <svg class="form__unchecked" height="30" width="30">
                   <use xlink:href="#icon-radiobutton"></use>
-                </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">Не знаю (нужен ваш совет)</label>
-            </div><label></label>
+                </svg>
+                <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">Не знаю (нужен ваш совет)</label>
+            </div>
           </div>
           <p class="form__title">Контактные данные (владельца кота)</p>
           <div class="form__info">
             <div>
-              <label class="form__lable" for="email">e-mail:<sup>*</sup></label> <input class="form__input" name="email" placeholder="KUKLACHEV@GMAIL.COM" required="" type="email"> <svg class="form__icon-mail" height="13" width="17">
+              <label class="form__lable" for="email">e-mail:<sup>*</sup></label> <input class="form__input" name="email" placeholder="kuklachev@gmail.com" required="" type="email"> <svg class="form__icon-mail" height="13" width="17">
                 <use xlink:href="#icon-mail"></use>
               </svg>
             </div>
