@@ -60,11 +60,11 @@
   fill: currentColor;
 }
 
-.form__checkbox1+label.form__checked {
+.form__checkbox1 + label.form__checked {
   display: none;
 }
 
-.form__checkbox1:checked+label.form__checked {
+.form__checkbox1:checked + label.form__checked {
   display: flex;
 }
 
@@ -318,8 +318,7 @@
   }
 
   .form__target {
-    margin-left: 75px;
-    margin: 0;
+    margin: 0 0 0 75px;
     padding: 35px 0 0 80px;
   }
 
@@ -340,7 +339,7 @@
   }
 
   .form__info div:not(:last-child) {
-    margin:0 75px 0 0;
+    margin: 0 75px 0 0;
   }
 
   .form__icon-mail,
