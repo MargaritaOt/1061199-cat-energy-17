@@ -49,54 +49,57 @@
       <p class="page__discription">Заполните анкету и мы подберем программу питания для вашего кота</p>
       <section class="page__form form">
         <form action="/echo" method="post">
+          <div class="form__wrapper">
           <div class="form__user">
-            <div>
-              <label class="form__lable" for="name">Имя:<sup>*</sup></label> <input class="form__input" name="name" placeholder="Барсик" type="text">
+                <div>
+                <label class="form__lable" for="name">Имя:<sup>*</sup></label> <input class="form__input" name="name" placeholder="Барсик" type="text">
+              </div>
+              <div>
+                <label class="form__lable" for="name">Вес (кг):<sup>*</sup></label> <input class="form__input" name="weight" placeholder="7" type="text">
+              </div>
+              <div>
+                <label class="form__lable" for="name">Возраст (лет):</label> <input class="form__input" name="age" placeholder="7" type="text">
+              </div>
             </div>
-            <div>
-              <label class="form__lable" for="name">Вес (кг):<sup>*</sup></label> <input class="form__input" name="weight" placeholder="7" type="text">
-            </div>
-            <div>
-              <label class="form__lable" for="name">Возраст (лет):</label> <input class="form__input" name="age" placeholder="7" type="text">
-            </div>
-          </div>
-          <div class="form__target">
-            <div>
-              <label><svg class="form__checked" height="12" width="12">
-                  <use xlink:href="#icon-radiobutton-green"></use>
-                </svg>
-                <svg class="form__unchecked" height="30" width="30">
-                  <use xlink:href="#icon-radiobutton"></use>
-                </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">Похудение</label>
-            </div>
-            <div>
-              <label><svg class="form__checked" height="12" width="12">
-                  <use xlink:href="#icon-radiobutton-green"></use>
-                </svg>
-                <svg class="form__unchecked" height="30" width="30">
-                  <use xlink:href="#icon-radiobutton"></use>
-                </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="набор массы">Набор массы</label>
-            </div>
-            <div>
-              <label><svg class="form__checked" height="12" width="12">
-                  <use xlink:href="#icon-radiobutton-green"></use>
-                </svg>
-                <svg class="form__unchecked" height="30" width="30">
-                  <use xlink:href="#icon-radiobutton"></use>
-                </svg>
-                <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">Не знаю (нужен ваш совет)</label>
+            <div class="form__target">
+              <div>
+                <label><svg class="form__checked" height="12" width="12">
+                    <use xlink:href="#icon-radiobutton-green"></use>
+                  </svg>
+                  <svg class="form__unchecked" height="30" width="30">
+                    <use xlink:href="#icon-radiobutton"></use>
+                  </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">Похудение</label>
+              </div>
+              <div>
+                <label><svg class="form__checked" height="12" width="12">
+                    <use xlink:href="#icon-radiobutton-green"></use>
+                  </svg>
+                  <svg class="form__unchecked" height="30" width="30">
+                    <use xlink:href="#icon-radiobutton"></use>
+                  </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="набор массы">Набор массы</label>
+              </div>
+              <div>
+                <label><svg class="form__checked" height="12" width="12">
+                    <use xlink:href="#icon-radiobutton-green"></use>
+                  </svg>
+                  <svg class="form__unchecked" height="30" width="30">
+                    <use xlink:href="#icon-radiobutton"></use>
+                  </svg>
+                  <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">Не знаю (нужен ваш совет)</label>
+              </div>
             </div>
           </div>
           <p class="form__title">Контактные данные (владельца кота)</p>
           <div class="form__info">
             <div>
-              <label class="form__lable" for="email">e-mail:<sup>*</sup></label> <input class="form__input" name="email" placeholder="kuklachev@gmail.com" required="" type="email"> <svg class="form__icon-mail" height="13" width="17">
+              <label class="form__lable" for="email">e-mail:<sup>*</sup></label> <input class="form__input form__input--info" name="email" placeholder="kuklachev@gmail.com" required="" type="email"> <svg class="form__icon-mail" height="13"
+                width="17">
                 <use xlink:href="#icon-mail"></use>
               </svg>
             </div>
             <div>
-              <label class="form__lable" for="tel">телефон:<sup>*</sup></label> <input class="form__input" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg class="form__icon-phone" height="20"
-                width="20">
+              <label class="form__lable" for="tel">телефон:<sup>*</sup></label> <input class="form__input form__input--info" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg
+                class="form__icon-phone" height="20" width="20">
                 <use xlink:href="#icon-phone"></use>
               </svg>
             </div>
@@ -104,37 +107,55 @@
           <p class="form__title">Комментарий</p>
           <div class="form__comment">
             <label for="note"></label>
-            <textarea id="note" name="note" placeholder="РАССКАЖИТЕ ОБО ВСЕХ ПОВАДКАХ КОТА" rows="7"></textarea>
+            <textarea id="note" name="note" placeholder="РАССКАЖИТЕ ОБО ВСЕХ ПОВАДКАХ КОТА" rows="5"></textarea>
           </div>
           <p class="form__title">Дополнительно</p>
           <div class="form__extra">
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field"><svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox2" id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field">
+                <svg class="form__icon-tick" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
-                </svg>Сахаразаменитель</label>
+                </svg>
+                <svg class="form__icon-checkbox" height="30" width="30">
+                  <use xlink:href="#icon-checkbox"></use>
+                </svg>Сахарозаменитель</label>
             </div>
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="water-field" name="water" type="checkbox"> <label for="water-field"><svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox2" id="water-field" name="water" type="checkbox"> <label for="water-field">
+                <svg class="form__icon-tick" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
+                </svg>
+                <svg class="form__icon-checkbox" height="30" width="30">
+                  <use xlink:href="#icon-checkbox"></use>
                 </svg>Питьевая вода</label>
             </div>
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="milk-field" name="milk" type="checkbox"> <label for="milk-field"><svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox2" id="milk-field" name="milk" type="checkbox"> <label for="milk-field">
+                <svg class="form__icon-tick" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
+                </svg>
+                <svg class="form__icon-checkbox" height="30" width="30">
+                  <use xlink:href="#icon-checkbox"></use>
                 </svg>Молоко</label>
             </div>
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="vitamins-field" name="vitamins" type="checkbox"> <label for="vitamins-field"><svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox2" id="vitamins-field" name="vitamins" type="checkbox"> <label for="vitamins-field">
+                <svg class="form__icon-tick" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
+                </svg>
+                <svg class="form__icon-checkbox" height="30" width="30">
+                  <use xlink:href="#icon-checkbox"></use>
                 </svg>Витамины</label>
             </div>
-          </div><input class="fotm__button" type="submit" value="Отправить заявку">
-        </form><small class="form__small"><sup>*</sup> — Обязательные поля</small>
+          </div>
+          <div class="form__request"><input class="fotm__button" type="submit" value="Отправить заявку">
+            <small class="form__small"><sup>*</sup> — Обязательные поля</small></div>
+        </form>
       </section>
       <section class="contacts">
         <div class="contacts__inner">
           <div class="contacts__wrapper">
-            <p class="contacts__title">приглашаем <span>к сотрудничеству</span> дилеров!</p>
+            <p class="contacts__title">приглашаем<span>к сотрудничеству</span>дилеров!</p>
             <div class="contacts__add">
               ул. Большая Конюшенная, д. 19/8 <span>Санкт-Петербург</span>
             </div>
