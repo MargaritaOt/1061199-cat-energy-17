@@ -7,16 +7,19 @@
   line-height: 29px;
 }
 
+.facts tbody {
+  display: flex;
+}
+
 .facts__fact {
-  display: table-cell;
+  .flex-column;
   padding: 0;
   text-align: center;
 }
 
 .facts__fact:not(:last-child) {
-  margin-right: 60px;
-  display: block;
-  margin-left: 20px;
+  margin-right: 85px;
+  margin-left: 34px;
 }
 
 .facts__kilograms-days {
@@ -24,12 +27,13 @@
 }
 
 .facts__weight-time {
-  display: table-row;
   font-family: "Arial", sans-serif;
   font-size: 12px;
   line-height: 1;
   font-weight: @font-weight-base;
   text-transform: none;
+  width: 55px;
+  align-self: center;
 }
 
 @media (min-width: @tablet-width) {
