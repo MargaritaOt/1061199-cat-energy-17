@@ -20,7 +20,7 @@
   </svg>
   <header class="page-header">
     <div class="page-header__inner">
-      <a class="page-header__logo logo">
+      <a class="page-header__logo logo" href="index.html">
         <picture>
           <source media="(min-width: 1280px)" srcset="img/logo-desktop.svg">
           <source media="(min-width: 768px)" srcset="img/logo-tablet.svg"> <img alt="Кэт энерджи" class="logo__image" height="33" src="img/logo-mobile.svg" width="38"></picture>
@@ -62,30 +62,20 @@
               </div>
             </div>
             <div class="form__target">
-              <div>
-                <label><svg class="form__checked" height="12" width="12">
-                    <use xlink:href="#icon-radiobutton-green"></use>
-                  </svg>
-                  <svg class="form__unchecked" height="30" width="30">
-                    <use xlink:href="#icon-radiobutton"></use>
-                  </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">Похудение</label>
+              <div><label>
+              <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">
+              <svg class="form__checked" height="12" width="12"><use xlink:href="#icon-radiobutton-green"></use></svg>
+              <svg class="form__unchecked" height="30" width="30"><use xlink:href="#icon-radiobutton"></use></svg>Похудение</label>
               </div>
-              <div>
-                <label><svg class="form__checked" height="12" width="12">
-                    <use xlink:href="#icon-radiobutton-green"></use>
-                  </svg>
-                  <svg class="form__unchecked" height="30" width="30">
-                    <use xlink:href="#icon-radiobutton"></use>
-                  </svg><input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="набор массы">Набор массы</label>
+              <div><label>
+              <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="набор массы">
+                <svg class="form__checked" height="12" width="12"><use xlink:href="#icon-radiobutton-green"></use></svg>
+                  <svg class="form__unchecked" height="30" width="30"><use xlink:href="#icon-radiobutton"></use></svg>Набор массы</label>
               </div>
-              <div>
-                <label><svg class="form__checked" height="12" width="12">
-                    <use xlink:href="#icon-radiobutton-green"></use>
-                  </svg>
-                  <svg class="form__unchecked" height="30" width="30">
-                    <use xlink:href="#icon-radiobutton"></use>
-                  </svg>
-                  <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">Не знаю (нужен ваш совет)</label>
+              <div><label>
+              <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">
+              <svg class="form__checked" height="12" width="12"><use xlink:href="#icon-radiobutton-green"></use></svg>
+              <svg class="form__unchecked" height="30" width="30"><use xlink:href="#icon-radiobutton"></use></svg>Не знаю (нужен ваш совет)</label>
               </div>
             </div>
           </div>
@@ -113,12 +103,11 @@
           <div class="form__extra">
             <div>
               <input checked class="visually-hidden form__checkbox2" id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field">
-                <svg class="form__icon-tick" height="16" width="21">
-                  <use xlink:href="#icon-tick"></use>
-                </svg>
-                <svg class="form__icon-checkbox" height="30" width="30">
-                  <use xlink:href="#icon-checkbox"></use>
-                </svg>Сахарозаменитель</label>
+                <svg class="form__icon-tick" height="16" width="21"><use xlink:href="#icon-tick"></use>
+</svg>
+<svg class="form__icon-checkbox" height="30" width="30">
+  <use xlink:href="#icon-checkbox"></use>
+</svg>Сахарозаменитель</label>
             </div>
             <div>
               <input checked class="visually-hidden form__checkbox2" id="water-field" name="water" type="checkbox"> <label for="water-field">
@@ -201,7 +190,9 @@
           </ul>
         </div>
         <div class="page-footer__copyright copyright">
-          <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a> <a class="copyright__logo" href="index.html"><img alt="Логотип Academy" height="34" src="img/htmlacademy.svg" width="27"></a>
+          <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a>
+          <a class="copyright__logo" href="https://htmlacademy.ru/intensive/adaptive">
+            <svg class="copyright__htmlacademy" height="24" width="27"><use xlink:href="#icon-htmlacademy"></use></svg></a>
         </div>
       </div>
     </footer>

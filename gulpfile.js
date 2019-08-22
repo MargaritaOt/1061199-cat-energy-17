@@ -60,7 +60,7 @@ gulp.task("sprite", function() {
     }))
     .pipe(cheerio({
       run: function($) {
-        $('svg').attr('style', 'display:none');
+        $('svg').attr('style', 'display:none;');
       },
       parserOptions: {
         xmlMode: true

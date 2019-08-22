@@ -17,34 +17,40 @@
 
 @media (min-width: @tablet-width) {
   .info {
-    margin: 25px 0 0 35px;
-    flex-basis: 45%;
+    margin: 25px 0 0 auto;
+    flex-basis: 40%;
     font-size: 16px;
     line-height: 20px;
   }
 
   .info__quantity {
     text-align: right;
+    width: 160px;
+    padding: 0;
   }
 
   .info__price {
     margin-left: 25px;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
 @media (min-width: @desktop-width) {
   .info {
-    margin: 30px 0 0;
+    margin: 30px 0 0 10px;
+    flex-basis: 45%;
   }
 
   .info__quantity {
-    text-align: center;
+    text-align: left;
+    width: 84%;
   }
 
   .info__price {
     font-size: 16px;
     line-height: 20px;
     text-align: end;
-    margin-right: 30px;
+    margin: 0;
   }
 }
