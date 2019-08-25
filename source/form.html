@@ -6,8 +6,8 @@
   <title>HTML Academy: Кэт энерджи</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
   <meta content="telephone=no" name="format-detection">
-  <link href="font.woff" rel="preload" type="font/woff">
-  <link href="font.woff2" rel="preload" type="font/woff2">
+  <link rel="preload" href="font.woff" hreflang="" type="font/woff" as="fonts" crossorigin="anonymous">
+  <link rel="preload" href="font.woff2" type="font/woff2" as="fonts" crossorigin="anonymous">
   <link href="css/normalize.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
   <script src="js/picturefill.js">
@@ -50,48 +50,61 @@
       <section class="page__form form">
         <form action="/echo" method="post">
           <div class="form__wrapper">
-          <div class="form__user">
-                <div>
+            <div class="form__user">
+              <div>
                 <label class="form__lable" for="name">Имя:<sup>*</sup></label> <input class="form__input" name="name" placeholder="Барсик" type="text">
               </div>
               <div>
-                <label class="form__lable" for="name">Вес (кг):<sup>*</sup></label> <input class="form__input" name="weight" placeholder="7" type="text">
+                <label class="form__lable" for="weight">Вес (кг):<sup>*</sup></label> <input class="form__input" name="weight" placeholder="7" type="text">
               </div>
               <div>
-                <label class="form__lable" for="name">Возраст (лет):</label> <input class="form__input" name="age" placeholder="7" type="text">
+                <label class="form__lable" for="age">Возраст (лет):</label> <input class="form__input" name="age" placeholder="7" type="text">
               </div>
             </div>
             <div class="form__target">
               <div><label>
-              <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="похудение">
-              <svg class="form__checked" height="12" width="12"><use xlink:href="#icon-radiobutton-green"></use></svg>
-              <svg class="form__unchecked" height="30" width="30"><use xlink:href="#icon-radiobutton"></use></svg>Похудение</label>
+                  <input class="visually-hidden form__checkbox" name="question-one" type="radio" value="похудение">
+                  <svg class="form__checked" height="12" width="12">
+                    <use xlink:href="#icon-radiobutton-green"></use>
+                  </svg>
+                  <svg class="form__unchecked" height="30" width="30">
+                    <use xlink:href="#icon-radiobutton"></use>
+                  </svg>Похудение</label>
               </div>
               <div><label>
-              <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="набор массы">
-                <svg class="form__checked" height="12" width="12"><use xlink:href="#icon-radiobutton-green"></use></svg>
-                  <svg class="form__unchecked" height="30" width="30"><use xlink:href="#icon-radiobutton"></use></svg>Набор массы</label>
+                  <input class="visually-hidden form__checkbox" name="question-one" type="radio" value="набор массы">
+                  <svg class="form__checked" height="12" width="12">
+                    <use xlink:href="#icon-radiobutton-green"></use>
+                  </svg>
+                  <svg class="form__unchecked" height="30" width="30">
+                    <use xlink:href="#icon-radiobutton"></use>
+                  </svg>Набор массы</label>
               </div>
               <div><label>
-              <input class="visually-hidden form__checkbox1" name="question-one" type="radio" value="не знаю ">
-              <svg class="form__checked" height="12" width="12"><use xlink:href="#icon-radiobutton-green"></use></svg>
-              <svg class="form__unchecked" height="30" width="30"><use xlink:href="#icon-radiobutton"></use></svg>Не знаю (нужен ваш совет)</label>
+                  <input class="visually-hidden form__checkbox" name="question-one" type="radio" value="не знаю ">
+                  <svg class="form__checked" height="12" width="12">
+                    <use xlink:href="#icon-radiobutton-green"></use>
+                  </svg>
+                  <svg class="form__unchecked" height="30" width="30">
+                    <use xlink:href="#icon-radiobutton"></use>
+                  </svg>Не знаю (нужен ваш совет)</label>
               </div>
             </div>
           </div>
           <p class="form__title">Контактные данные (владельца кота)</p>
           <div class="form__info">
             <div>
-              <label class="form__lable" for="email">e-mail:<sup>*</sup></label> <input class="form__input form__input--info" name="email" placeholder="kuklachev@gmail.com" required="" type="email"> <svg class="form__icon-mail" height="13"
-                width="17">
-                <use xlink:href="#icon-mail"></use>
-              </svg>
+              <label class="form__lable" for="email">e-mail:<sup>*</sup></label>
+              <div class="form__cover"><input class="form__input form__input--info" name="email" placeholder="kuklachev@gmail.com" required="" type="email">
+                <svg class="form__icon-mail" height="13" width="17">
+                  <use xlink:href="#icon-mail"></use>
+                </svg></div>
             </div>
             <div>
-              <label class="form__lable" for="tel">телефон:<sup>*</sup></label> <input class="form__input form__input--info" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg
-                class="form__icon-phone" height="20" width="20">
-                <use xlink:href="#icon-phone"></use>
-              </svg>
+              <label class="form__lable" for="tel">телефон:<sup>*</sup></label>
+              <div class="form__cover"><input class="form__input form__input--info" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg class="form__icon-phone" height="20" width="20">
+                  <use xlink:href="#icon-phone"></use>
+                </svg></div>
             </div>
           </div>
           <p class="form__title">Комментарий</p>
@@ -102,37 +115,38 @@
           <p class="form__title">Дополнительно</p>
           <div class="form__extra">
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field">
-                <svg class="form__icon-tick" height="16" width="21"><use xlink:href="#icon-tick"></use>
-</svg>
-<svg class="form__icon-checkbox" height="30" width="30">
-  <use xlink:href="#icon-checkbox"></use>
-</svg>Сахарозаменитель</label>
-            </div>
-            <div>
-              <input checked class="visually-hidden form__checkbox2" id="water-field" name="water" type="checkbox"> <label for="water-field">
-                <svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox1" id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field">
+                <svg class="form__checked1" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
                 </svg>
-                <svg class="form__icon-checkbox" height="30" width="30">
+                <svg class="form__unchecked1" height="30" width="30">
+                  <use xlink:href="#icon-checkbox"></use>
+                </svg>Сахарозаменитель</label>
+            </div>
+            <div>
+              <input checked class="visually-hidden form__checkbox1" id="water-field" name="water" type="checkbox"> <label for="water-field">
+                <svg class="form__checked1" height="16" width="21">
+                  <use xlink:href="#icon-tick"></use>
+                </svg>
+                <svg class="form__unchecked1" height="30" width="30">
                   <use xlink:href="#icon-checkbox"></use>
                 </svg>Питьевая вода</label>
             </div>
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="milk-field" name="milk" type="checkbox"> <label for="milk-field">
-                <svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox1" id="milk-field" name="milk" type="checkbox"> <label for="milk-field">
+                <svg class="form__checked1" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
                 </svg>
-                <svg class="form__icon-checkbox" height="30" width="30">
+                <svg class="form__unchecked1" height="30" width="30">
                   <use xlink:href="#icon-checkbox"></use>
                 </svg>Молоко</label>
             </div>
             <div>
-              <input checked class="visually-hidden form__checkbox2" id="vitamins-field" name="vitamins" type="checkbox"> <label for="vitamins-field">
-                <svg class="form__icon-tick" height="16" width="21">
+              <input checked class="visually-hidden form__checkbox1" id="vitamins-field" name="vitamins" type="checkbox"> <label for="vitamins-field">
+                <svg class="form__checked1" height="16" width="21">
                   <use xlink:href="#icon-tick"></use>
                 </svg>
-                <svg class="form__icon-checkbox" height="30" width="30">
+                <svg class="form__unchecked1" height="30" width="30">
                   <use xlink:href="#icon-checkbox"></use>
                 </svg>Витамины</label>
             </div>
@@ -150,6 +164,9 @@
             </div>
           </div>
           <div class="contacts__map">
+            <iframe height="365"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.59810943521!2d30.3218713634308!3d59.938810690068955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fb661d55f%3A0xd0cc7f055debe430!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1562636252922!5m2!1sru!2sru"
+              width="320"></iframe>
             <picture>
               <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.webp 1x, img/bg-map-desktop@2x.webp 2x" type="image/webp">
               <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.webp 1x, img/bg-map-tablet@2x.webp 2x" type="image/webp">
@@ -192,7 +209,9 @@
         <div class="page-footer__copyright copyright">
           <a class="copyright__link" href="https://htmlacademy.ru/intensive/adaptive">HTML Academy</a>
           <a class="copyright__logo" href="https://htmlacademy.ru/intensive/adaptive">
-            <svg class="copyright__htmlacademy" height="24" width="27"><use xlink:href="#icon-htmlacademy"></use></svg></a>
+            <svg class="copyright__htmlacademy" height="24" width="27">
+              <use xlink:href="#icon-htmlacademy"></use>
+            </svg></a>
         </div>
       </div>
     </footer>

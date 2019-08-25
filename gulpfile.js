@@ -16,6 +16,25 @@ var cheerio = require('gulp-cheerio');
 var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
+var htmlmin = require("gulp-htmlmin");
+var uglify = require("gulp-uglify");
+
+gulp.task("minify", function() {
+  return gulp.src("source/*.html")
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(gulp.dest("source/html"));
+});
+
+gulp.task('minjs', function() {
+  return gulp.src("source/js/*.js")
+    .pipe(rename({
+      suffix: ".min"
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest("source/js"));
+})
 
 gulp.task("css", function() {
   return gulp.src("source/less/style.less")
@@ -28,7 +47,7 @@ gulp.task("css", function() {
     .pipe(csso())
     .pipe(sourcemap.write("."))
     .pipe(rename("style.min.css"))
-    .pipe(gulp.dest("build/css"))
+    .pipe(gulp.dest("build/css"));
 });
 
 gulp.task("webp", function() {

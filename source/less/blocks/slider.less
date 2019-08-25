@@ -12,9 +12,9 @@
 }
 
 .slider__toggles {
-  display: flex;
   position: relative;
-  margin: 26px 20px 35px;
+  display: flex;
+  margin: 26px 20px 37px;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 20px;
@@ -25,11 +25,11 @@
 .slider__toggles::before {
   position: absolute;
   content: "";
-  background-color: #ffffff;
+  top: 4px;
+  left: 80px;
   height: 12px;
   width: 80px;
-  top: 2px;
-  left: 80px;
+  background-color: #ffffff;
   border: 1px solid #cdcdcd;
   border-radius: 20px;
 }
@@ -37,11 +37,11 @@
 .slider__toggles::after {
   position: absolute;
   content: "";
+  top: 8px;
+  left: 85px;
+  width: 36px;
+  height: 7px;
   background-color: @color-base;
-  height: 9px;
-  width: 37px;
-  top: 5px;
-  left: 86px;
   border-radius: 20px;
 }
 
@@ -75,31 +75,37 @@
     margin-right: 50px;
   }
 
-  .slider__toggle-after::before {
+  .slider__toggles::after {
     position: absolute;
     content: "";
-    height: 9px;
-    width: 9px;
     top: 6px;
     left: 328px;
+    z-index: 1;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background-color: #63a73a;
-    z-index: 1;
   }
 
   .slider__toggles::before {
-    height: 6px;
-    width: 427px;
     top: 5px;
     left: 120px;
+    height: 6px;
+    width: 427px;
     border: none;
   }
 
-  .slider__toggles::after {
-    height: 33px;
-    width: 33px;
+  .slider__button:active::after {
+    border: 2px solid @color-base;
+  }
+
+  .slider__button::after {
+    position: absolute;
+    content: "";
     top: -8px;
     left: 314px;
+    width: 33px;
+    height: 33px;
     border-radius: 50%;
     border: 2px solid #cdcdcd;
     background-color: #ffffff;
@@ -107,11 +113,11 @@
 
   .slider__changes-after,
   .slider__changes-before {
-    display: flex;
     position: relative;
-    overflow: hidden;
+    display: flex;
     width: 690px;
     height: 500px;
+    overflow: hidden;
   }
 
   .slider__changes-after img {
@@ -130,8 +136,8 @@
 
 @media (min-width: @desktop-width) {
   .slider__list {
-    margin-top: 0;
     width: 690px;
+    margin-top: 0;
     margin-left: -315px;
   }
 
@@ -152,11 +158,11 @@
   }
 
   .slider__toggles::after {
-    left: 354px;
+    left: 368px;
   }
 
-  .slider__toggle-after::before {
-    left: 368px;
+  .slider__button::after {
+    left: 354px;
   }
 
   .slider__toggle-before {

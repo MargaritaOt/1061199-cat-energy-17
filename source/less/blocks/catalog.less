@@ -37,22 +37,23 @@
 
 .catalog__all span,
 .catalog__item-price {
+  margin-bottom: 22px;
   font-family: "Arial", sans-serif;
   font-size: 12px;
   line-height: 16px;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin-bottom: 22px;
 }
 
 .catalog__item-button {
   flex-grow: 1;
+  margin-bottom: 25px;
   padding: 10px 0 8px;
   text-align: center;
   text-transform: @text-transform-base;
   background-color: @color-base;
   color: @color-text;
-  margin-bottom: 25px;
+
 
   &:active {
     color: rgba(255, 255, 255, 0.302);
@@ -61,18 +62,18 @@
 
 .catalog__all {
   .flex-column;
-  margin: 70px auto 0;
-  width: 100%;
-  text-align: center;
   position: relative;
+  width: 100%;
+  margin: 70px auto 0;
+  text-align: center;
 }
 
 .catalog__icon {
   position: absolute;
-  width: 30px;
-  height: 30px;
   top: -44px;
   left: 125px;
+  width: 30px;
+  height: 30px;
 }
 
 .catalog__all p {
@@ -80,8 +81,8 @@
 }
 
 .catalog__list-button {
-  background-color: @color-gray;
   padding: 10px 0;
+  background-color: @color-gray;
 
   &:active {
     color: rgba(68, 68, 68, 0.302);
@@ -97,28 +98,28 @@
 
   .catalog__item {
     .flex-column;
+    position: relative;
     flex-basis: 45%;
     min-height: 510px;
     margin-bottom: 59px;
-    position: relative;
     border: 1px solid @color-gray;
   }
 
   .catalog__item-image {
+    align-items: flex-end;
     width: 324px;
     min-height: 208px;
-    align-items: flex-end;
   }
 
   .catalog__item:not(:last-child)::before {
     position: absolute;
     content: "";
-    background-color: @color-gray;
-    height: 85%;
-    width: 100%;
     bottom: 0;
     left: 0;
     z-index: -1;
+    height: 85%;
+    width: 100%;
+    background-color: @color-gray;
   }
 
   .catalog__item:nth-child(odd) {
@@ -137,8 +138,8 @@
 
   .catalog__item-name {
     .tagline-tablet;
-    margin: 0 auto;
     width: 145px;
+    margin: 0 auto;
     text-align: center;
   }
 
@@ -160,23 +161,23 @@
   }
 
   .catalog__all span {
+    margin-bottom: 25px;
+    padding: 0 50px 60px 55px;
     font-size: 16px;
     line-height: 20px;
-    padding: 0 50px 60px 55px;
-    margin-bottom: 25px;
   }
 
   .catalog__list-button {
+    margin: 0 30px 0 40px;
     font-size: 16px;
     line-height: 20px;
-    margin: 0 30px 0 40px;
   }
 
   .catalog__icon {
-    width: 60px;
-    height: 60px;
     top: -35%;
     left: 42%;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -190,10 +191,8 @@
   }
 
   .catalog__item {
-    margin: 0;
     flex-basis: 20%;
-    margin-right: 80px;
-    margin-bottom: 63px;
+    margin: 0 80px 63px 0;
   }
 
   .catalog__item:nth-child(odd) {
@@ -222,8 +221,8 @@
   }
 
   .catalog__all p {
-    padding: 0 40px;
     margin: 10px 0 25px;
+    padding: 0 40px;
   }
 
   .catalog__all span {
