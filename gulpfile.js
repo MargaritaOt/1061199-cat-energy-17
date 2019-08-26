@@ -18,23 +18,24 @@ var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
 var uglify = require("gulp-uglify");
+var pipeline = require("readable-stream").pipeline;
 
 gulp.task("minify", function() {
   return gulp.src("source/*.html")
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
-    .pipe(gulp.dest("source/html"));
+    .pipe(rename("*/.min.html"))
+    .pipe(gulp.dest("build"));
 });
 
-gulp.task('minjs', function() {
-  return gulp.src("source/js/*.js")
-    .pipe(rename({
-      suffix: ".min"
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest("source/js"));
-})
+gulp.task("compress", function() {
+  return pipeline(
+    gulp.src("source/js/script.js"))
+    uglify()
+    .pipe(rename("script.min.js"))
+    .pipe(gulp.dest("build/js"));
+});
 
 gulp.task("css", function() {
   return gulp.src("source/less/style.less")
@@ -133,6 +134,8 @@ gulp.task("build", gulp.series(
   "copy",
   "css",
   "sprite",
-  "html"
+  "html",
+  "htmlmin",
+  "uglify"
 ));
 gulp.task("start", gulp.series("build", "server"));
