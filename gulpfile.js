@@ -12,28 +12,16 @@ var csso = require("gulp-csso");
 var imagemin = require("gulp-imagemin");
 var webp = require("gulp-webp");
 var svgstore = require("gulp-svgstore");
-var cheerio = require('gulp-cheerio');
+var cheerio = require("gulp-cheerio");
 var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
 var uglify = require("gulp-uglify");
-var pipeline = require("readable-stream").pipeline;
 
-gulp.task("minify", function() {
-  return gulp.src("source/*.html")
-    .pipe(htmlmin({
-      collapseWhitespace: true
-    }))
-    .pipe(rename("*/.min.html"))
-    .pipe(gulp.dest("build"));
-});
-
-gulp.task("compress", function() {
-  return pipeline(
-    gulp.src("source/js/script.js"))
-    uglify()
-    .pipe(rename("script.min.js"))
+gulp.task("scripts", function() {
+  return gulp.src("source/js/script.js")
+    .pipe(uglify())
     .pipe(gulp.dest("build/js"));
 });
 
@@ -56,7 +44,7 @@ gulp.task("webp", function() {
     .pipe(webp({
       quality: 90
     }))
-    .pipe(gulp.dest("source/img"));
+    .pipe(gulp.dest("build/img"));
 });
 
 gulp.task("images", function() {
@@ -70,7 +58,7 @@ gulp.task("images", function() {
       }),
       imagemin.svgo()
     ]))
-    .pipe(gulp.dest("source/img"));
+    .pipe(gulp.dest("build/img"));
 });
 
 gulp.task("sprite", function() {
@@ -80,7 +68,7 @@ gulp.task("sprite", function() {
     }))
     .pipe(cheerio({
       run: function($) {
-        $('svg').attr('style', 'display:none;');
+        $("svg").attr("style", "display:none;");
       },
       parserOptions: {
         xmlMode: true
@@ -95,6 +83,9 @@ gulp.task("html", function() {
     .pipe(posthtml([
       include()
     ]))
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
     .pipe(gulp.dest("build"));
 });
 
@@ -105,8 +96,6 @@ gulp.task("clean", function() {
 gulp.task("copy", function() {
   return gulp.src([
       "source/fonts/**/*.{woff,woff2}",
-      "source/img/**",
-      "source/js/**",
       "source/*.ico"
     ], {
       base: "source"
@@ -132,10 +121,10 @@ gulp.task("refresh", function(done) {
 gulp.task("build", gulp.series(
   "clean",
   "copy",
+  "images",
   "css",
   "sprite",
   "html",
-  "htmlmin",
-  "uglify"
+  "scripts"
 ));
 gulp.task("start", gulp.series("build", "server"));
