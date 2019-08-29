@@ -12,8 +12,10 @@
   <link rel="preload" href="oswaldregular.woff2" type="fonts/woff2" as="fonts" crossorigin="anonymous">
   <link href="css/normalize.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
-  <script src="js/picturefill.js">
+  <script>
+    document.createElement("picture");
   </script>
+  <script src="js/picturefill.js" async></script>
 </head>
 
 <body>
@@ -94,68 +96,68 @@
             </div>
           </div>
           <div class="form__container">
-          <p class="form__title">Контактные данные <span>(владельца кота)</span></p>
-          <div class="form__info">
-            <div>
-              <label class="form__lable" for="email">e-mail:<sup>*</sup></label>
-              <div class="form__cover"><input class="form__input form__input--info" name="email" placeholder="kuklachev@gmail.com" required="" type="email">
-                <svg class="form__icon-mail" height="13" width="17">
-                  <use xlink:href="#icon-mail"></use>
-                </svg></div>
+            <p class="form__title">Контактные данные <span>(владельца кота)</span></p>
+            <div class="form__info">
+              <div>
+                <label class="form__lable" for="email">e-mail:<sup>*</sup></label>
+                <div class="form__cover"><input class="form__input form__input--info" name="email" placeholder="kuklachev@gmail.com" required="" type="email">
+                  <svg class="form__icon-mail" height="13" width="17">
+                    <use xlink:href="#icon-mail"></use>
+                  </svg></div>
+              </div>
+              <div>
+                <label class="form__lable" for="tel">телефон:<sup>*</sup></label>
+                <div class="form__cover"><input class="form__input form__input--info" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg class="form__icon-phone" height="20" width="20">
+                    <use xlink:href="#icon-phone"></use>
+                  </svg></div>
+              </div>
             </div>
-            <div>
-              <label class="form__lable" for="tel">телефон:<sup>*</sup></label>
-              <div class="form__cover"><input class="form__input form__input--info" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg class="form__icon-phone" height="20" width="20">
-                  <use xlink:href="#icon-phone"></use>
-                </svg></div>
+            <p class="form__title">Комментарий</p>
+            <div class="form__comment">
+              <label for="note"></label>
+              <textarea class="form__note" id="note" name="note" placeholder="РАССКАЖИТЕ ОБО ВСЕХ ПОВАДКАХ КОТА" rows="5"></textarea>
             </div>
-          </div>
-          <p class="form__title">Комментарий</p>
-          <div class="form__comment">
-            <label for="note"></label>
-            <textarea class="form__note" id="note" name="note" placeholder="РАССКАЖИТЕ ОБО ВСЕХ ПОВАДКАХ КОТА" rows="5"></textarea>
-          </div>
-          <p class="form__title">Дополнительно</p>
-          <div class="form__extra">
-            <div>
-              <input checked class="visually-hidden form__checkbox1" disabled id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field">
-                <svg class="form__checked1" height="16" width="21">
-                  <use xlink:href="#icon-tick"></use>
-                </svg>
-                <svg class="form__unchecked1" height="30" width="30">
-                  <use xlink:href="#icon-checkbox"></use>
-                </svg>Сахарозаменитель</label>
+            <p class="form__title">Дополнительно</p>
+            <div class="form__extra">
+              <div>
+                <input checked class="visually-hidden form__checkbox1" disabled id="sweetenner-field" name="sweetenner" type="checkbox"> <label for="sweetenner-field">
+                  <svg class="form__checked1" height="16" width="21">
+                    <use xlink:href="#icon-tick"></use>
+                  </svg>
+                  <svg class="form__unchecked1" height="30" width="30">
+                    <use xlink:href="#icon-checkbox"></use>
+                  </svg>Сахарозаменитель</label>
+              </div>
+              <div>
+                <input checked class="visually-hidden form__checkbox1" id="water-field" name="water" type="checkbox"> <label for="water-field">
+                  <svg class="form__checked1" height="16" width="21">
+                    <use xlink:href="#icon-tick"></use>
+                  </svg>
+                  <svg class="form__unchecked1" height="30" width="30">
+                    <use xlink:href="#icon-checkbox"></use>
+                  </svg>Питьевая вода</label>
+              </div>
+              <div>
+                <input checked class="visually-hidden form__checkbox1" id="milk-field" name="milk" type="checkbox"> <label for="milk-field">
+                  <svg class="form__checked1" height="16" width="21">
+                    <use xlink:href="#icon-tick"></use>
+                  </svg>
+                  <svg class="form__unchecked1" height="30" width="30">
+                    <use xlink:href="#icon-checkbox"></use>
+                  </svg>Молоко</label>
+              </div>
+              <div>
+                <input checked class="visually-hidden form__checkbox1" id="vitamins-field" name="vitamins" type="checkbox"> <label for="vitamins-field">
+                  <svg class="form__checked1" height="16" width="21">
+                    <use xlink:href="#icon-tick"></use>
+                  </svg>
+                  <svg class="form__unchecked1" height="30" width="30">
+                    <use xlink:href="#icon-checkbox"></use>
+                  </svg>Витамины</label>
+              </div>
             </div>
-            <div>
-              <input checked class="visually-hidden form__checkbox1" id="water-field" name="water" type="checkbox"> <label for="water-field">
-                <svg class="form__checked1" height="16" width="21">
-                  <use xlink:href="#icon-tick"></use>
-                </svg>
-                <svg class="form__unchecked1" height="30" width="30">
-                  <use xlink:href="#icon-checkbox"></use>
-                </svg>Питьевая вода</label>
-            </div>
-            <div>
-              <input checked class="visually-hidden form__checkbox1" id="milk-field" name="milk" type="checkbox"> <label for="milk-field">
-                <svg class="form__checked1" height="16" width="21">
-                  <use xlink:href="#icon-tick"></use>
-                </svg>
-                <svg class="form__unchecked1" height="30" width="30">
-                  <use xlink:href="#icon-checkbox"></use>
-                </svg>Молоко</label>
-            </div>
-            <div>
-              <input checked class="visually-hidden form__checkbox1" id="vitamins-field" name="vitamins" type="checkbox"> <label for="vitamins-field">
-                <svg class="form__checked1" height="16" width="21">
-                  <use xlink:href="#icon-tick"></use>
-                </svg>
-                <svg class="form__unchecked1" height="30" width="30">
-                  <use xlink:href="#icon-checkbox"></use>
-                </svg>Витамины</label>
-            </div>
-          </div>
-          <div class="form__request"><input class="form__button" type="submit" value="Отправить заявку">
-            <small class="form__small"><sup>*</sup> — Обязательные поля</small></div>
+            <div class="form__request"><input class="form__button" type="submit" value="Отправить заявку">
+              <small class="form__small"><sup>*</sup> — Обязательные поля</small></div>
           </div>
         </form>
       </section>
