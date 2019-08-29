@@ -35,19 +35,21 @@
   line-height: 18px;
   text-transform: @text-transform-base;
   box-sizing: border-box;
+  outline:none;
 
-  /*&:active {
+  &:active {
     border: 1px solid #111111;
   }
 
   &:invalid {
     border: 1px solid #d24899;
-  }*/
+  }
 }
 
 .form__target {
   margin-left: 46px;
   padding-top: 13px;
+  padding-bottom: 2px;
 }
 
 .form__target div {
@@ -89,7 +91,7 @@
 .form__title {
   display: flex;
   margin: 0;
-  padding: 30px 0 0 20px;
+  padding: 29px 0 0 20px;
   text-transform: none;
   font-size: 24px;
   line-height: 1;
@@ -140,7 +142,7 @@
 }
 
 .form__info div:not(:last-child) {
-  margin: 18px 0 15px;
+  margin: 18px 0 13px;
 }
 
 .form__icon-mail,
@@ -167,7 +169,7 @@
 .form__note {
   display: inline block;
   width: 280px;
-  padding: 10px 0 45px 15px;
+  padding: 11px 0 48px 15px;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 18px;
@@ -178,8 +180,7 @@
 
 .form__extra {
   .wrapper;
-  margin-left: 45px;
-  padding-top: 40px;
+  padding: 38px 20px 0 66px;
 }
 
 .form__extra div {
@@ -218,7 +219,7 @@
 
 .form__button {
   position: relative;
-  margin-top: 15px;
+  margin-top: 16px;
   padding: 10px 78px 10px 80px;
   font-family: @font-family-base;
   font-size: 16px;
@@ -487,5 +488,15 @@
 
   .form__small {
     margin: 23px 0 20px 82px;
+  }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .form__input {
+      height: 50px;
+    }
+
+    .form__note {
+      overflow: hidden;
+    }
   }
 }

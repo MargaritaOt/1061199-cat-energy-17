@@ -56,4 +56,16 @@
     line-height: 20px;
     text-align: left;
   }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .info {
+      width: 300px;
+    }
+  }
+
+  @supports (-ms-ime-align:auto) {
+    .info {
+      width: 300px;
+    }
+  }
 }
