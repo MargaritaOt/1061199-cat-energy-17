@@ -1,8 +1,19 @@
 .example {
+  position: relative;
   font-family: @font-family-base;
   font-weight: @font-weight-base;
   text-transform: @text-transform-base;
-  background-color: @color-gray;
+}
+
+.example::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #f2f2f2;
 }
 
 .example__inner {
@@ -55,6 +66,10 @@
 }
 
 @media (min-width: @tablet-width) {
+  .example::before {
+    height: 43%;
+  }
+
   .example__list {
     display: flex;
     margin-top: 53px;
@@ -87,6 +102,10 @@
 }
 
 @media (min-width: @desktop-width) {
+  .example::before {
+    height: 71%;
+  }
+
   .example__inner {
     .flex-row;
   }
