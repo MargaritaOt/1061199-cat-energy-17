@@ -126,7 +126,7 @@
   }
 
   .advantages__inner {
-    padding: 0 38px;
+    padding: 0 0 0 40px;
   }
 
   .advantages__list {
@@ -144,7 +144,7 @@
   }
 
   .advantages__item::before {
-    top: -26px;
+    top: -25px;
   }
 
   .advantages__item--composition::before {
@@ -164,11 +164,14 @@
   }
 
   .advantages__item--composition,
+  .advantages__item--instruction,
   .advantages__item--view {
-    margin-right: 68px;
+    margin-right: 64px;
   }
 
-  .advantages__item--instruction {
-    margin-right: 59px;
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .advantages__item span {
+      margin-top: 25px;
+    }
   }
 }

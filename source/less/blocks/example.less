@@ -108,6 +108,7 @@
 
   .example__inner {
     .flex-row;
+    padding: 0 20px 0 40px;
   }
 
   .example__title {
@@ -115,8 +116,8 @@
   }
 
   .example__description {
-    margin-bottom: 70px;
-    padding-right: 130px;
+    margin-bottom: 68px;
+    padding-right: 125px;
   }
 
   .example__list {
@@ -151,5 +152,11 @@
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
+  }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .example {
+      margin-top: 230px;
+    }
   }
 }
