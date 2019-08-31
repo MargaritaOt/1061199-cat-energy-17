@@ -35,15 +35,20 @@
   line-height: 18px;
   text-transform: @text-transform-base;
   box-sizing: border-box;
-  outline:none;
+  outline: none;
 
   &:active {
     border: 1px solid #111111;
   }
 
   &:invalid {
-    border: 1px solid #d24899;
+    border: 1px solid #ff8282;
   }
+}
+
+.form__input--info:invalid + .form__icon-mail,
+.form__input--info:invalid + .form__icon-phone {
+  color: #ff8282;
 }
 
 .form__target {
@@ -135,10 +140,6 @@
   &:active {
     color: @color-base;
   }
-
-  &:invalid {
-    color: #d24899;
-  }
 }
 
 .form__info div:not(:last-child) {
@@ -176,7 +177,7 @@
   text-transform: @text-transform-base;
   box-sizing: border-box;
   border: 1px solid @color-gray;
-  outline:none;
+  outline: none;
 }
 
 .form__extra {

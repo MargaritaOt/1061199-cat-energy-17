@@ -75,9 +75,10 @@
 .extra__gift {
   position: relative;
   display: flex;
+  justify-content: center;
   width: auto;
   min-height: 289px;
-  margin: 40px 2px 35px;
+  margin: 40px 2px 37px;
   font-family: "Arial", sans-serif;
   font-size: 16px;
   line-height: 20px;
@@ -107,8 +108,14 @@
 .extra__gift p {
   .flex-column;
   margin-top: auto;
-  padding: 25px 0 25px 56px;
+  padding: 25px 0;
   text-align: center;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .extra__icon {
+    left: 50%;
+  }
 }
 
 @media (min-width: @tablet-width) {
