@@ -113,11 +113,13 @@
   text-align: center;
 }
 
-@media only screen and (min-resolution: 2), only screen and (min-resolution: 192dpi) {
+/* stylelint-disable */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .extra__icon {
     left: 40%;
   }
 }
+/* stylelint-enable */
 
 @media (min-width: @tablet-width) {
   .extra {

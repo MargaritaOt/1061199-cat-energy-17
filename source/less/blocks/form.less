@@ -246,7 +246,8 @@
   line-height: 16px;
 }
 
-@media only screen and (min-resolution: 2), only screen and (min-resolution: 192dpi) {
+/* stylelint-disable */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .form__input {
     outline: none;
   }
@@ -256,6 +257,7 @@
     border-radius: 0;
   }
 }
+/* stylelint-enable */
 
 @media (min-width: @tablet-width) {
   .form {
