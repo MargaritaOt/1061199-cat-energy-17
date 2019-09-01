@@ -56,7 +56,7 @@
   background-image: url("../img/index-background-mobile@1x.webp"), url("../img/index-background-mobile@1x.jpg");
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: content;
+  background-size: cover;
 }
 
 @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
@@ -67,9 +67,9 @@
   position: absolute;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+@media only screen and (min-resolution: 2), only screen and (min-resolution: 192dpi) {
   .program__logo::before {
-    right: 40px;
+    right: 50px;
   }
 }
 
@@ -123,20 +123,19 @@
 
 @media (min-width: @desktop-width) {
   .program {
-    position: relative;
     margin-bottom: 270px;
   }
 
   .program::before {
     content: "";
     position: absolute;
-    top: -120px;
+    top: 0;
     right: 0;
     width: 50%;
-    height: 180%;
+    height: 691px;
     background-color: #64a83b;
     background-image: url("../img/index-background-desktop@1x.webp"), url("../img/index-background-desktop@1x.jpg");
-    background-size: content;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 

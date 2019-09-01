@@ -246,6 +246,17 @@
   line-height: 16px;
 }
 
+@media only screen and (min-resolution: 2), only screen and (min-resolution: 192dpi) {
+  .form__input {
+    outline: none;
+  }
+
+  .form__button {
+    border: 0;
+    border-radius: 0;
+  }
+}
+
 @media (min-width: @tablet-width) {
   .form {
     .tagline-tablet;
