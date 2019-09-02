@@ -5,16 +5,34 @@
   text-transform: @text-transform-base;
 }
 
-.extra__inner {
-  .wrapper;
+.extra__inner .extra__title {
+  display: flex;
+  align-items: center;
+}
+
+.extra__title::after {
+  position: relative;
+  content: "";
+  top: 3px;
+  width: 28px;
+  height: 4px;
+  background: @color-base;
+  margin-left: 22px;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 .extra__title {
+  margin: 28px 0 32px 20px;
   font-size: 24px;
   line-height: 1;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin: 28px 0 32px;
+}
+
+.extra__wrap {
+  .wrapper;
+  padding: 0 18px;
 }
 
 .extra__list {
@@ -30,24 +48,24 @@
 }
 
 .extra__item-name {
-  margin: 15px 0 14px;
+  margin: 15px 2px 14px;
 }
 
 .extra__item-price {
+  margin-bottom: 20px;
   font-family: "Arial", sans-serif;
   font-size: 14px;
   line-height: 1;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin-bottom: 20px;
 }
 
 .extra__item-button {
-  background-color: @color-base;
-  color: @color-text;
+  margin: 12px 2px 0;
   padding: 12px 0 11px;
   text-align: center;
-  margin: 12px 0 0;
+  background-color: @color-base;
+  color: @color-text;
 
   &:active {
     color: rgba(255, 255, 255, 0.302);
@@ -55,8 +73,12 @@
 }
 
 .extra__gift {
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: auto;
   min-height: 289px;
+  margin: 40px 2px 37px;
   font-family: "Arial", sans-serif;
   font-size: 16px;
   line-height: 20px;
@@ -67,9 +89,7 @@
   background-image: url("../img/gift-photo-mobile@1x.webp"), url("../img/gift-photo-mobile@1x.jpg");
   background-position: top center;
   background-repeat: no-repeat;
-  margin: 40px 0 35px;
-  display: flex;
-  position: relative;
+  background-size: cover;
 }
 
 @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
@@ -89,25 +109,50 @@
 .extra__gift p {
   .flex-column;
   margin-top: auto;
+  padding: 25px 0;
   text-align: center;
-  padding: 25px 0 25px 56px;
 }
+
+/* stylelint-disable */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .extra__icon {
+    left: 40%;
+  }
+}
+/* stylelint-enable */
 
 @media (min-width: @tablet-width) {
   .extra {
     .tagline-tablet;
   }
 
+  .extra__title::after,
+  .extra__title::before {
+    position: relative;
+    content: "";
+    top: 5px;
+    width: 28px;
+    height: 4px;
+    background: @color-base;
+  }
+
+  .extra__title::before {
+    margin-right: 38px;
+  }
+
+  .extra__title::after {
+    margin-left: 38px;
+  }
+
   .extra__title {
-    width: 635px;
-    margin: 3px 37px;
+    margin: 5px 0;
     font-size: 36px;
     line-height: 1;
   }
 
   .extra__list {
     width: 635px;
-    margin: 85px 40px 0;
+    margin: 85px 38px 0;
   }
 
   .extra__list li {
@@ -115,8 +160,8 @@
   }
 
   .extra__item-name {
-    margin: 20px 0;
     flex-basis: 49%;
+    margin: 20px 0;
   }
 
   .extra__wrapper {
@@ -128,19 +173,20 @@
   }
 
   .extra__item-button {
+    margin: 6px 2px 0 0;
+    padding: 10px 0;
     font-size: 16px;
     line-height: 20px;
-    margin: 6px 0;
-    padding: 10px 0;
   }
 
   .extra__gift {
-    min-height: 200px;
     display: flex;
     flex-direction: row-reverse;
+    justify-content: end;
+    min-height: 200px;
+    margin: 75px 0;
     background-image: url("../img/gift-photo-tablet@1x.webp"), url("../img/gift-photo-tablet@1x.jpg");
     background-size: cover;
-    margin: 75px 0;
   }
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
@@ -148,11 +194,10 @@
   }
 
   .extra__gift p {
-    margin-top: 73px;
-    text-align: left;
-    padding: 0;
     flex-basis: 24%;
-    padding-right: 115px;
+    margin-top: 71px;
+    padding: 0 115px 0 0;
+    text-align: left;
   }
 
   .extra__icon {
@@ -162,9 +207,19 @@
 
 @media (min-width: @desktop-width) {
   .extra__title {
+    margin: 8px 0 80px;
     font-size: 36px;
     line-height: 1;
-    margin: 15px 0 79px;
+  }
+
+  .extra__title::after {
+    top: 6px;
+  }
+
+  .extra__title::before {
+    top: 6px;
+    left: -40px;
+    margin-right: 10px;
   }
 
   .extra__wrapper {
@@ -178,8 +233,8 @@
 
   .extra__item {
     .flex-row;
-    margin-bottom: 0;
     min-height: 72px;
+    margin-bottom: 0;
   }
 
   .extra__list li {
@@ -188,7 +243,6 @@
   }
 
   .extra__item-name {
-    width: 245px;
     .tagline-tablet;
     margin: 26px 0;
   }
@@ -199,7 +253,8 @@
 
   .extra__item-button {
     width: 245px;
-    margin: 15px 0 15px 10px;
+    margin: 15px 0 18px 8px;
+    padding: 9px 0;
   }
 
   .extra__wrap {
@@ -208,14 +263,14 @@
 
   .extra__gift {
     flex-basis: 20%;
+    height: 290px;
     margin: 0 0 85px 60px;
     background-image: url("../img/gift-photo-desktop@1x.webp"), url("../img/gift-photo-desktop@1x.jpg");
-    height: 290px;
   }
 
   .extra__gift p {
-    padding: 113px 0 0;
     flex-basis: 100%;
+    padding: 115px 0 0;
     text-align: center;
   }
 

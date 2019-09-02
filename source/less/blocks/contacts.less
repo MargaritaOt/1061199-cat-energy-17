@@ -1,14 +1,15 @@
 .contacts__inner {
   .wrapper;
   .flex-column;
-  padding: 0;
   position: relative;
+  padding: 0;
 }
 
 .contacts__wrapper {
   .flex-row;
-  padding: 30px 20px 25px;
-  z-index: 1;
+  z-index: 6;
+  padding: 28px 20px 25px;
+  background-color: #ffffff;
 }
 
 .contacts__wrapper--page {
@@ -30,6 +31,7 @@
 }
 
 .contacts__add {
+  margin-left: auto;
   font-family: "Arial", sans-serif;
   font-size: @font-size-base;
   line-height: 20px;
@@ -38,22 +40,41 @@
 }
 
 .contacts__add span {
+  margin: 0;
   font-size: @font-size-base;
   line-height: 20px;
   font-weight: @font-weight-base;
-  margin: 0;
+}
+
+.contacts__map iframe {
+  position: absolute;
+  top: 115px;
+  z-index: 2;
+  width: 100%;
+  height: 365px;
+  border: 0;
 }
 
 .contacts__icon {
   position: absolute;
-  bottom: 38%;
+  bottom: 37%;
   left: 42%;
+  z-index: 5;
 }
 
 .contacts__image {
   height: 365px;
   width: 100%;
 }
+
+/* stylelint-disable */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  .contacts__add {
+    width: 138px;
+    margin-left: auto;
+  }
+}
+/* stylelint-enable */
 
 @media (min-width: @tablet-width) {
   .contacts__inner {
@@ -71,7 +92,7 @@
   }
 
   .contacts__title span {
-    width: 155px;
+    width: 220px;
   }
 
   .contacts__add {
@@ -84,14 +105,19 @@
   }
 
   .contacts__add span {
-    font-size: 16px;
-    line-height: 20px;
     display: block;
     padding-top: 20px;
+    font-size: 16px;
+    line-height: 20px;
   }
 
   .contacts__image {
     height: auto;
+  }
+
+  .contacts__map iframe {
+    top: 200px;
+    height: 402px;
   }
 
   .contacts__icon {
@@ -107,20 +133,19 @@
 
 @media (min-width: @desktop-width) {
   .contacts__inner {
-    padding: 0;
-    margin: 0;
     width: 100%;
     min-height: 400px;
+    margin: 0;
+    padding: 0;
   }
 
   .contacts__wrapper {
+    display: flex;
     width: 570px;
     min-height: 203px;
-    background-color: #ffffff;
-    z-index: 1;
     margin: 95px 0 0 40px;
     padding: 0;
-    display: flex;
+    background-color: #ffffff;
   }
 
   .contacts__title {
@@ -128,15 +153,20 @@
   }
 
   .contacts__add {
-    padding: 60px 18px 0;
     margin: 0;
+    padding: 65px 18px 0;
     text-align: left;
   }
 
   .contacts__image {
     position: absolute;
     top: 0;
-    height: 400px;
+    height: 402px;
+  }
+
+  .contacts__map iframe {
+    top: 0;
+    height: 402px;
   }
 
   .contacts__icon {

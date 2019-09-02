@@ -5,10 +5,13 @@
 .page-footer__inner {
   .wrapper;
   .flex-column;
+  padding-bottom: 30px;
 }
 
 .page-footer__logo {
-  margin: 34px 0 30px 75px;
+  margin: 35px 0 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .page-footer__social {
@@ -18,14 +21,14 @@
 .page-footer__copyright {
   display: flex;
   justify-content: space-between;
-  margin: 15px 0 0;
+  margin: 28px 0 0;
 }
 
 @media (min-width: @tablet-width) {
   .page-footer__inner {
     .flex-row;
     justify-content: space-around;
-    padding: 53px 30px;
+    padding: 50px 30px;
   }
 
   .page-footer__logo {
@@ -33,12 +36,12 @@
   }
 
   .page-footer__social {
-    margin: 10px 0 0 100px;
     width: 130px;
+    margin: 10px 0 0 100px;
   }
 
   .page-footer__copyright {
-    margin: 0 0 0 auto;
+    margin: 12px 0 0 auto;
   }
 }
 

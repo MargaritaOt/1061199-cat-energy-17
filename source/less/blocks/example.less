@@ -1,8 +1,19 @@
 .example {
+  position: relative;
   font-family: @font-family-base;
   font-weight: @font-weight-base;
   text-transform: @text-transform-base;
-  background-color: @color-gray;
+}
+
+.example::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #f2f2f2;
 }
 
 .example__inner {
@@ -11,29 +22,29 @@
 }
 
 .example__title {
+  margin: 20px 0 24px;
   font-size: 36px;
   line-height: 60px;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin: 20px 0 24px;
 }
 
 .example__description {
+  margin: 0;
+  padding: 0 10px 0 0;
   font-family: "Arial", sans-serif;
   font-size: 14px;
   line-height: 18px;
   font-weight: @font-weight-base;
   text-transform: none;
-  margin: 0;
-  padding: 0 10px 0 0;
 }
 
 .example__list {
-  margin-top: 37px;
+  margin-top: 25px;
 }
 
 .example__total {
-  margin: 18px 0 0 47px;
+  margin: 33px 0 0 47px;
 }
 
 .example__total span {
@@ -55,14 +66,18 @@
 }
 
 @media (min-width: @tablet-width) {
+  .example::before {
+    height: 43%;
+  }
+
   .example__list {
     display: flex;
-    margin-top: 55px;
+    margin-top: 53px;
   }
 
   .example__title {
     .title-tablet;
-    margin: 45px 0 65px;
+    margin: 43px 0 62px;
   }
 
   .example__description {
@@ -71,34 +86,37 @@
 
   .example__total {
     .tagline-tablet;
-    margin-left: auto;
-    margin-top: 10px;
+    margin: 14px 3px 0 auto;
   }
 
   .example__total span {
     .tagline-tablet;
-    text-align: right;
-    margin: 9px 0;
     display: block;
+    margin-top: 9px;
+    text-align: right;
   }
 
   .example__changes {
-    margin: 27px 0 0;
+    margin: 45px 0 0;
   }
 }
 
 @media (min-width: @desktop-width) {
+  .example::before {
+    height: 71%;
+  }
+
   .example__inner {
     .flex-row;
   }
 
   .example__title {
-    margin: 60px 0 145px;
+    margin: 58px 0 145px;
   }
 
   .example__description {
-    padding-right: 130px;
     margin-bottom: 70px;
+    padding-right: 130px;
   }
 
   .example__list {
@@ -117,8 +135,8 @@
   }
 
   .example__total {
-    margin: 47px auto 0 0;
     display: flex;
+    margin: 60px auto 0 0;
   }
 
   .example__changes {
@@ -127,11 +145,17 @@
   }
 
   .example__total span {
+    margin: 0 0 0 62px;
     font-family: @font-family-base;
     font-size: 20px;
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
-    margin: 0 0 0 62px;
+  }
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .example {
+      margin-top: 230px;
+    }
   }
 }

@@ -1,4 +1,13 @@
-.copyright a[href] {
+.copyright__link {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.copyright__logo {
+  position: relative;
+
   &:hover {
     color: rgba(127, 193, 87);
   }
@@ -8,28 +17,24 @@
   }
 }
 
-.copyright__link {
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
-  line-height: 1;
-  font-weight: 500;
-  margin-top: 12px;
-}
-
-.copyright__logo {
-  display: flex;
+.copyright__htmlacademy {
+  position: absolute;
+  top: -10px;
+  left: -39px;
   width: 50px;
+  height: 40px;
   fill: currentColor;
 }
 
-.copyright__logo img {
-  width: 85%;
-  margin-left: 15px;
+@media (min-width: @tablet-width) {
+  .copyright__link {
+    margin-right: 50px;
+  }
 }
 
 @media (min-width: @desktop-width) {
   .copyright__logo {
-    text-align: right;
     margin-right: 20px;
+    text-align: right;
   }
 }
