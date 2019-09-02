@@ -11,6 +11,8 @@ var autoprefixer = require("autoprefixer");
 var csso = require("gulp-csso");
 var imagemin = require("gulp-imagemin");
 var webp = require("gulp-webp");
+var svgmin = require("gulp-svgmin");
+var path = require("path");
 var svgstore = require("gulp-svgstore");
 var cheerio = require("gulp-cheerio");
 var posthtml = require("gulp-posthtml");
@@ -62,6 +64,17 @@ gulp.task("images", function() {
 
 gulp.task("sprite", function() {
   return gulp.src("source/img/icon-*.svg")
+    .pipe(svgmin(function(file) {
+      var prefix = path.basename(file.relative, path.extname(file.relative));
+      return {
+        plugins: [{
+          cleanupIDs: {
+            prefix: prefix + '-',
+            minify: true
+          }
+        }]
+      }
+    }))
     .pipe(svgstore({
       inlineSvg: true
     }))
@@ -74,7 +87,7 @@ gulp.task("sprite", function() {
       }
     }))
     .pipe(rename("sprite.svg"))
-    .pipe(gulp.dest("build/img"));
+    .pipe(gulp.dest("source/img"));
 });
 
 gulp.task("html", function() {

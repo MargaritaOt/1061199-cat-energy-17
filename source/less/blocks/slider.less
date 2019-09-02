@@ -69,10 +69,30 @@
 
   .slider__toggle-before {
     margin-left: 47px;
+    border-bottom: 1px dotted;
+    line-height: 30px;
+
+    &:focus {
+      border-bottom: 1px dotted;
+    }
+
+    &:hover {
+      border-bottom: 1px solid;
+    }
   }
 
   .slider__toggle-after {
     margin-right: 50px;
+    border-bottom: 1px dotted;
+    line-height: 30px;
+
+    &:focus {
+      border-bottom: 1px dotted;
+    }
+
+    &:hover {
+      border-bottom: 1px solid;
+    }
   }
 
   .slider__toggles::after {
@@ -95,7 +115,8 @@
     border: none;
   }
 
-  .slider__button:active::after {
+  .slider__button:active::after,
+  .slider__button:focus {
     border: 2px solid @color-base;
   }
 
