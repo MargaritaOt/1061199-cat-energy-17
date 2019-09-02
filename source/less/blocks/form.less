@@ -88,6 +88,10 @@
   opacity: 0.3;
 }
 
+.form__checkbox:active + label .form__checked {
+  border: 1px solid #111111;
+}
+
 .form__container .form__title {
   .flex-wrap;
   align-items: center;
@@ -250,12 +254,13 @@
 @media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
   .form__input {
     outline: none;
+    border-radius: 0;
   }
 
   .form__button {
     border: 0;
     border-radius: 0;
-    background: @color-base;
+    appearance: none;
   }
 }
 /* stylelint-enable */
@@ -514,6 +519,16 @@
 
     .form__note {
       overflow: hidden;
+    }
+  }
+
+  @-moz-document "url-prefix"() {
+    .form__icon-mail {
+      top: 40%;
+    }
+
+    .form__icon-phone {
+      top: 30%;
     }
   }
 }
