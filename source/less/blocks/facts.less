@@ -67,6 +67,14 @@
     line-height: 40px;
     background-color: #ffffff;
   }
+
+  /* stylelint-disable */
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+    .info__quantity {
+      text-align: left;
+    }
+  }
+  /* stylelint-enable */
 }
 
 @media (min-width: @desktop-width) {
@@ -76,4 +84,10 @@
     line-height: 30px;
     background-color: #f2f2f2;
   }
+
+    @-moz-document "url-prefix"() {
+      .info__quantity {
+        width: 50%;
+      }
+    }
 }
