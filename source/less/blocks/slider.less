@@ -51,7 +51,7 @@
 }
 
 .slider__toggle-before {
-  margin-left: 25px;
+  margin-left: 23px;
 }
 
 @media (min-width: @tablet-width) {
@@ -63,8 +63,8 @@
 
   .slider__toggles {
     .tagline-tablet;
-    margin-top: 35px;
-    margin-bottom: 75px;
+    margin-top: 30px;
+    margin-bottom: 70px;
   }
 
   .slider__toggle-before {
@@ -78,6 +78,10 @@
 
     &:hover {
       border-bottom: 1px solid;
+    }
+
+    &:active {
+      border-bottom: none;
     }
   }
 
@@ -93,12 +97,16 @@
     &:hover {
       border-bottom: 1px solid;
     }
+
+    &:active {
+      border-bottom: none;
+    }
   }
 
   .slider__toggles::after {
     position: absolute;
     content: "";
-    top: 6px;
+    top: 11px;
     left: 328px;
     z-index: 1;
     width: 9px;
@@ -108,7 +116,7 @@
   }
 
   .slider__toggles::before {
-    top: 5px;
+    top: 13px;
     left: 120px;
     height: 6px;
     width: 427px;
@@ -117,18 +125,18 @@
 
   .slider__button:active::after,
   .slider__button:focus {
-    border: 2px solid @color-base;
+    border: 1px solid @color-base;
   }
 
   .slider__button::after {
     position: absolute;
     content: "";
-    top: -8px;
-    left: 314px;
+    top: -2px;
+    left: 315px;
     width: 33px;
     height: 33px;
     border-radius: 50%;
-    border: 2px solid #cdcdcd;
+    border: 1px solid #cdcdcd;
     background-color: #ffffff;
   }
 
@@ -171,7 +179,7 @@
   }
 
   .slider__toggles {
-    margin: 60px 0 75px;
+    margin: 55px 0 70px;
   }
 
   .slider__toggles::before {

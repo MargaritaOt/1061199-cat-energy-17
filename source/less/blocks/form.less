@@ -60,6 +60,10 @@
 .form__target div {
   position: relative;
   margin-bottom: 25px;
+
+  &:disabled {
+    opacity: 0.3;
+  }
 }
 
 .form__unchecked {
@@ -90,6 +94,14 @@
 
 .form__checkbox:focus + label .form__checked {
   border: 1px solid #111111;
+}
+
+.form__checkbox:hover + label .form__checked {
+  border: 1px solid #111111;
+}
+
+.form__checkbox:active + label .form__checked {
+  opacity: 0.3;
 }
 
 .form__container .form__title {
@@ -289,7 +301,7 @@
   }
 
   .form__target {
-    margin: 40px 40px 13px;
+    margin: 40px 40px 12px;
     padding: 32px 86px 0;
     border: 1px solid @color-gray;
   }
@@ -349,7 +361,7 @@
   }
 
   .form__info div:not(:last-child) {
-    margin: 32px 0 18px;
+    margin: 32px 0 20px;
   }
 
   .form__input--info {
@@ -373,7 +385,7 @@
 
   .form__note {
     width: 630px;
-    padding: 10px 0 15px 17px;
+    padding: 10px 0 14px 17px;
     font-size: 20px;
     line-height: 30px;
   }
@@ -480,6 +492,7 @@
 
   .form__note {
     width: 1220px;
+    padding-bottom: 16px;
   }
 
   .form__extra {
@@ -504,12 +517,12 @@
   }
 
   .form__button {
-    margin-top: 11px;
-    padding: 10px 209px 10px 205px;
+    margin-top: 10px;
+    padding: 8px 209px 12px 205px;
   }
 
   .form__small {
-    margin: 23px 0 20px 82px;
+    margin: 23px 0 20px 80px;
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
