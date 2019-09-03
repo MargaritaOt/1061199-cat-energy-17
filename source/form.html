@@ -6,10 +6,10 @@
   <title>HTML Academy: Кэт энерджи</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/fonts/oswaldmedium.woff" hreflang="" type="fonts/woff" as="font" crossorigin="anonymous">
-  <link rel="preload" href="/fonts/oswaldmedium.woff2" type="fonts/woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="/fonts/oswaldregular.woff" hreflang="" type="fonts/woff" as="font" crossorigin="anonymous">
-  <link rel="preload" href="/fonts/oswaldregular.woff2" type="fonts/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldmedium.woff" hreflang="" type="fonts/woff" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldmedium.woff2" type="fonts/woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldregular.woff" hreflang="" type="fonts/woff" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldregular.woff2" type="fonts/woff2" as="font" crossorigin="anonymous">
   <link href="css/normalize.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
   <script>
@@ -18,10 +18,8 @@
   <script src="js/picturefill.js" async></script>
 </head>
 
-<body>
-  <svg style="display:none">
-    <include src="source/img/sprite.svg"></include>
-  </svg>
+<body class="no-js">
+  <include src="source/img/sprite.svg"></include>
   <header class="page-header">
     <div class="page-header__inner">
       <a class="page-header__logo logo" href="index.html">
@@ -49,23 +47,23 @@
   </header>
   <main class="page page--form">
     <h1 class="page__title">Подбор программы</h1>
-    <p class="page__discription">Заполните анкету и мы подберем программу питания для вашего кота</p>
+    <p class="page__description">Заполните анкету и мы подберем программу питания для вашего кота</p>
     <section class="page__form form">
       <form action="/echo" method="post">
         <div class="form__wrapper">
           <div class="form__user">
-            <div>
-              <label class="form__lable" for="name">Имя:<sup>*</sup></label> <input class="form__input" id="name" name="name" placeholder="Барсик" type="text">
+            <div class="form__registration">
+              <label class="form__label" for="name">Имя:<sup>*</sup></label> <input class="form__input" id="name" name="name" placeholder="Барсик" type="text">
             </div>
-            <div>
-              <label class="form__lable" for="weight">Вес (кг):<sup>*</sup></label> <input class="form__input" id="weight" name="weight" placeholder="7" type="text">
+            <div class="form__registration">
+              <label class="form__label" for="weight">Вес (кг):<sup>*</sup></label> <input class="form__input" id="weight" name="weight" placeholder="7" type="text">
             </div>
-            <div>
-              <label class="form__lable" for="age">Возраст (лет):</label> <input class="form__input" id="age" name="age" placeholder="7" type="text">
+            <div class="form__registration">
+              <label class="form__label" for="age">Возраст (лет):</label> <input class="form__input" id="age" name="age" placeholder="7" type="text">
             </div>
           </div>
           <div class="form__target">
-            <div><label>
+            <div class="form__questions"><label>
                 <input class="visually-hidden form__checkbox" name="question-one" type="radio" value="похудение">
                 <svg class="form__checked" height="12" width="12">
                   <use xlink:href="#icon-radiobutton-green"></use>
@@ -74,7 +72,7 @@
                   <use xlink:href="#icon-radiobutton"></use>
                 </svg>Похудение</label>
             </div>
-            <div><label>
+            <div class="form__questions"><label>
                 <input class="visually-hidden form__checkbox" name="question-one" type="radio" value="набор массы">
                 <svg class="form__checked" height="12" width="12">
                   <use xlink:href="#icon-radiobutton-green"></use>
@@ -83,8 +81,8 @@
                   <use xlink:href="#icon-radiobutton"></use>
                 </svg>Набор массы</label>
             </div>
-            <div><label>
-                <input disabled class="visually-hidden form__checkbox" name="question-one" type="radio" value="не знаю ">
+            <div class="form__questions"><label>
+                <input class="visually-hidden form__checkbox" name="question-one" type="radio" value="не знаю ">
                 <svg class="form__checked" height="12" width="12">
                   <use xlink:href="#icon-radiobutton-green"></use>
                 </svg>
@@ -97,15 +95,15 @@
         <div class="form__container">
           <p class="form__title">Контактные данные <span>(владельца кота)</span></p>
           <div class="form__info">
-            <div>
-              <label class="form__lable" for="email">e-mail:<sup>*</sup></label>
+            <div class="form__feedback">
+              <label class="form__label" for="email">e-mail:<sup>*</sup></label>
               <div class="form__cover"><input class="form__input form__input--info" id="email" name="email" placeholder="kuklachev@gmail.com" type="email">
                 <svg class="form__icon-mail" height="13" width="17">
                   <use xlink:href="#icon-mail"></use>
                 </svg></div>
             </div>
-            <div>
-              <label class="form__lable" for="tel">телефон:<sup>*</sup></label>
+            <div class="form__feedback">
+              <label class="form__label" for="tel">телефон:<sup>*</sup></label>
               <div class="form__cover"><input class="form__input form__input--info" id="tel" name="tel" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}" placeholder="8 (960) 900-60-90" type="tel"> <svg class="form__icon-phone" height="20" width="20">
                   <use xlink:href="#icon-phone"></use>
                 </svg></div>

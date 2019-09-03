@@ -15,13 +15,13 @@
   margin-bottom: 20px;
 }
 
-.form__user div {
+.form__registration {
   display: flex;
   max-height: 45px;
   margin-bottom: 15px;
 }
 
-.form__lable {
+.form__label {
   padding-top: 10px;
 }
 
@@ -57,13 +57,9 @@
   padding-bottom: 2px;
 }
 
-.form__target div {
+.form__questions {
   position: relative;
   margin-bottom: 25px;
-
-  &:disabled {
-    opacity: 0.3;
-  }
 }
 
 .form__unchecked {
@@ -93,15 +89,11 @@
 }
 
 .form__checkbox:focus + label .form__checked {
-  border: 1px solid #111111;
+  opacity: 1;
 }
 
 .form__checkbox:hover + label .form__checked {
-  border: 1px solid #111111;
-}
-
-.form__checkbox:active + label .form__checked {
-  opacity: 0.3;
+  opacity: 1;
 }
 
 .form__container .form__title {
@@ -143,7 +135,7 @@
   margin: 0 0 0 15px;
 }
 
-.form__info div {
+.form__feedback {
   position: relative;
   display: flex;
 }
@@ -158,7 +150,7 @@
   }
 }
 
-.form__info div:not(:last-child) {
+.form__feedback:not(:last-child) {
   margin: 18px 0 13px;
 }
 
@@ -231,6 +223,14 @@
   opacity: 0.3;
 }
 
+.form__checkbox1:focus + label .form__checked1 {
+  opacity: 1;
+}
+
+.form__checkbox1:hover + label .form__checked1 {
+  opacity: 1;
+}
+
 .form__request {
   .wrapper;
 }
@@ -286,11 +286,11 @@
     margin: 0 40px 10px;
   }
 
-  .form__user div {
+  .form__registration {
     margin-bottom: 28px;
   }
 
-  .form__lable {
+  .form__label {
     padding-top: 13px;
   }
 
@@ -306,7 +306,7 @@
     border: 1px solid @color-gray;
   }
 
-  .form__target div {
+  .form__questions {
     margin-bottom: 33px;
   }
 
@@ -360,7 +360,7 @@
     padding: 42px 68px 0;
   }
 
-  .form__info div:not(:last-child) {
+  .form__feedback:not(:last-child) {
     margin: 32px 0 20px;
   }
 
@@ -446,7 +446,7 @@
     padding: 0;
   }
 
-  .form__user div:last-child {
+  .form__registration:last-child {
     margin-bottom: 0;
   }
 
@@ -471,13 +471,13 @@
     padding: 75px 38px 0;
   }
 
-  .form__info div {
+  .form__feedback {
     flex-basis: 49%;
     margin: 0;
     padding: 0;
   }
 
-  .form__info div:not(:last-child) {
+  .form__feedback:not(:last-child) {
     margin: 0 75px 0 0;
   }
 
