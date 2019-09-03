@@ -84,15 +84,12 @@
   display: flex;
 }
 
-.form__checkbox:disabled + label .form__checked {
+.form__checkbox:disabled + label {
   opacity: 0.3;
 }
 
-.form__checkbox:focus + label .form__checked {
-  opacity: 1;
-}
-
-.form__checkbox:hover + label .form__checked {
+.form__questions:focus,
+.form__questions:hover {
   opacity: 1;
 }
 
@@ -193,7 +190,7 @@
   padding: 38px 20px 0 66px;
 }
 
-.form__extra div {
+.form__items {
   position: relative;
   padding-bottom: 25px;
 }
@@ -219,15 +216,12 @@
   display: flex;
 }
 
-.form__checkbox1:disabled + label .form__checked1 {
+.form__checkbox1:disabled + label {
   opacity: 0.3;
 }
 
-.form__checkbox1:focus + label .form__checked1 {
-  opacity: 1;
-}
-
-.form__checkbox1:hover + label .form__checked1 {
+.form__items:focus,
+.form__items:hover {
   opacity: 1;
 }
 
@@ -396,11 +390,11 @@
     padding: 65px 0 0 128px;
   }
 
-  .form__extra div {
+  .form__items {
     flex-basis: 40%;
   }
 
-  .form__extra div:nth-child(odd) {
+  .form__items:nth-child(odd) {
     margin-right: 88px;
     margin-bottom: 28px;
   }
@@ -499,16 +493,16 @@
     padding: 65px 0 0 96px;
   }
 
-  .form__extra div {
+  .form__items {
     flex-basis: 15%;
   }
 
-  .form__extra div:nth-child(odd) {
+  .form__items:nth-child(odd) {
     margin-right: 0;
     margin-bottom: 28px;
   }
 
-  .form__extra div:not(:last-child) {
+  .form__items:not(:last-child) {
     margin-right: 145px;
   }
 
