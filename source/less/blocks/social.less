@@ -2,6 +2,7 @@
   .list-unstyled;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .social__list li {
@@ -46,39 +47,34 @@
 }
 
 @media (min-width: @tablet-width) {
+  .social__list {
+    margin-left: 30px;
+  }
+
   .social__icon-vk {
     top: 0;
-    left: -10px;
     width: 30px;
     height: 16px;
   }
 
   .social__icon-insta {
-    left: 47px;
     width: 23px;
     height: 23px;
   }
 
   .social__icon-fb {
     top: -6px;
-    right: -113px;
     width: 14px;
     height: 28px;
   }
 }
 
 @media (min-width: @desktop-width) {
-  .social__icon-vk {
-    left: -52px;
-  }
-
   .social__icon-insta {
     top: -4px;
-    left: 5px;
   }
 
   .social__icon-fb {
     top: -6px;
-    right: -71px;
   }
 }

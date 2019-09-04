@@ -37,6 +37,14 @@
     font-size: 16px;
     line-height: 20px;
   }
+
+  /* stylelint-disable */
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+    .info__quantity {
+      text-align: left;
+    }
+  }
+  /* stylelint-enable */
 }
 
 @media (min-width: @desktop-width) {
@@ -66,6 +74,12 @@
   @supports (-ms-ime-align:auto) {
     .info {
       width: 300px;
+    }
+  }
+
+  @-moz-document "url-prefix"() {
+    .info__quantity {
+      width: 50%;
     }
   }
 }
