@@ -71,6 +71,18 @@
 @media (min-width: @tablet-width) {
   .example::before {
     height: 43%;
+    width: 50%;
+  }
+
+  .example::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    height: 43%;
+    width: 50%;
+    background-color: #eaeaea;
   }
 
   .example__list {

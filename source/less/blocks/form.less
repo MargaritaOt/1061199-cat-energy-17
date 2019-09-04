@@ -32,7 +32,7 @@
   margin: 0 0 0 17px;
   padding: 13px 0 13px 13px;
   font-family: @font-family-base;
-  border: 1px solid @color-gray;
+  border: 1px solid #e6e6e6;
   font-size: 16px;
   line-height: 18px;
   text-transform: @text-transform-base;
@@ -40,12 +40,18 @@
   outline: none;
   color: #444444;
 
+  &:hover {
+    border: 1px solid #cdcdcd;
+  }
+
   &:active {
     border: 1px solid #444444;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
   }
 
   &:invalid {
     border: 1px solid #ff8282;
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -87,12 +93,16 @@
   display: flex;
 }
 
-.form__checkbox:disabled + .form__checked {
+.form__checkbox:hover + .form__checked {
+  color: #d6d6d6;
+}
+
+.form__checkbox:active + .form__checked,
+.form__questions:active {
   opacity: 0.3;
 }
 
-.form__questions:focus,
-.form__questions:hover {
+.form__questions:focus {
   opacity: 1;
 }
 
@@ -222,12 +232,15 @@
   display: flex;
 }
 
-.form__checkbox1:disabled + label {
+.form__checkbox1:hover {
+  color: #d6d6d6;
+}
+
+.form__checkbox1:active + label {
   opacity: 0.3;
 }
 
-.form__items:focus,
-.form__items:hover {
+.form__items:focus {
   opacity: 1;
 }
 
@@ -243,13 +256,19 @@
   font-size: 16px;
   line-height: 20px;
   text-transform: @text-transform-base;
-  background-color: @color-base;
+  background-color: #68b738;
   color: @color-text;
   border: 0;
   border-radius: 0;
 
+  &:hover {
+    color: rgba(255, 255, 255);
+    background-color: #5eaa2f;
+  }
+
   &:active {
     color: rgba(255, 255, 255, 0.302);
+    background-color: #5eaa2f;
   }
 }
 
