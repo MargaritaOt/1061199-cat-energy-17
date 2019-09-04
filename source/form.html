@@ -9,7 +9,6 @@
   <link href="fonts/oswaldmedium.woff2" rel="preload">
   <link href="fonts/oswaldregular.woff" rel="preload">
   <link href="fonts/oswaldregular.woff2" rel="preload">
-  <link href="css/normalize.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
   <script>
     document.createElement("picture");
@@ -22,7 +21,7 @@
   <header class="page-header">
     <div class="page-header__inner">
       <a class="page-header__logo logo" href="index.html"><picture><source media="(min-width: 1280px)" srcset="img/logo-desktop.svg"> <source media="(min-width: 768px)" srcset="img/logo-tablet.svg"> <img alt="Кэт энерджи" class="logo__image" height="33" src="img/logo-mobile.svg" width="38"></picture></a>
-      <nav class="main-nav main-nav--opened main-nav--nojs">
+      <nav class="main-nav main-nav--closed main-nav--nojs">
         <button class="main-nav__toggle" type="button"><span class="visually-hidden">Открыть меню</span></button>
         <div class="main-nav__wrapper">
           <ul class="main-nav__list site-list">
@@ -59,19 +58,13 @@
           </div>
           <div class="form__target">
             <div class="form__questions">
-              <label><input class="visually-hidden form__checkbox" name="question-one" type="radio" value="похудение"> <svg class="form__checked" height="12" width="12">
-              <use xlink:href="#icon-radiobutton-green"></use></svg> <svg class="form__unchecked" height="30" width="30">
-              <use xlink:href="#icon-radiobutton"></use></svg>Похудение</label>
+              <label><input class="visually-hidden form__checkbox" name="question-one" type="radio" value="похудение">Похудение</label>
             </div>
             <div class="form__questions">
-              <label><input class="visually-hidden form__checkbox" name="question-one" type="radio" value="набор массы"> <svg class="form__checked" height="12" width="12">
-              <use xlink:href="#icon-radiobutton-green"></use></svg> <svg class="form__unchecked" height="30" width="30">
-              <use xlink:href="#icon-radiobutton"></use></svg>Набор массы</label>
+              <label><input class="visually-hidden form__checkbox" name="question-one" type="radio" value="набор массы">Набор массы</label>
             </div>
             <div class="form__questions">
-              <label><input class="visually-hidden form__checkbox" name="question-one" type="radio" value="не знаю "> <svg class="form__checked" height="12" width="12">
-              <use xlink:href="#icon-radiobutton-green"></use></svg> <svg class="form__unchecked" height="30" width="30">
-              <use xlink:href="#icon-radiobutton"></use></svg>Не знаю (нужен ваш совет)</label>
+              <label><input class="visually-hidden form__checkbox" name="question-one" type="radio" value="не знаю">Не знаю (нужен ваш совет)</label>
             </div>
           </div>
         </div>
