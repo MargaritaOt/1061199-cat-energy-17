@@ -80,7 +80,7 @@ gulp.task("sprite", function() {
     }))
     .pipe(cheerio({
       run: function($) {
-        $('svg').attr('style', 'display:none');
+        $("svg").attr("style", "display:none;");
       },
       parserOptions: {
         xmlMode: true
@@ -110,6 +110,7 @@ gulp.task("copy", function() {
       "source/fonts/**/*.{woff,woff2}",
       "source/img/logo-*.svg",
       "source/js/picturefill.js",
+      "source/css/normalize.css"
     ], {
       base: "source"
     })
