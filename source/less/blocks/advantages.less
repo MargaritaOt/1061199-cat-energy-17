@@ -92,6 +92,7 @@
 
   .advantages__item {
     .description-tablet;
+    position: relative;
   }
 
   .advantages__item::before {
@@ -111,14 +112,34 @@
     .flex-column;
   }
 
-  .advantages__item--composition:after {
-    content: "1";
+  .advantages__item--composition::after,
+  .advantages__item--view::after,
+  .advantages__item--instruction::after,
+  .advantages__item--result::after {
     position: absolute;
-    width: 233px;
-    height: 133px;
-    top: 0;
-    left: 0;
+    top: -60px;
+    right: 0;
     color: #f2f2f2;
+    font-family: @font-family-base;
+    font-size: 281px;
+    line-height: 1;
+    z-index: -1;
+  }
+
+  .advantages__item--composition::after {
+    content: "1";
+  }
+
+  .advantages__item--view::after {
+    content: "2";
+  }
+
+  .advantages__item--instruction::after {
+    content: "3";
+  }
+
+  .advantages__item--result::after {
+    content: "4";
   }
 }
 

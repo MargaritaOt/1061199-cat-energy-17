@@ -132,13 +132,11 @@
 
 @media (min-width: @desktop-width) {
   .contacts__inner {
-    width: 100%;
-    min-height: 400px;
-    margin: 0;
-    padding: 0;
+    min-height: auto;
   }
 
   .contacts__wrapper {
+    position: absolute;
     display: flex;
     width: 570px;
     min-height: 203px;
@@ -158,15 +156,17 @@
     text-align: left;
   }
 
+  .contacts__map {
+    min-height: 400px;
+  }
+
   .contacts__map iframe {
-    top: -300px;
     width: 100%;
     height: 402px;
   }
 
   .contacts__image {
     position: absolute;
-    top: -300px;
     height: 402px;
   }
 

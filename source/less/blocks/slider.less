@@ -62,17 +62,19 @@
     bottom: 0;
     z-index: -1;
     height: 43%;
-    width: 50%;
+    width: 395px;
+    transform: translate(95%);
   }
 
   .slider::before {
-    right: 50%;
+    width: 100%;
+    right: 100%;
     background-color: #f2f2f2;
   }
 
   .slider::after {
     bottom: 0;
-    left: 50%;
+    left: 6px;
     background-color: #eaeaea;
   }
 
@@ -191,14 +193,12 @@
 
 @media (min-width: @desktop-width) {
   .slider::before {
-    left: 0;
     height: 71%;
-    width: 75%;
   }
 
   .slider::after {
     height: 71%;
-    left: 75%;
+    left: 46%;
   }
 
   .slider__list {

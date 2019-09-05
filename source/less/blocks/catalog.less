@@ -74,21 +74,21 @@
   text-align: center;
 }
 
-.catalog__icon:before,
-.catalog__icon:after {
-  content: " ";
+.catalog__icon::before,
+.catalog__icon::after {
+  content: "";
   position: absolute;
   top: -44px;
   background: #d3d3d3;
 }
 
-.catalog__icon:before {
+.catalog__icon::before {
   width: 2px;
   height: 30px;
-  left: 49.5%;;
+  left: 49.5%;
 }
 
-.catalog__icon:after {
+.catalog__icon::after {
   width: 30px;
   height: 2px;
   top: -30px;
@@ -208,11 +208,17 @@
     line-height: 20px;
   }
 
-  .catalog__icon {
-    top: -34%;
-    left: 42%;
-    width: 60px;
+  .catalog__icon::before {
+    width: 2px;
     height: 60px;
+    left: 49.5%;
+  }
+
+  .catalog__icon::after {
+    width: 60px;
+    height: 2px;
+    top: -30px;
+    left: 44%;
   }
 }
 
@@ -248,11 +254,6 @@
 
   .catalog__all {
     width: 240px;
-  }
-
-  .catalog__icon {
-    top: -35%;
-    left: 39%;
   }
 
   .catalog__all p {
