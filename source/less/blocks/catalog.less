@@ -74,11 +74,25 @@
   text-align: center;
 }
 
-.catalog__icon {
+.catalog__icon:before,
+.catalog__icon:after {
+  content: " ";
   position: absolute;
   top: -44px;
-  width: 30px;
+  background: #d3d3d3;
+}
+
+.catalog__icon:before {
+  width: 2px;
   height: 30px;
+  left: 49.5%;;
+}
+
+.catalog__icon:after {
+  width: 30px;
+  height: 2px;
+  top: -30px;
+  left: 44%;
 }
 
 .catalog__all p {
