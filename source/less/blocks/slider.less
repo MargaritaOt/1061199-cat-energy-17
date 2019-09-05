@@ -55,6 +55,27 @@
 }
 
 @media (min-width: @tablet-width) {
+  .slider::before,
+  .slider::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    z-index: -1;
+    height: 43%;
+    width: 50%;
+  }
+
+  .slider::before {
+    right: 50%;
+    background-color: #f2f2f2;
+  }
+
+  .slider::after {
+    bottom: 0;
+    left: 50%;
+    background-color: #eaeaea;
+  }
+
   .slider__list {
     display: flex;
     margin-top: 45px;
@@ -63,12 +84,11 @@
 
   .slider__toggles {
     .tagline-tablet;
-    margin-top: 30px;
-    margin-bottom: 70px;
+    margin: 30px 68px 70px;
   }
 
   .slider__toggle-before {
-    margin-left: 47px;
+    margin-left: 0;
     border-bottom: 1px dotted #bebebe;
     line-height: 30px;
 
@@ -86,7 +106,7 @@
   }
 
   .slider__toggle-after {
-    margin-right: 50px;
+    margin-right: 0;
     border-bottom: 1px dotted #bebebe;
     line-height: 30px;
 
@@ -107,7 +127,7 @@
     position: absolute;
     content: "";
     top: 12px;
-    left: 328px;
+    left: 280px;
     z-index: 1;
     width: 8px;
     height: 8px;
@@ -117,7 +137,7 @@
 
   .slider__toggles::before {
     top: 13px;
-    left: 120px;
+    left: 70px;
     height: 6px;
     width: 427px;
     border: none;
@@ -128,22 +148,22 @@
     position: absolute;
     content: "";
     top: -2px;
-    left: 315px;
+    left: 267px;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     border: 1px solid rgb(205, 205, 205);
     background-color: #ffffff;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
   }
 
   .slider__button:hover::after {
-    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.25);
   }
 
   .slider__button:active::after {
     border: 2px solid rgb(104, 183, 56);
-    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.3);
   }
 
   .slider__changes-after,
@@ -170,6 +190,17 @@
 }
 
 @media (min-width: @desktop-width) {
+  .slider::before {
+    left: 0;
+    height: 71%;
+    width: 75%;
+  }
+
+  .slider::after {
+    height: 71%;
+    left: 75%;
+  }
+
   .slider__list {
     width: 690px;
     margin-top: 0;
@@ -197,7 +228,7 @@
   }
 
   .slider__button::after {
-    left: 354px;
+    left: 355px;
   }
 
   .slider__toggle-before {

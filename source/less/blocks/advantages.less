@@ -27,6 +27,7 @@
 }
 
 .advantages__list li {
+  position: relative;
   padding: 15px 0 12px 80px;
 }
 
@@ -35,6 +36,7 @@
   position: absolute;
   width: 60px;
   height: 60px;
+  top: 12px;
   left: 0;
   background-repeat: no-repeat;
   background-position: center;
@@ -42,26 +44,26 @@
 }
 
 .advantages__item--composition::before {
-  top: 12px;
   background-image: url("../img/advantage-leaf@1x.webp"), url("../img/advantage-leaf@1x.png");
 }
 
 .advantages__item--view::before {
-  top: 92px;
   background-image: url("../img/advantage-powder@1x.webp"), url("../img/advantage-powder@1x.png");
 }
 
 .advantages__item--instruction::before {
-  bottom: 87px;
   background-image: url("../img/advantage-dining@1x.webp"), url("../img/advantage-dining@1x.png");
 }
 
 .advantages__item--result::before {
-  bottom: 7px;
   background-image: url("../img/advantage-clock@1x.webp"), url("../img/advantage-clock@1x.png");
 }
 
 @media (min-width: @tablet-width) {
+  .advantages__inner {
+    margin: 0 auto;
+  }
+
   .advantages__list {
     .flex-wrap;
     flex-basis: 100%;
@@ -97,24 +99,12 @@
     height: 80px;
   }
 
-  .advantages__item--composition::before {
-    top: -19px;
-    left: -2px;
-  }
-
-  .advantages__item--view::before {
-    top: -19px;
-    left: 382px;
-  }
-
-  .advantages__item--instruction::before {
-    top: 297px;
-    left: -2px;
-  }
-
+  .advantages__item--composition::before,
+  .advantages__item--view::before,
+  .advantages__item--instruction::before,
   .advantages__item--result::before {
-    top: 297px;
-    left: 382px;
+    top: -20px;
+    left: -2px;
   }
 
   .advantages__item--result {
@@ -147,22 +137,7 @@
 
   .advantages__item::before {
     top: -25px;
-  }
-
-  .advantages__item--composition::before {
-    left: -1px;
-  }
-
-  .advantages__item--view::before {
-    left: 323px;
-  }
-
-  .advantages__item--instruction::before {
-    left: 649px;
-  }
-
-  .advantages__item--result::before {
-    left: 974px;
+    left: 0;
   }
 
   .advantages__item--composition,

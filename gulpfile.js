@@ -19,26 +19,37 @@ var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
-var uglify = require("gulp-uglify");
+var minify = require("gulp-minify");
 
 gulp.task("scripts", function() {
   return gulp.src("source/js/script.js")
-    .pipe(uglify())
+    .pipe(minify({
+      ext:{
+        min:".min.js"
+      }
+    }))
     .pipe(gulp.dest("build/js"));
 });
 
-gulp.task("css", function() {
-  return gulp.src("source/less/style.less")
-    .pipe(plumber())
-    .pipe(sourcemap.init())
-    .pipe(less())
-    .pipe(postcss([
-      autoprefixer()
-    ]))
+gulp.task("css", function(done) {
+  function style() {
+    return gulp.src("source/less/style.less")
+      .pipe(plumber())
+      .pipe(sourcemap.init())
+      .pipe(less())
+      .pipe(postcss([
+        autoprefixer()
+      ]))
+  }
+  style()
     .pipe(csso())
-    .pipe(sourcemap.write("."))
     .pipe(rename("style.min.css"))
     .pipe(gulp.dest("build/css"));
+  style()
+    .pipe(rename("style.css"))
+    .pipe(sourcemap.write("."))
+    .pipe(gulp.dest("build/css"));
+  return done()
 });
 
 gulp.task("webp", function() {
@@ -110,7 +121,6 @@ gulp.task("copy", function() {
       "source/fonts/**/*.{woff,woff2}",
       "source/img/logo-*.svg",
       "source/js/picturefill.js",
-      "source/css/normalize.css"
     ], {
       base: "source"
     })

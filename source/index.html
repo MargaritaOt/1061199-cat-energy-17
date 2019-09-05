@@ -5,9 +5,9 @@
   <title>HTML Academy: Кэт энерджи</title>
   <meta content="width=device-width,initial-scale=1" name="viewport">
   <meta content="telephone=no" name="format-detection">
-  <link href="fonts/oswaldmedium.woff" rel="preload">
+  <link href="fonts/oswaldmedium.woff" rel="stylesheet">
   <link href="fonts/oswaldmedium.woff2" rel="preload">
-  <link href="fonts/oswaldregular.woff" rel="preload">
+  <link href="fonts/oswaldregular.woff" rel="stylesheet">
   <link href="fonts/oswaldregular.woff2" rel="preload">
   <link href="css/style.min.css" rel="stylesheet">
   <script>
@@ -24,14 +24,14 @@
       <nav class="main-nav main-nav--closed main-nav--nojs">
         <button class="main-nav__toggle" type="button"><span class="visually-hidden">Открыть меню</span></button>
         <div class="main-nav__wrapper">
-          <ul class="main-nav__list site-list site-list--page">
-            <li class="site-list__item site-list__item--active">
+          <ul class="main-nav__list main-nav__list--page">
+            <li class="main-nav__item main-nav__item--active">
               <a><span>Главная</span></a>
             </li>
-            <li class="site-list__item">
+            <li class="main-nav__item">
               <a href="catalog.html"><span>Каталог продукции</span></a>
             </li>
-            <li class="site-list__item">
+            <li class="main-nav__item">
               <a href="form.html"><span>Подбор программы</span></a>
             </li>
           </ul>
@@ -137,7 +137,14 @@
           </div>
         </div>
         <div class="contacts__map">
-          <iframe height="365" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.59810943521!2d30.3218713634308!3d59.938810690068955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fb661d55f%3A0xd0cc7f055debe430!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1562636252922!5m2!1sru!2sru" width="320"></iframe> <picture><source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.webp 1x, img/bg-map-desktop@2x.webp 2x" type="image/webp"> <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.webp 1x, img/bg-map-tablet@2x.webp 2x" type="image/webp"> <source srcset="img/bg-map-mobile@1x.webp 1x, img/bg-map-mobile@2x.webp 2x" type="image/webp"> <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.png 1x, img/bg-map-desktop@2x.png 2x"> <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.png 1x, img/bg-map-tablet@2x.png 2x"> <img alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" class="contacts__image" src="img/bg-map-mobile@1x.png" srcset="img/bg-map-mobile@1x.png 1x, img/bg-map-mobile@2x.png 2x"></picture>
+          <iframe height="365" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.59810943521!2d30.3218713634308!3d59.938810690068955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fb661d55f%3A0xd0cc7f055debe430!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1562636252922!5m2!1sru!2sru" width="320"></iframe>
+          <picture>
+            <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.webp 1x, img/bg-map-desktop@2x.webp 2x" type="image/webp">
+            <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.webp 1x, img/bg-map-tablet@2x.webp 2x" type="image/webp">
+            <source srcset="img/bg-map-mobile@1x.webp 1x, img/bg-map-mobile@2x.webp 2x" type="image/webp">
+            <source media="(min-width: 1280px)" srcset="img/bg-map-desktop@1x.png 1x, img/bg-map-desktop@2x.png 2x">
+              <source media="(min-width: 768px)" srcset="img/bg-map-tablet@1x.png 1x, img/bg-map-tablet@2x.png 2x">
+            <img alt="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург" class="contacts__image" src="img/bg-map-mobile@1x.png" srcset="img/bg-map-mobile@1x.png 1x, img/bg-map-mobile@2x.png 2x"></picture>
           <div class="contacts__icon">
             <picture><source srcset="img/map-pin.webp" type="image/webp"> <img alt="Метка на карте" height="55" src="img/map-pin.png" width="53"></picture>
           </div>
@@ -148,7 +155,7 @@
   <footer class="page-footer">
     <div class="page-footer__inner">
       <div class="page-footer__logo logo">
-        <a class="logo___logo-footer" href="index.html"><img alt="Кэт энерджи" class="logo__image" height="24" src="img/logo-footer.svg" width="128"></a>
+        <a class="logo__logo-footer" href="index.html"><img alt="Кэт энерджи" class="logo__image" height="24" src="img/logo-footer.svg" width="128"></a>
       </div>
       <div class="page-footer__social social">
         <ul class="social__list">
