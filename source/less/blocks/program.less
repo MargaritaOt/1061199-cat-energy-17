@@ -1,5 +1,4 @@
 .program {
-  position: relative;
   font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: 1;
@@ -10,6 +9,7 @@
 .program__inner {
   .wrapper;
   .flex-column;
+  position: relative;
   padding-bottom: 22px;
 }
 
@@ -64,10 +64,13 @@
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-@media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-  background-image: url("img/index-background-mobile@2x.webp"), url("img/index-background-mobile@2x.jpg");
+  @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
+    background-image: url("../img/index-background-mobile@2x.webp"), url("../img/index-background-mobile@2x.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 .program__logo-image {
@@ -81,7 +84,7 @@
   }
 
   .program__header {
-    margin-left: 87px;
+    margin-left: 88px;
     color: #111111;
     text-align: left;
     background-image: none;
@@ -90,8 +93,8 @@
 
   .program__title {
     .title-tablet;
-    width: 67%;
-    padding: 45px 0 40px 0;
+    width: 420px;
+    padding: 43px 0 41px;
     text-align: left;
     text-transform: none;
   }
@@ -112,14 +115,14 @@
 
   .program__logo-image {
     top: -80px;
-    right: 2px;
+    right: 4px;
     z-index: 3;
   }
 
   .program__choice-program {
     z-index: 4;
-    margin: 18px auto 0 88px;
-    padding: 16px 26px;
+    margin: 18px auto 0 90px;
+    padding: 15px 28px 16px 25px;
   }
 }
 
@@ -139,10 +142,12 @@
     background-image: url("../img/index-background-desktop@1x.webp"), url("../img/index-background-desktop@1x.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-  }
 
-  @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
-    background-image: url("img/index-background-desktop@2x.webp"), url("img/index-background-desktop@2x.jpg");
+    @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
+      background-image: url("../img/index-background-desktop@2x.webp"), url("../img/index-background-desktop@2x.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
 
   .program__inner {

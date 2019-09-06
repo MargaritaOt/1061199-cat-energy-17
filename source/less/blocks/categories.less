@@ -122,7 +122,7 @@ a.categories__view:hover .categories__icon {
 @media (min-width: @tablet-width) {
   .categories__list li {
     margin-bottom: 30px;
-    padding-bottom: 25px;
+    padding-bottom: 27px;
   }
 
   .categories__item--slim {
@@ -138,23 +138,24 @@ a.categories__view:hover .categories__icon {
 
   .categories__icon-catpro {
     top: 135px;
-    left: 410px;
+    left: 412px;
     width: 268px;
     height: 112px;
   }
 
-  .categories__item--slim::before {
+  .categories__item--slim::before,
+  .categories__item--pro::before {
     top: 91px;
-    left: 444px;
     width: 200px;
     height: 200px;
   }
 
-  .categories__item--pro::before {
-    top: 91px;
+  .categories__item--slim::before {
     left: 446px;
-    width: 200px;
-    height: 200px;
+  }
+
+  .categories__item--pro::before {
+    left: 448px;
   }
 
   .categories__title {
@@ -165,29 +166,29 @@ a.categories__view:hover .categories__icon {
 
   .categories__description {
     .description-tablet;
-    width: 54%;
-    padding: 0 0 0 50px;
+    width: 384px;
+    padding: 0 0 0 53px;
   }
 
   .categories__item--pro p {
-    width: 48%;
-    padding: 0 0 0 50px;
+    width: 340px;
+    padding: 0 0 0 52px;
   }
 
   .categories__view {
     .tagline-tablet;
-    margin: 57px 0 35px 52px;
+    margin: 56px 0 35px 53px;
     padding: 0;
   }
 
   .categories__wrapper {
     width: 33px;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 25px;
   }
 
   .categories__icon {
-    width: 24px;
+    width: 33px;
   }
 }
 
