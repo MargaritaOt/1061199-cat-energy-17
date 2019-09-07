@@ -7,10 +7,18 @@
 
 .page__title {
   .wrapper;
-  margin: 17px 0 25px;
+  padding: 14px 20px 28px;
+  margin: 0 auto;
   font-size: 36px;
   line-height: 60px;
   font-weight: @font-weight-base;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.page__title--program {
+  padding-bottom: 25px;
+  border-bottom: none;
 }
 
 .page__description {
@@ -25,10 +33,18 @@
   .page__title {
     .title-tablet;
     margin: 45px auto 0;
+    border-bottom: none;
+    border-top: none;
+  }
+
+  .page__title--program {
+    margin: 43px auto 0;
   }
 
   .page__description {
-    padding: 30px 320px 30px 70px;
+    max-width: 378px;
+    margin-left: 70px;
+    padding: 30px 0;
     font-size: 20px;
     line-height: 30px;
   }
@@ -40,7 +56,13 @@
     padding: 0 40px;
   }
 
+  .page__title--program {
+    margin-bottom: 22px;
+  }
+
   .page__description {
-    padding: 32px 900px 30px 40px;
+    max-width: 100%;
+    margin-left: auto;
+    padding: 30px 930px 30px 40px;
   }
 }

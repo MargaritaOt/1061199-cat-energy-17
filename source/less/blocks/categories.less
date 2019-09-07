@@ -18,7 +18,7 @@
 
 .categories__list li {
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 22px;
   background-color: @color-gray;
 }
 
@@ -28,19 +28,11 @@
   position: absolute;
   width: 50px;
   height: 50px;
+  top: 25px;
+  left: 21px;
   border-radius: 50%;
   background-color: @color-base;
   background-repeat: no-repeat;
-}
-
-.categories__item--slim::before {
-  top: 25px;
-  left: 22px;
-}
-
-.categories__item--pro::before {
-  top: 25px;
-  left: 22px;
 }
 
 .categories__item--slim {
@@ -62,7 +54,7 @@
 }
 
 .categories__title {
-  margin: 32px 0 29px 91px;
+  margin: 31px 0 30px 91px;
   font-size: 24px;
   line-height: 37px;
   font-weight: @font-weight-base;
@@ -70,7 +62,7 @@
 
 .categories__description {
   margin: 0;
-  padding: 0 20px 44px;
+  padding: 0 20px 22px 19px;
   font-family: "Arial", sans-serif;
   font-size: @font-size-base;
   line-height: @line-height-base;
@@ -81,9 +73,11 @@
 
 .categories__view {
   display: flex;
-  padding: 0 20px;
+  margin: 0 19px;
+  padding-top: 20px;
   font-size: 16px;
   line-height: 1;
+  border-top: 1px solid #d9d9d9;
 
   &:active {
     color: rgba(17, 17, 17, 0.302);
@@ -95,7 +89,7 @@
   width: 45px;
   height: 11px;
   margin-left: 11px;
-  margin-top: 2px;
+  margin-top: 3px;
   overflow: hidden;
 
   &:active {
@@ -166,12 +160,12 @@ a.categories__view:hover .categories__icon {
 
   .categories__description {
     .description-tablet;
-    width: 384px;
+    max-width: 384px;
     padding: 0 0 0 53px;
   }
 
   .categories__item--pro p {
-    width: 340px;
+    max-width: 340px;
     padding: 0 0 0 52px;
   }
 
@@ -179,6 +173,7 @@ a.categories__view:hover .categories__icon {
     .tagline-tablet;
     margin: 56px 0 35px 53px;
     padding: 0;
+    border-top: none;
   }
 
   .categories__wrapper {
@@ -236,7 +231,7 @@ a.categories__view:hover .categories__icon {
 
   .categories__description,
   .categories__item--pro p {
-    width: 85%;
+    max-width: 485px;
   }
 
   .categories__view {

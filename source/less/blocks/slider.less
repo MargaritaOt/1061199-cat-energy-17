@@ -1,6 +1,6 @@
 .slider__list {
   .list-unstyled;
-  margin: 15px 0 0 -22px;
+  margin: 15px 0 0 -20px;
 }
 
 .slider__changes-before img {
@@ -14,7 +14,8 @@
 .slider__toggles {
   position: relative;
   display: flex;
-  margin: 26px 20px 37px;
+  margin: 27px auto 37px;
+  padding: 0 38px 0 20px;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 20px;
@@ -26,7 +27,7 @@
   position: absolute;
   content: "";
   top: 4px;
-  left: 80px;
+  left: 100px;
   height: 12px;
   width: 80px;
   background-color: #ffffff;
@@ -38,7 +39,7 @@
   position: absolute;
   content: "";
   top: 8px;
-  left: 85px;
+  left: 105px;
   width: 36px;
   height: 7px;
   background-color: @color-base;
@@ -73,21 +74,26 @@
   }
 
   .slider::after {
+    width: 100%;
     bottom: 0;
-    left: 6px;
+    right: 45%;
     background-color: #eaeaea;
   }
 
   .slider__list {
     display: flex;
-    margin-top: 45px;
-    margin-left: -336px;
+    margin: 45px 0 0 20px;
+  }
+
+  .slider__changes-before {
+    margin-left: -356px;
   }
 
   .slider__toggles {
     .tagline-tablet;
     width: 576px;
-    margin: 30px 68px 70px;
+    margin: 30px auto 68px;
+    padding: 0;
   }
 
   .slider__toggle-before {
@@ -109,7 +115,7 @@
   }
 
   .slider__toggle-after {
-    margin-right: 0;
+    margin-right: 5px;
     border-bottom: 1px dotted #bebebe;
     line-height: 30px;
 
@@ -129,8 +135,8 @@
   .slider__toggles::after {
     position: absolute;
     content: "";
-    top: 12px;
-    left: 280px;
+    top: 11px;
+    left: 282px;
     z-index: 1;
     width: 8px;
     height: 8px;
@@ -151,7 +157,7 @@
     position: absolute;
     content: "";
     top: -2px;
-    left: 267px;
+    left: 269px;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -200,13 +206,13 @@
 
   .slider::after {
     height: 71%;
-    left: 46%;
+    right: 20%;
   }
 
   .slider__list {
     width: 690px;
     margin-top: 0;
-    margin-left: -315px;
+    margin-left: 40px;
   }
 
   .slider__changes-after img {
@@ -219,7 +225,7 @@
 
   .slider__toggles {
     width: 658px;
-    margin: 55px 0 70px;
+    margin: 55px auto 70px;
   }
 
   .slider__toggles::before {

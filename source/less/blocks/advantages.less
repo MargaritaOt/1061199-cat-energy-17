@@ -13,7 +13,7 @@
 }
 
 .advantages__title {
-  margin: 17px 0;
+  margin: 17px 0 15px;
   font-family: @font-family-base;
   font-size: 36px;
   line-height: 60px;
@@ -37,7 +37,7 @@
   width: 60px;
   height: 60px;
   top: 12px;
-  left: 0;
+  left: -1px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: @color-base;
@@ -176,6 +176,17 @@
   .advantages__item--instruction,
   .advantages__item--view {
     margin-right: 60px;
+  }
+
+  .advantages__item--view::after,
+  .advantages__item--instruction::after,
+  .advantages__item--result::after {
+    top: -65px;
+    right: 15px;
+  }
+
+  .advantages__item--composition::after {
+    right: 35px;
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

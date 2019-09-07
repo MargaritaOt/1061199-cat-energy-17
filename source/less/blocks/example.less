@@ -10,6 +10,7 @@
 .example__inner {
   .wrapper;
   .flex-column;
+  padding: 0 20px 0 19px;
 }
 
 .example__title {
@@ -32,11 +33,13 @@
 }
 
 .example__list {
-  margin-top: 25px;
+  margin: 25px auto 0;
 }
 
 .example__total {
-  margin: 33px 0 0 47px;
+  max-width: 235px;
+  margin: 33px auto 0;
+  padding-left: 47px;
 }
 
 .example__total span {
@@ -54,7 +57,7 @@
 }
 
 .example__changes {
-  margin: 22px 0 0;
+  margin: 22px auto 0;
   overflow: hidden;
 }
 
@@ -84,7 +87,9 @@
 
   .example__total {
     .tagline-tablet;
-    margin: 12px 3px 0 auto;
+    margin: 12px auto 0;
+    padding-right: 3px;
+    padding-left: 170px;
   }
 
   .example__total span {
@@ -110,7 +115,7 @@
 
   .example__description {
     width: 432px;
-    margin-bottom: 70px;
+    margin-bottom: 68px;
     padding-right: 130px;
   }
 
@@ -131,7 +136,9 @@
 
   .example__total {
     display: flex;
+    max-width: 100%;
     margin: 60px auto 0 0;
+    padding: 0;
   }
 
   .example__changes {

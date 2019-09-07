@@ -15,12 +15,13 @@
 
 .program__header {
   z-index: 1;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .program__title {
-  padding: 28px 0 25px;
-  margin: 0;
+  max-width: 280px;
+  padding: 26px 0;
+  margin: 0 auto;
   font-size: 36px;
   line-height: 1;
   font-weight: 400;
@@ -34,8 +35,8 @@
 }
 
 .program__choice-program {
-  margin-top: 273px;
-  padding: 13px 0;
+  margin: 2px 0 0;
+  padding: 13px 73px 13px 71px;
   background-color: #68b738;
   color: @color-text;
   text-transform: @text-transform-base;
@@ -52,6 +53,10 @@
   }
 }
 
+.program__logo {
+  margin: 0 auto;
+}
+
 .program__logo::before {
   content: "";
   position: absolute;
@@ -59,22 +64,17 @@
   right: 0;
   width: 100%;
   height: 305px;
+  z-index: -1;
   background-color: #64a83b;
   background-image: url("../img/index-background-mobile@1x.webp"), url("../img/index-background-mobile@1x.jpg");
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: cover;
 
   @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
     background-image: url("../img/index-background-mobile@2x.webp"), url("../img/index-background-mobile@2x.jpg");
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: cover;
   }
-}
-
-.program__logo-image {
-  position: absolute;
 }
 
 @media (min-width: @tablet-width) {
@@ -93,7 +93,8 @@
 
   .program__title {
     .title-tablet;
-    width: 420px;
+    max-width: 420px;
+    margin: 0;
     padding: 43px 0 41px;
     text-align: left;
     text-transform: none;
@@ -103,25 +104,20 @@
     text-align: left;
   }
 
-  .program__logo {
-    order: 4;
-    position: relative;
-  }
-
   .program__logo::before {
     background-color: transparent;
     background-image: none;
   }
 
   .program__logo-image {
-    top: -80px;
-    right: 4px;
-    z-index: 3;
+    position: absolute;
+    top: 243px;
+    right: 33px;
   }
 
   .program__choice-program {
     z-index: 4;
-    margin: 18px auto 0 90px;
+    margin: 20px auto 0 90px;
     padding: 15px 28px 16px 25px;
   }
 }
@@ -135,12 +131,12 @@
     content: "";
     position: absolute;
     top: -120px;
-    right: 0;
-    width: 50%;
+    left: 50%;
+    width: 100%;
     height: 692px;
     background-color: #64a83b;
     background-image: url("../img/index-background-desktop@1x.webp"), url("../img/index-background-desktop@1x.jpg");
-    background-size: cover;
+    background-size: content;
     background-repeat: no-repeat;
 
     @media (min-resolution: @retina-dpi), (min-resolution: @retina-dppx) {
@@ -172,9 +168,8 @@
   }
 
   .program__logo-image {
-    position: absolute;
-    top: -300px;
-    right: 218px;
+    top: 19px;
+    right: 260px;
   }
 
   .program__choice-program {

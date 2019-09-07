@@ -1,6 +1,6 @@
 .table {
   display: table;
-  margin: 12px 0 0;
+  margin: 12px 20px 20px 0;
   border-collapse: collapse;
   color: #444444;
 }
@@ -23,17 +23,17 @@
 
 @media (min-width: @tablet-width) {
   .table {
-    margin: 25px 0 0 36px;
+    margin: 19px 38px 0 36px;
   }
 
   .table tr {
     .flex-row;
-    padding-bottom: 16px;
+    padding: 7px 0 8px;
+    border-bottom: 1px solid #cdcdcd;
   }
 
   .table__field {
     margin-left: auto;
-    margin-right: 38px;
     font-size: 16px;
     line-height: 1;
   }
@@ -42,7 +42,7 @@
 @media (min-width: @desktop-width) {
   .table {
     width: 68%;
-    margin: 25px auto 0;
+    margin: 20px auto 5px;
   }
 
   .table__value {
