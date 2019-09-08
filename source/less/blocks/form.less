@@ -61,8 +61,8 @@
   }
 }
 
-.form__input--info:invalid + .form__icon-mail,
-.form__input--info:invalid + .form__icon-phone {
+.form__input--info1:invalid + .form__icon-mail,
+.form__input--info2:invalid + .form__icon-phone {
   color: #ff8282;
 }
 
@@ -108,19 +108,6 @@
   background: #68b738;
 }
 
-.form__invisible {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 .form__checkbox:hover + .form__label1::before {
   border: 1px solid #d6d6d6;
   border-radius: 50%;
@@ -142,7 +129,7 @@
 .form__title {
   display: flex;
   margin: 0;
-  padding: 29px 0 0 20px;
+  padding: 29px 0 0 0;
   text-transform: none;
   font-size: 24px;
   line-height: 1;
@@ -155,22 +142,24 @@
   top: 3px;
   width: 28px;
   height: 3px;
-  background: @color-base;
+  background: #68b738;
   margin-left: 22px;
   flex-grow: 1;
   flex-shrink: 0;
 }
 
-.form__title span {
-  order: 2;
+.form__title--line::after {
+  top: -35px;
+  left: 180px;
 }
 
 .form__info {
   .wrapper;
-  padding-top: 15px;
+  padding: 12px 0 0;
 }
 
-.form__input--info {
+.form__input--info1,
+.form__input--info2 {
   margin: 0 0 0 13px;
   padding-left: 14px;
 }
@@ -213,13 +202,13 @@
 
 .form__comment {
   .wrapper;
-  padding-top: 35px;
+  padding: 35px 0 0;
 }
 
 .form__note {
   display: inline block;
   width: 280px;
-  padding: 11px 0 47px 15px;
+  padding: 11px 0 46px 15px;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 18px;
@@ -232,12 +221,17 @@
 
 .form__extra {
   .wrapper;
-  padding: 38px 20px 0 66px;
+  padding: 39px 20px 0 46px;
 }
 
 .form__items {
   position: relative;
   padding-bottom: 25px;
+}
+
+.form__checkbox,
+.form__checkbox1 {
+  display: none;
 }
 
 .form__checked1 {
@@ -279,6 +273,7 @@
 .form__request {
   .wrapper;
   .flex-column;
+  padding: 0;
 }
 
 .form__button {
@@ -320,6 +315,7 @@
   .form__input {
     outline: none;
     border-radius: 0;
+    appearance: none;
   }
 
   .form__button {
@@ -350,7 +346,15 @@
   .form__input {
     .tagline-tablet;
     margin: 0 0 0 20px;
-    padding: 25px 15px;
+    padding: 25px 16px;
+  }
+
+  .form__input--weight {
+    padding: 24px 20px;
+  }
+
+  .form__input--age {
+    padding: 24px 15px;
   }
 
   .form__target {
@@ -394,7 +398,7 @@
     top: 5px;
     width: 28px;
     height: 3px;
-    background: @color-base;
+    background: #68b738;
   }
 
   .form__title::before {
@@ -408,21 +412,25 @@
     margin-left: 42px;
   }
 
-  .form__title span {
-    margin-left: 9px;
+  .form__title--line::after {
+    left: 0;
   }
 
   .form__info {
     margin: 0;
-    padding: 40px 68px 0;
+    padding: 40px 69px 0;
   }
 
   .form__feedback:not(:last-child) {
-    margin: 34px 0 20px;
+    margin: 35px 0 20px;
   }
 
-  .form__input--info {
-    padding: 11px 0 11px 20px;
+  .form__input--info1 {
+    padding: 11px 0 11px 22px;
+  }
+
+  .form__input--info2 {
+    padding: 10px 0 11px 15px;
   }
 
   .form__icon-mail {
@@ -450,7 +458,7 @@
   .form__extra {
     .flex-wrap;
     margin: 0 auto;
-    padding: 65px 0 0 128px;
+    padding: 66px 0 0 128px;
   }
 
   .form__items {
@@ -463,12 +471,11 @@
   }
 
   .form__checked1 {
-    top: 4px;
     left: -50px;
   }
 
   .form__unchecked1 {
-    top: -8px;
+    top: -10px;
     left: -59px;
     width: 40px;
     height: 40px;
@@ -476,18 +483,18 @@
 
   .form__request {
     .flex-row;
-    margin: 0 auto 70px;
+    margin: 0 auto 73px;
     padding: 0 60px 0 70px;
   }
 
   .form__button {
     .tagline-tablet;
     margin-top: 10px;
-    padding: 8px 68px 10px 62px;
+    padding: 8px 68px 12px 62px;
   }
 
   .form__small {
-    margin: 28px 0 20px 62px;
+    margin: 28px 0 18px 62px;
     font-size: 16px;
   }
 }
@@ -550,7 +557,7 @@
 
   .form__note {
     width: 1220px;
-    padding-bottom: 16px;
+    padding: 10px 0 15px 17px;
   }
 
   .form__extra {
@@ -572,16 +579,16 @@
 
   .form__request {
     margin: 10px auto 83px;
-    padding: 0 42px;
+    padding: 0 40px;
   }
 
   .form__button {
     margin-top: 10px;
-    padding: 8px 209px 12px 205px;
+    padding: 8px 208px 13px 206px;
   }
 
   .form__small {
-    margin: 25px 0 20px 80px;
+    margin: 25px 0 20px 83px;
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
