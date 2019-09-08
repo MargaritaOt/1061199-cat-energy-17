@@ -1,20 +1,38 @@
 .main-nav {
   .flex-column;
-  position: fixed;
-  z-index: 10;
-  top: 65px;
-  left: 20px;
-  width: 280px;
+  margin: 0 auto;
 }
 
 .main-nav__list {
   .list-unstyled;
+  width: 280px;
+  background-color: #ffffff;
+}
+
+.main-nav__list a {
+  .tagline-tablet;
+  display: block;
+  padding: 23px 21px;
+  text-transform: uppercase;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.main-nav__item a[href] {
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
 }
 
 .main-nav__toggle {
   position: absolute;
-  top: -40px;
-  right: 0;
+  top: 25px;
+  right: 20px;
   z-index: 2;
   width: 18px;
   height: 18px;
@@ -51,8 +69,7 @@
 }
 
 @media (max-width: @mobile-width-only) {
-  .main-nav--closed .site-list__item,
-  .main-nav--closed .user-list__item,
+  .main-nav--closed .main-nav__item,
   .main-nav--nojs .main-nav__toggle {
     display: none;
   }
@@ -62,7 +79,7 @@
     min-height: 0;
   }
 
-  .main-nav--nojs .site-list__item {
+  .main-nav--nojs .main-nav__item {
     display: block;
   }
 }
@@ -91,11 +108,35 @@
 
   .main-nav__list {
     .flex-row;
+    width: 100%;
+    margin-left: 45px;
     flex-wrap: wrap;
     font-family: @font-family-base;
     font-size: 18px;
     line-height: 25px;
     font-weight: @font-weight-base;
+  }
+
+  .main-nav__list a {
+    padding: 15px 0;
+    border-top: none;
+    border-bottom: none;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .main-nav__item a {
+    position: relative;
+  }
+
+  .main-nav__item--active span::before {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: @color-base;
   }
 
   .main-nav__list li:not(:last-child) {
@@ -118,10 +159,28 @@
   }
 
   .main-nav__list {
-    margin-left: 15px;
+    margin-left: 110px;
+    background-color: transparent;
     font-family: @font-family-base;
     font-size: 20px;
     line-height: 25px;
     font-weight: @font-weight-base;
+  }
+
+  .main-nav__list a {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .main-nav__list--page span::before {
+    bottom: 10px;
+    padding: 0;
+    background-color: #ffffff;
+  }
+
+  .main-nav__list--page a {
+    padding: 20px 0;
+    color: @color-text;
+    font-size: 20px;
   }
 }

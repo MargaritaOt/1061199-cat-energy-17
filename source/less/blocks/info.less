@@ -2,6 +2,7 @@
   display: table;
   width: 100%;
   margin: 10px 0 0;
+  color: #444444;
 }
 
 .info__quantity {
@@ -22,7 +23,7 @@
 @media (min-width: @tablet-width) {
   .info {
     flex-basis: 40%;
-    margin: 23px 0 0 auto;
+    margin: 18px 0 0 auto;
     font-size: 16px;
     line-height: 20px;
   }
@@ -37,12 +38,20 @@
     font-size: 16px;
     line-height: 20px;
   }
+
+  /* stylelint-disable */
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+    .info__quantity {
+      text-align: left;
+    }
+  }
+  /* stylelint-enable */
 }
 
 @media (min-width: @desktop-width) {
   .info {
-    flex-basis: 45%;
-    margin: 27px 0 10px 10px;
+    flex-basis: 46%;
+    margin: 28px 0 10px 12px;
   }
 
   .info__quantity {
@@ -66,6 +75,12 @@
   @supports (-ms-ime-align:auto) {
     .info {
       width: 300px;
+    }
+  }
+
+  @-moz-document "url-prefix"() {
+    .info__quantity {
+      width: 50%;
     }
   }
 }

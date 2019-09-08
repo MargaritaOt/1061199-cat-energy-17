@@ -3,14 +3,20 @@
 }
 
 .page-header__inner {
-  .flex-wrap;
+  .flex-column;
   .wrapper;
+  flex-wrap: wrap;
   padding: 0 15px;
 }
 
 @media (min-width: @tablet-width) {
   .page-header {
-    padding-top: 25px;
+    padding-top: 27px;
+  }
+
+  .page-header__inner {
+    flex-direction: row;
+    margin: 0 auto;
   }
 }
 
@@ -18,7 +24,6 @@
   .page-header__inner {
     .wrapper;
     .flex-around;
-    margin: 0;
     font-size: 20px;
     line-height: 1;
     font-weight: @font-weight-base;

@@ -1,6 +1,6 @@
 .slider__list {
   .list-unstyled;
-  margin: 15px 0 0 -22px;
+  margin: 15px 0 0 -20px;
 }
 
 .slider__changes-before img {
@@ -14,7 +14,8 @@
 .slider__toggles {
   position: relative;
   display: flex;
-  margin: 26px 20px 37px;
+  margin: 27px auto 37px;
+  padding: 0 38px 0 20px;
   font-family: @font-family-base;
   font-size: 16px;
   line-height: 20px;
@@ -26,9 +27,9 @@
   position: absolute;
   content: "";
   top: 4px;
-  left: 80px;
-  height: 12px;
+  left: 100px;
   width: 80px;
+  height: 12px;
   background-color: #ffffff;
   border: 1px solid #cdcdcd;
   border-radius: 20px;
@@ -38,7 +39,7 @@
   position: absolute;
   content: "";
   top: 8px;
-  left: 85px;
+  left: 105px;
   width: 36px;
   height: 7px;
   background-color: @color-base;
@@ -55,25 +56,52 @@
 }
 
 @media (min-width: @tablet-width) {
+  .slider::before,
+  .slider::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    z-index: -1;
+    height: 43%;
+    width: 395px;
+    transform: translate(95%);
+  }
+
+  .slider::before {
+    width: 100%;
+    right: 100%;
+    background-color: #f2f2f2;
+  }
+
+  .slider::after {
+    width: 100%;
+    bottom: 0;
+    right: 45%;
+    background-color: #eaeaea;
+  }
+
   .slider__list {
     display: flex;
-    margin-top: 45px;
-    margin-left: -340px;
+    margin: 45px 0 0 20px;
+  }
+
+  .slider__changes-before {
+    margin-left: -356px;
   }
 
   .slider__toggles {
     .tagline-tablet;
-    margin-top: 30px;
-    margin-bottom: 70px;
+    margin: 30px auto 68px;
+    padding: 0 70px;
   }
 
   .slider__toggle-before {
-    margin-left: 47px;
-    border-bottom: 1px dotted;
+    margin-left: 0;
+    border-bottom: 1px dotted #bebebe;
     line-height: 30px;
 
     &:focus {
-      border-bottom: 1px dotted;
+      border-bottom: 1px dotted #bebebe;
     }
 
     &:hover {
@@ -86,12 +114,13 @@
   }
 
   .slider__toggle-after {
-    margin-right: 50px;
-    border-bottom: 1px dotted;
+    margin-right: 5px;
+    margin-left: 471px;
+    border-bottom: 1px dotted #bebebe;
     line-height: 30px;
 
     &:focus {
-      border-bottom: 1px dotted;
+      border-bottom: 1px dotted #bebebe;
     }
 
     &:hover {
@@ -107,37 +136,48 @@
     position: absolute;
     content: "";
     top: 11px;
-    left: 328px;
+    left: 350px;
     z-index: 1;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: #63a73a;
   }
 
   .slider__toggles::before {
-    top: 13px;
-    left: 120px;
+    top: 12px;
+    left: 140px;
     height: 6px;
-    width: 427px;
+    width: 428px;
     border: none;
-  }
-
-  .slider__button:active::after,
-  .slider__button:focus {
-    border: 1px solid @color-base;
+    background-color: #dcdcdc;
   }
 
   .slider__button::after {
     position: absolute;
     content: "";
     top: -2px;
-    left: 315px;
-    width: 33px;
-    height: 33px;
+    left: 337px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    border: 1px solid #cdcdcd;
+    border: 1px solid rgb(205, 205, 205);
     background-color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .slider__button:hover::after {
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .slider__button:active::after {
+    border: 2px solid rgb(104, 183, 56);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .slider__button:focus::after {
+    border: 2px solid rgb(104, 183, 56);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.3);
   }
 
   .slider__changes-after,
@@ -164,10 +204,20 @@
 }
 
 @media (min-width: @desktop-width) {
+  .slider::before {
+    height: 71%;
+    width: 100%;
+  }
+
+  .slider::after {
+    height: 71%;
+    right: 20%;
+  }
+
   .slider__list {
     width: 690px;
     margin-top: 0;
-    margin-left: -315px;
+    margin-left: 40px;
   }
 
   .slider__changes-after img {
@@ -179,7 +229,8 @@
   }
 
   .slider__toggles {
-    margin: 55px 0 70px;
+    width: 658px;
+    margin: 55px auto 70px;
   }
 
   .slider__toggles::before {
@@ -191,11 +242,11 @@
   }
 
   .slider__button::after {
-    left: 354px;
+    left: 355px;
   }
 
   .slider__toggle-before {
-    margin-left: 90px;
+    margin-left: 15px;
   }
 
   .slider__toggle-after {

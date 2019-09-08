@@ -1,7 +1,7 @@
 .facts {
   display: table;
   border-collapse: collapse;
-  margin: 0;
+  margin: 0 auto;
   font-family: @font-family-base;
   font-size: 24px;
   line-height: 29px;
@@ -40,12 +40,14 @@
   font-size: 12px;
   line-height: 1;
   font-weight: @font-weight-base;
+  color: #444444;
   text-transform: none;
   background-color: #f2f2f2;
 }
 
 @media (min-width: @tablet-width) {
   .facts {
+    margin: 0;
     font-size: 30px;
     line-height: 37px;
   }
@@ -67,14 +69,6 @@
     line-height: 40px;
     background-color: #ffffff;
   }
-
-  /* stylelint-disable */
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
-    .info__quantity {
-      text-align: left;
-    }
-  }
-  /* stylelint-enable */
 }
 
 @media (min-width: @desktop-width) {
@@ -83,11 +77,5 @@
     font-size: 14px;
     line-height: 30px;
     background-color: #f2f2f2;
-  }
-
-  @-moz-document "url-prefix"() {
-    .info__quantity {
-      width: 50%;
-    }
   }
 }

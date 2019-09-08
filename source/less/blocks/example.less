@@ -3,22 +3,14 @@
   font-family: @font-family-base;
   font-weight: @font-weight-base;
   text-transform: @text-transform-base;
-}
-
-.example::before {
-  position: absolute;
-  content: "";
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
+  color: #111111;
   background-color: #f2f2f2;
 }
 
 .example__inner {
   .wrapper;
   .flex-column;
+  padding: 0 20px 0 19px;
 }
 
 .example__title {
@@ -36,15 +28,18 @@
   font-size: 14px;
   line-height: 18px;
   font-weight: @font-weight-base;
+  color: #444444;
   text-transform: none;
 }
 
 .example__list {
-  margin-top: 25px;
+  margin: 25px auto 0;
 }
 
 .example__total {
-  margin: 33px 0 0 47px;
+  max-width: 235px;
+  margin: 33px auto 0;
+  padding-left: 47px;
 }
 
 .example__total span {
@@ -62,13 +57,17 @@
 }
 
 .example__changes {
-  margin: 22px 0 0;
+  margin: 22px auto 0;
   overflow: hidden;
 }
 
 @media (min-width: @tablet-width) {
-  .example::before {
-    height: 43%;
+  .example {
+    background-color: transparent;
+  }
+
+  .example__inner {
+    margin: 0 auto;
   }
 
   .example__list {
@@ -78,16 +77,19 @@
 
   .example__title {
     .title-tablet;
-    margin: 43px 0 62px;
+    margin: 45px 0 62px;
   }
 
   .example__description {
     .description-tablet;
+    width: 702px;
   }
 
   .example__total {
     .tagline-tablet;
-    margin: 14px 3px 0 auto;
+    margin: 12px auto 0;
+    padding-right: 3px;
+    padding-left: 170px;
   }
 
   .example__total span {
@@ -98,15 +100,11 @@
   }
 
   .example__changes {
-    margin: 45px 0 0;
+    margin-top: 45px;
   }
 }
 
 @media (min-width: @desktop-width) {
-  .example::before {
-    height: 71%;
-  }
-
   .example__inner {
     .flex-row;
   }
@@ -116,7 +114,8 @@
   }
 
   .example__description {
-    margin-bottom: 70px;
+    width: 432px;
+    margin-bottom: 68px;
     padding-right: 130px;
   }
 
@@ -137,7 +136,9 @@
 
   .example__total {
     display: flex;
+    max-width: 100%;
     margin: 60px auto 0 0;
+    padding: 0;
   }
 
   .example__changes {
