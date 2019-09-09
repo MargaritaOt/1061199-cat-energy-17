@@ -22,7 +22,7 @@
   top: 3px;
   width: 28px;
   height: 4px;
-  background: @color-base;
+  background: #68b738;
   margin-left: 22px;
   flex-grow: 1;
   flex-shrink: 0;
@@ -161,7 +161,7 @@
     top: 5px;
     width: 28px;
     height: 4px;
-    background: @color-base;
+    background: #68b738;
   }
 
   .extra__title::before {
@@ -243,14 +243,26 @@
     line-height: 1;
   }
 
-  .extra__title::after {
+  .extra__title::after,
+  .extra__title::before {
+    position: relative;
+    content: "";
+    display: inline-block;
     top: 6px;
+    width: 50%;
+    height: 4px;
+    vertical-align: middle;
+    background: #68b738;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+ .extra__title::after {
+    margin-right: -50%;
   }
 
   .extra__title::before {
-    top: 6px;
-    left: -40px;
-    margin-right: 10px;
+    margin-left: -118%;
   }
 
   .extra__wrapper {

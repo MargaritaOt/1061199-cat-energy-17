@@ -525,9 +525,34 @@
     padding: 66px 0 0;
   }
 
+  .form__title::after,
   .form__title::before {
-    left: -30px;
-    margin-right: 10px;
+    position: relative;
+    content: "";
+    display: inline-block;
+    top: 6px;
+    width: 50%;
+    height: 4px;
+    vertical-align: middle;
+    background: #68b738;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  .form__title::after {
+    margin-right: -50%;
+  }
+
+  .form__title--line::before {
+    margin-left: -105%;
+  }
+
+  .form__title--line1::before {
+    margin-left: -130%;
+  }
+
+  .form__title--line2::before {
+    margin-left: -128%;
   }
 
   .form__info {

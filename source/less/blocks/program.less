@@ -80,11 +80,11 @@
 @media (min-width: @tablet-width) {
   .program {
     .tagline-tablet;
-    margin-bottom: 530px;
   }
 
   .program__header {
     margin-left: 88px;
+    margin-bottom: 20px;
     color: #111111;
     text-align: left;
     background-image: none;
@@ -110,21 +110,21 @@
   }
 
   .program__logo-image {
-    position: absolute;
-    top: 243px;
-    right: 33px;
+    margin-right: 5px;
   }
 
   .program__choice-program {
     z-index: 4;
-    margin: 20px auto 0 90px;
+    position: absolute;
+    top: 270px;
+    left: 120px;
     padding: 15px 28px 16px 25px;
   }
 }
 
 @media (min-width: @desktop-width) {
   .program {
-    margin-bottom: 270px;
+    margin-bottom: 335px;
   }
 
   .program__inner::before {
@@ -132,7 +132,7 @@
     position: absolute;
     top: -120px;
     left: 50%;
-    width: 100%;
+    width: 50%;
     height: 692px;
     background-color: #64a83b;
     background-image: url("../img/index-background-desktop@1x.webp"), url("../img/index-background-desktop@1x.jpg");
@@ -168,12 +168,14 @@
   }
 
   .program__logo-image {
+    position: absolute;
     top: 19px;
-    right: 260px;
+    right: 255px;
   }
 
   .program__choice-program {
-    margin: 13px auto 0 80px;
+    top: 320px;
+    margin: 13px auto 0;
   }
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
