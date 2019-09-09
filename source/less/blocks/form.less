@@ -16,6 +16,7 @@
 .form__container {
   .wrapper;
   margin: 0 auto;
+  padding: 0 0 0 20px;
 }
 
 .form__user {
@@ -51,13 +52,11 @@
   }
 
   &:active {
-    border: 1px solid #444444;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+    border: 2px solid #444444;
   }
 
   &:invalid {
-    border: 1px solid #ff8282;
-    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.25);
+    border: 2px solid #ff8282;
   }
 }
 
@@ -113,11 +112,12 @@
   border-radius: 50%;
 }
 
-.form__checkbox:active + .form__label1::after {
+.form__checkbox:active + .form__label1::after,
+.form__questions:active {
   opacity: 0.3;
 }
 
-.form__checkbox:focus + .form__label1::before {
+.form__checkboxt [type="checkbox"]:focus + .form__label1::before {
   border: 1px solid #d6d6d6;
 }
 
@@ -157,9 +157,14 @@
   left: 180px;
 }
 
+.form__title p {
+  max-width: 280px;
+  margin: 0;
+}
+
 .form__info {
   .wrapper;
-  padding: 12px 0 0;
+  padding: 12px 20px 0 0;
 }
 
 .form__input--info1,
@@ -277,7 +282,7 @@
 .form__request {
   .wrapper;
   .flex-column;
-  padding: 0;
+  padding: 0 20px 0 0;
 }
 
 .form__button {
@@ -422,6 +427,10 @@
 
   .form__title--line::after {
     left: 0;
+  }
+
+  .form__title p {
+    max-width: 100%;
   }
 
   .form__info {
